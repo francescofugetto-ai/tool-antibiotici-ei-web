@@ -1,0 +1,1692 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tool Antibiotici EI">
+<meta name="theme-color" content="#FAF9F7">
+<script data-iphone="sentinella">
+(function(){
+var h=document.documentElement, msg="";
+function ha(c){ return (" "+h.className+" ").indexOf(" "+c+" ")>=0; }
+// L'errore puo' arrivare prima che l'avviso esista — uno script in <head> che
+// non si lascia leggere —: il messaggio si tiene da parte e si scrive quando
+// la pagina c'e'.
+function scrivi(){
+  var e=document.getElementById("nmerr");
+  if(e&&msg) e.textContent="Errore del motore: "+msg;
+}
+function ko(m){
+  if(m&&!msg) msg=m;
+  if(!ha("motore-ko")) h.className+=" motore-ko";
+  scrivi();
+}
+h.className+=" js";
+window.onerror=function(m,src,riga,col){
+  m=String(m);
+  if(/^Script error\.?$/.test(m)) m="il browser non ne mostra il dettaglio (\u00abScript error.\u00bb)";
+  ko(m+(riga?" (riga "+riga+(col?", colonna "+col:"")+")":""));
+};
+document.addEventListener("DOMContentLoaded",function(){
+  if(!ha("motore-ok")) ko(msg||"il motore non ha completato l'avvio"); else scrivi();
+});
+})();
+</script>
+<title>Endocardite — antibiotico per germe, dose e rene</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --bg:#FAF9F7; --surface:#FFFFFF; --surface-alt:#F3F2EF;
+    --border:rgba(11,11,11,0.10); --border-strong:rgba(11,11,11,0.18);
+    --text-primary:#0B0B0B; --text-secondary:#52514E; --text-muted:#76746F;
+    --accent-blue:#2A78D6;   --accent-blue-bg:#E6F1FB;   --accent-blue-border:#B5D4F4;
+    --accent-amber:#BA7517;  --accent-amber-bg:#FAEEDA;  --accent-amber-border:#FAC775;
+    --accent-red:#A32D2D;    --accent-red-bg:#FCEBEB;    --accent-red-border:#F7C1C1;
+    --accent-green:#3B6D11;  --accent-green-bg:#EAF3DE;  --accent-green-border:#C0DD97;
+    --cor-1:#3B8E5A; --cor-2a:#E0A82E; --cor-2b:#DE7E3C; --cor-3:#B33A3A;
+    --k0:#2E7D4F; --k0-bg:#E2F3E8; --k0-bd:#A6D9B8;
+    --k1:#2A78D6; --k1-bg:#E3EFFB; --k1-bd:#A9CBF1;
+    --k2:#8A6A00; --k2-bg:#FBF3C8; --k2-bd:#EBD56C;
+    --k3:#B45309; --k3-bg:#FDEBD8; --k3-bd:#F4BD85;
+    --k4:#A32D2D; --k4-bg:#FCE3E3; --k4-bd:#F0A9A9;
+    --grid:rgba(42,120,214,.08);
+    --radius-md:10px;
+    --font:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --display:'IBM Plex Sans Condensed','Arial Narrow',-apple-system,'Segoe UI',sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,Consolas,'Courier New',monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#111418; --surface:#181C22; --surface-alt:#20252D;
+      --border:rgba(255,255,255,.10); --border-strong:rgba(255,255,255,.19);
+      --text-primary:#E7EAEE; --text-secondary:#B8BEC7; --text-muted:#949BA5;
+      --accent-blue:#72AAEE;   --accent-blue-bg:#18283A;   --accent-blue-border:#2E4B6C;
+      --accent-amber:#E3A94F;  --accent-amber-bg:#30250F;  --accent-amber-border:#5D4719;
+      --accent-red:#EF8E8E;    --accent-red-bg:#361B1B;    --accent-red-border:#6B3232;
+      --accent-green:#95C873;  --accent-green-bg:#1C2A13;  --accent-green-border:#3C5626;
+      --k0:#8FD3A8; --k0-bg:#132B1D; --k0-bd:#2D5A3E;
+      --k1:#8EC0F5; --k1-bg:#16283C; --k1-bd:#2F5378;
+      --k2:#EDD36A; --k2-bg:#2C260C; --k2-bd:#5E5120;
+      --k3:#F3B27A; --k3-bg:#33210F; --k3-bd:#6B4524;
+      --k4:#F29A9A; --k4-bg:#361B1B; --k4-bd:#6B3232;
+      --grid:rgba(114,170,238,.07);
+      color-scheme:dark;
+    }
+  }
+  body { font-family:var(--font); background:var(--bg); color:var(--text-primary); font-size:14.5px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  .page { max-width:960px; margin:0 auto; padding:0 16px 4rem; }
+  strong, b { font-weight:600; }
+  .muted { color:var(--text-muted); }
+  .hero { margin:0 -16px 0; padding:2.2rem 16px 1.3rem; border-bottom:1px solid var(--border);
+          background-color:var(--bg);
+          background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+          background-size:22px 22px; }
+  .kicker { font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-blue); margin-bottom:8px; }
+  .headline { font-family:var(--display); font-size:30px; font-weight:700; line-height:1.12; margin-bottom:10px; }
+  .lede { font-size:14.5px; color:var(--text-secondary); max-width:760px; margin-bottom:12px; }
+  .lede strong { color:var(--text-primary); }
+  .meta-row { display:flex; flex-wrap:wrap; gap:6px 8px; font-size:12px; }
+  .meta-chip { background:var(--surface); border:1px solid var(--border-strong); border-radius:99px; padding:2px 10px; color:var(--text-secondary); overflow-wrap:anywhere; }
+  .meta-chip strong { color:var(--text-primary); }
+  .bar { position:-webkit-sticky;position:sticky; top:0; z-index:30; background:var(--bg); border-bottom:1px solid var(--border-strong);
+         margin:0 -16px 1.2rem; padding:8px 16px; display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; }
+  .bar .lbl { font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); }
+  .bar .sp { flex:1 1 auto; }
+  .btn { font:600 12.5px var(--font); padding:6px 13px; border-radius:99px; border:1px solid var(--border-strong); background:var(--surface); color:var(--text-secondary); cursor:pointer; }
+  .btn:hover { border-color:var(--accent-blue); color:var(--accent-blue); }
+  .stage { display:flex; align-items:baseline; gap:10px; margin:2rem 0 .7rem; padding-bottom:6px; border-bottom:2px solid var(--border-strong); }
+  .stage-n { font-family:var(--mono); font-size:12px; font-weight:600; color:#FFFFFF; background:var(--accent-blue); border-radius:6px; padding:1px 7px; }
+  .stage-t { font-family:var(--display); font-size:20px; font-weight:700; line-height:1.2; }
+  .stage-w { margin-left:auto; font-size:11.5px; color:var(--text-muted); text-align:right; }
+  .card { background:var(--surface); border:1px solid var(--border-strong); border-radius:12px; padding:14px 16px; margin-bottom:12px; }
+  .card h3 { font-size:13px; font-weight:600; letter-spacing:.02em; margin-bottom:8px; color:var(--text-secondary); }
+  .fl { font-size:12.5px; font-weight:600; color:var(--text-secondary); min-width:150px; }
+  .fl small { display:block; font-weight:400; color:var(--text-muted); font-size:11.5px; }
+  input[type=number] { font:500 15px var(--font); color:var(--text-primary); background:var(--surface); border:1px solid var(--border-strong); border-radius:8px; padding:6px 9px; width:92px; text-align:center; }
+  select { font:500 13.5px var(--font); color:var(--text-primary); background:var(--surface); border:1px solid var(--border-strong); border-radius:8px; padding:6px 8px; max-width:100%; min-width:0; }
+  .seg { display:inline-flex; flex-wrap:wrap; border:1px solid var(--border-strong); border-radius:10px; overflow:hidden; max-width:100%; }
+  .seg label { position:relative; cursor:pointer; }
+  .seg input { position:absolute; opacity:0; width:1px; height:1px; }
+  .seg span { display:block; padding:6px 12px; font-size:13.5px; font-weight:500; color:var(--text-secondary); border-right:1px solid var(--border); }
+  .seg label:last-child span { border-right:none; }
+  .seg input:checked + span { background:var(--text-primary); color:var(--bg); }
+  .seg input:focus-visible + span { outline:2px solid var(--accent-blue); outline-offset:-2px; }
+  .riga { display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px; padding:6px 0; border-bottom:1px dashed var(--border); }
+  .riga:last-child { border-bottom:none; }
+  .riga .fl { min-width:0; flex:1 1 180px; }
+  .riga select { flex:1 1 260px; }
+  .hide { display:none !important; }
+  .esito { display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-bottom:4px; }
+  .cat { display:inline-block; font-size:12.5px; font-weight:600; border-radius:99px; padding:2px 10px; border:1px solid; }
+  .k0 { color:var(--k0); background:var(--k0-bg); border-color:var(--k0-bd); }
+  .k1 { color:var(--k1); background:var(--k1-bg); border-color:var(--k1-bd); }
+  .k2 { color:var(--k2); background:var(--k2-bg); border-color:var(--k2-bd); }
+  .k3 { color:var(--k3); background:var(--k3-bg); border-color:var(--k3-bd); }
+  .k4 { color:var(--k4); background:var(--k4-bg); border-color:var(--k4-bd); }
+  .kx { color:var(--text-muted); background:var(--surface-alt); border-color:var(--border-strong); }
+  .big { font-family:var(--display); font-size:21px; font-weight:700; line-height:1.15; }
+  .cor { display:inline-block; font-family:var(--mono); font-size:11px; font-weight:600; color:#FFFFFF; border-radius:4px; padding:0 5px; margin:0 1px; white-space:nowrap; vertical-align:1px; }
+  .c1 { background:var(--cor-1); } .c2a { background:var(--cor-2a); color:#1D1602; } .c2b { background:var(--cor-2b); } .c3 { background:var(--cor-3); }
+  .cx { background:var(--surface-alt); color:var(--text-secondary); border:1px solid var(--border-strong); }
+  .pg { font-family:var(--mono); font-size:11px; color:var(--text-muted); }
+  .dv { font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.03em; color:var(--accent-red); background:var(--accent-red-bg); border:1px solid var(--accent-red-border); border-radius:4px; padding:0 5px; white-space:nowrap; }
+  .nota { border-left:3px solid var(--accent-amber); background:var(--accent-amber-bg); border-radius:0 8px 8px 0; padding:7px 11px; margin-top:8px; font-size:13.5px; }
+  .nota.info { border-left-color:var(--accent-blue); background:var(--accent-blue-bg); }
+  .nota.stop { border-left-color:var(--accent-red); background:var(--accent-red-bg); }
+  .nota.ok { border-left-color:var(--accent-green); background:var(--accent-green-bg); }
+  .nota.spenta { border-left-color:var(--border-strong); background:var(--surface-alt); color:var(--text-secondary); }
+  .nota strong { color:var(--text-primary); }
+  .passo { display:flex; gap:10px; padding:8px 0; border-bottom:1px dashed var(--border); }
+  .passo:last-child { border-bottom:none; }
+  .passo .ico { flex:0 0 26px; font-weight:700; text-align:center; font-family:var(--mono); font-size:13px; padding-top:1px; color:var(--accent-blue); }
+  .passo .tx { flex:1 1 auto; font-size:14px; min-width:0; overflow-wrap:anywhere; }
+  .chk { display:flex; align-items:flex-start; gap:9px; padding:6px 0; font-size:14px; line-height:1.45; border-bottom:1px dashed var(--border); cursor:pointer; }
+  .chk:last-child { border-bottom:none; }
+  .chk input { margin-top:3px; width:17px; height:17px; flex:0 0 auto; accent-color:var(--accent-blue); }
+  .chk small { display:block; color:var(--text-muted); font-size:12px; }
+  .chk .tx { flex:1 1 auto; min-width:0; }
+  .chk.on .tx { color:var(--text-primary); font-weight:500; }
+  .lista li { margin:4px 0 4px 18px; font-size:13.5px; }
+  .vv { font-family:var(--mono); font-size:12px; color:var(--text-muted); }
+  /* il regime e i suoi farmaci */
+  .reg { border:1px solid var(--border-strong); border-radius:12px; padding:12px 14px; margin-bottom:12px; background:var(--surface); }
+  .reg.escl { background:var(--surface-alt); }
+  .reg .rt { display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; margin-bottom:4px; }
+  .reg .rn { font-family:var(--display); font-size:18px; font-weight:700; line-height:1.2; }
+  .reg .rd { font-size:13px; color:var(--text-secondary); margin-bottom:6px; }
+  .reg.escl .rn { color:var(--text-secondary); }
+  .alt { font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--text-muted); margin:10px 0 2px; }
+  .farm { border-top:1px solid var(--border); padding:8px 0 4px; }
+  .farm .fh { display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; }
+  .farm .fn { font-weight:600; font-size:15px; }
+  .farm .fd { font-size:13.5px; margin-top:3px; overflow-wrap:anywhere; }
+  .farm .fd .et { font-family:var(--mono); font-size:10.5px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--text-muted); margin-right:4px; }
+  .farm .num { font-family:var(--display); font-size:17px; font-weight:700; }
+  .farm .fs { font-size:12.5px; color:var(--text-secondary); margin-top:3px; overflow-wrap:anywhere; }
+  .foot { margin-top:2.4rem; padding-top:1rem; border-top:1px solid var(--border-strong); font-size:12px; color:var(--text-muted); line-height:1.7; }
+  .foot strong { color:var(--text-secondary); }
+  @media (max-width:640px) {
+    .page { overflow-wrap:anywhere; }
+    .headline { font-size:25px; }
+    .stage-w { display:none; }
+    .fl { min-width:0; width:100%; }
+    .big { font-size:19px; }
+    .reg { padding:10px 11px; }
+    .reg .rn { font-size:16.5px; }
+  }
+  @media print { .bar { position:static; } }
+</style>
+<style data-iphone="stile">
+/* L'avviso e' visibile per costruzione: lo nasconde solo la classe che la
+   sentinella mette quando JavaScript esiste, e lo rimostra quando il motore
+   muore. Nell'anteprima dell'iPhone nessuna delle due arriva. */
+#nomotore{background:#FCEBEB;border:1.5px solid #A32D2D;border-radius:10px;
+ padding:12px 15px;margin:0 0 1.1rem;font-size:13.5px;line-height:1.6;color:#0B0B0B;
+ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}
+#nomotore strong{display:block;color:#A32D2D;font-size:15px;margin-bottom:4px}
+#nomotore p{margin:6px 0 0}
+#nomotore a{color:#A32D2D}
+#nomotore .nmurl{font-family:'SFMono-Regular',Consolas,Menlo,monospace;font-size:.92em;word-break:break-all}
+#nomotore .nmerr{display:block;font-family:'SFMono-Regular',Consolas,Menlo,monospace;
+ font-size:11.5px;color:#A32D2D;margin-top:6px;word-break:break-word}
+#nomotore .nmerr:empty{display:none}
+html.js #nomotore{display:none}
+html.js.motore-ko #nomotore{display:block}
+
+#nmprivacy{background:#E2F4F5;border:1px solid #A7DBDE;border-radius:8px;padding:9px 13px;
+ margin:0 0 1rem;font-size:12.5px;line-height:1.55;color:#0B0B0B;
+ font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}
+@media print{#nmprivacy{display:none}}
+</style>
+</head>
+<body>
+<div class="nomotore" id="nomotore" role="alert">
+ <strong>Motore di calcolo non attivo</strong>
+ <p>I calcoli, i filtri e i comandi di questa pagina <b>non funzionano</b>: dove leggi «—» non c'è un
+ valore. Il testo resta leggibile, i numeri che dipendono dai tuoi dati no. Non usare questa pagina
+ per decidere una dose.</p>
+ <p>Su iPhone e iPad succede sempre con un file salvato sul telefono: si apre nell'<b>anteprima</b> —
+ dall'app File, da Mail, da WhatsApp —, che mostra la pagina ma non esegue il motore, e Apple non
+ permette di aprirlo in Safari. Sull'iPhone il tool funziona aperto da questo indirizzo, in Safari: <a class="nmurl" href="https://francescofugetto-ai.github.io/tool-antibiotici-ei-web/">https://francescofugetto-ai.github.io/tool-antibiotici-ei-web/</a> — poi Condividi, «Aggiungi alla schermata Home». Dopo la prima apertura funziona anche senza rete. Su computer e Android basta aprire il file.</p>
+ <span class="nmerr" id="nmerr"></span>
+</div>
+<div class="nmprivacy" id="nmprivacy">
+ <b>Quello che scrivi resta su questo dispositivo.</b> La pagina non invia niente in rete e non
+ salva niente: nessun dato esce da qui. Per la stessa ragione, <b>chiudendola il contenuto si
+ perde</b> — copia il referto dove ti serve prima di chiudere.
+</div>
+<div class="page">
+<header class="hero">
+  <div class="kicker">Strumento · Endocardite infettiva · ESC 2023, con le schede tecniche per il rene</div>
+  <h1 class="headline">Endocardite — l'antibiotico per germe, valvola e allergia, con la dose e il rene</h1>
+  <p class="lede"><strong>Come si usa.</strong> Il passo 1 dice il <strong>germe</strong> e la sua sensibilità — o nessun germe, per la terapia empirica. Il passo 2 la <strong>valvola</strong>: nativa, protesi entro 12 mesi dall'intervento o dopo. Il passo 3 l'<strong>allergia ai beta-lattamici</strong>, immediata (anafilattica) o no: senza risposta lo strumento non nomina un regime. Il passo 4 porta età, peso e creatinina: dai 18 anni la <strong>clearance di Cockcroft-Gault</strong> sul peso reale decide il rene di ogni farmaco; sotto i 18 anni le dosi del bambino come la fonte le scrive, per peso, con il tetto dell'adulto e quelli della scheda tecnica, solo dall'età minima della scheda e mai sotto 1 mese (sotto 1 anno servono i mesi; fra 1 e 5 mesi, per il ceftriaxone, se è un nato pretermine ancora sotto le 41 settimane di età post-mestruale), e il rene non si stima. Ne escono i regimi con la loro classe, farmaco per farmaco la dose, il rene, i livelli e ciò che la scheda tecnica dice di diverso. La scelta finale si fa con l'Endocarditis Team e l'infettivologo. <strong>Azzera</strong>, in alto, ricomincia.</p>
+  <div class="meta-row">
+    <span class="meta-chip"><strong>Fonte</strong> 2023 ESC Guidelines for the management of endocarditis</span>
+    <span class="meta-chip"><strong>Regimi</strong> Rec. Table 7, pp. 3977–3978 · Rec. Table 8, pp. 3980–3981 · Rec. Table 9, pp. 3982–3983 · HACEK, pp. 3983–3984 · Tab. 11, p. 3984 · Rec. Table 10, p. 3985</span>
+    <span class="meta-chip"><strong>Rene</strong> note delle Rec. Tables (gentamicina, vancomicina) · schede tecniche AIFA, EMA e, per i farmaci assenti in Italia, ANSM, AEMPS, FDA, lette il 10/10/2026</span>
+    <span class="meta-chip"><strong>Bambino</strong> età minime e tetti delle stesse schede, rilette il 23/10/2026 · sotto 1 mese nessuna dose (decisione del medico, 23/10/2026)</span>
+  </div>
+</header>
+
+<div class="bar" id="bar" aria-live="polite">
+  <span class="lbl">Germe</span> <span id="barGerme" class="cat kx">—</span>
+  <span class="lbl">Regime</span> <span id="barReg" class="cat kx">—</span>
+  <span class="lbl">Rene</span> <span id="barRene" class="cat kx">—</span>
+  <span class="sp"></span>
+  <button class="btn" id="azzera" type="button">Azzera</button>
+</div>
+
+<div class="stage"><span class="stage-n">1</span><span class="stage-t">Il germe</span><span class="stage-w">Rec. Tables 7–10 · § 7.4–7.12, pp. 3979–3984</span></div>
+<div class="card">
+  <div class="riga"><span class="fl">Germe<small>identificato dalle emocolture, o nessuno ancora</small></span>
+    <select id="germe">
+      <option value="">— scegli —</option>
+      <optgroup label="Streptococchi">
+        <option value="strepto">streptococchi orali e gruppo S. gallolyticus</option>
+        <option value="pneumo">S. pneumoniae, senza meningite</option>
+        <option value="pneumo_men">S. pneumoniae, con meningite</option>
+        <option value="betaem">beta-emolitici (gruppi A, B, C, G) e gruppo anginosus</option>
+        <option value="granuli">Granulicatella e Abiotrophia</option>
+      </optgroup>
+      <optgroup label="Stafilococchi (S. aureus e coagulasi-negativi)">
+        <option value="mssa">sensibili alla meticillina</option>
+        <option value="mrsa">resistenti alla meticillina</option>
+      </optgroup>
+      <optgroup label="Enterococchi">
+        <option value="ente">sensibili ai beta-lattamici, senza alta resistenza agli aminoglicosidi</option>
+        <option value="ente_hlar">alta resistenza agli aminoglicosidi (HLAR)</option>
+        <option value="ente_blr">resistenti ai beta-lattamici (E. faecium)</option>
+        <option value="ente_vre">resistenti alla vancomicina</option>
+        <option value="ente_mdr">multiresistenti: aminoglicosidi, beta-lattamici e vancomicina</option>
+      </optgroup>
+      <optgroup label="Gram-negativi">
+        <option value="hacek">gruppo HACEK</option>
+        <option value="nonhacek">non HACEK</option>
+      </optgroup>
+      <optgroup label="Altro">
+        <option value="bcnie">emocolture negative: un patogeno della Tab. 11</option>
+        <option value="funghi">funghi</option>
+        <option value="empirica">nessun germe ancora: terapia empirica</option>
+      </optgroup>
+    </select></div>
+  <div class="riga" id="rigaSens"><span class="fl">Sensibilità alla penicillina<small>categorie EUCAST, come la fonte (p. 3975)</small></span>
+    <span class="seg">
+      <label><input type="radio" name="sens" value="s"><span>sensibile, dose standard</span></label>
+      <label><input type="radio" name="sens" value="r"><span>esposizione aumentata o resistente</span></label>
+    </span></div>
+  <div class="riga" id="rigaCompl"><span class="fl">Endocardite complicata<small>decide se si può il regime di 2 settimane (nativa, rene normale)</small></span>
+    <span class="seg">
+      <label><input type="radio" name="compl" value="no"><span>non complicata</span></label>
+      <label><input type="radio" name="compl" value="si"><span>complicata</span></label>
+    </span></div>
+  <div class="riga" id="rigaMecc"><span class="fl">Meccanismo della resistenza<small>nota e della Rec. Table 9, p. 3983</small></span>
+    <span class="seg">
+      <label><input type="radio" name="mecc" value="bl"><span>beta-lattamasi</span></label>
+      <label><input type="radio" name="mecc" value="pbp5"><span>PBP5</span></label>
+      <label><input type="radio" name="mecc" value="nd"><span>non noto</span></label>
+    </span></div>
+  <div class="riga" id="rigaStrepto"><span class="fl">Sensibile alla streptomicina<small>nota d della Rec. Table 9, p. 3983</small></span>
+    <span class="seg">
+      <label><input type="radio" name="strs" value="si"><span>sì</span></label>
+      <label><input type="radio" name="strs" value="no"><span>no o non nota</span></label>
+    </span></div>
+  <div class="riga" id="rigaHacek"><span class="fl">Il ceppo produce beta-lattamasi<small>decide se l'ampicillina è un'alternativa (p. 3983)</small></span>
+    <span class="seg">
+      <label><input type="radio" name="hbl" value="si"><span>sì</span></label>
+      <label><input type="radio" name="hbl" value="no"><span>no</span></label>
+      <label><input type="radio" name="hbl" value="nd"><span>non noto</span></label>
+    </span></div>
+  <div class="riga" id="rigaBcn"><span class="fl">Patogeno<small>Tab. 11, p. 3984</small></span>
+    <select id="bcn">
+      <option value="">— scegli —</option>
+      <option value="brucella">Brucella spp.</option>
+      <option value="coxiella">C. burnetii (febbre Q)</option>
+      <option value="bartonella">Bartonella spp.</option>
+      <option value="legionella">Legionella spp.</option>
+      <option value="mycoplasma">Mycoplasma spp.</option>
+      <option value="whipple">T. whipplei (malattia di Whipple)</option>
+    </select></div>
+  <label class="chk" id="rigaSnc"><input type="checkbox" id="snc"><span class="tx">Interessamento del sistema nervoso centrale<small>nella malattia di Whipple aggiunge la sulfadiazina (nota f della Tab. 11)</small></span></label>
+  <div class="riga" id="rigaFungo"><span class="fl">Fungo</span>
+    <span class="seg">
+      <label><input type="radio" name="fungo" value="candida"><span>Candida</span></label>
+      <label><input type="radio" name="fungo" value="aspergillus"><span>Aspergillus</span></label>
+    </span></div>
+  <div class="riga" id="rigaAcq"><span class="fl">Dove è nata l'infezione<small>Rec. Table 10, p. 3985</small></span>
+    <span class="seg">
+      <label><input type="radio" name="acq" value="com"><span>comunitaria</span></label>
+      <label><input type="radio" name="acq" value="noso"><span>nosocomiale o correlata all'assistenza</span></label>
+    </span></div>
+  <div id="outGerme" style="margin-top:6px"></div>
+</div>
+
+<div class="stage" id="stageVal"><span class="stage-n">2</span><span class="stage-t">La valvola</span><span class="stage-w">Rec. Tables 7–10</span></div>
+<div class="card" id="cardVal">
+  <div class="riga"><span class="fl">Valvola infetta<small>protesi «precoce» sotto i 12 mesi dall'intervento: Rec. Table 10</small></span>
+    <span class="seg">
+      <label><input type="radio" name="val" value="nat"><span>nativa</span></label>
+      <label><input type="radio" name="val" value="pp"><span>protesi, &lt;12 mesi</span></label>
+      <label><input type="radio" name="val" value="pt"><span>protesi, ≥12 mesi</span></label>
+    </span></div>
+</div>
+
+<div class="stage" id="stageAll"><span class="stage-n">3</span><span class="stage-t">L'allergia ai beta-lattamici</span><span class="stage-w">Rec. Table 8, note c, e, f, p. 3981 · p. 3977</span></div>
+<div class="card" id="cardAll">
+  <div class="riga"><span class="fl">Allergia<small>immediata = anafilattica; la fonte separa le due nelle note della Rec. Table 8</small></span>
+    <span class="seg">
+      <label><input type="radio" name="all" value="no"><span>nessuna</span></label>
+      <label><input type="radio" name="all" value="ni"><span>sì, non immediata</span></label>
+      <label><input type="radio" name="all" value="im"><span>sì, immediata</span></label>
+    </span></div>
+  <div id="outAll" style="margin-top:6px"></div>
+</div>
+
+<div class="stage"><span class="stage-n">4</span><span class="stage-t">Il paziente e il rene</span><span class="stage-w">schede tecniche · componenti.md § 17.2</span></div>
+<div class="card">
+  <div class="riga"><span class="fl">Età<small>sotto i 18 anni le dosi del bambino; sotto 1 anno servono i mesi (o solo i mesi, fino a 23)</small></span><input type="number" id="eta" min="0" max="110" step="1" inputmode="numeric" placeholder="anni"><input type="number" id="mesi" min="0" max="23" step="1" inputmode="numeric" placeholder="mesi"><span class="vv" id="vEta">—</span></div>
+  <div class="riga hide" id="rigaPma"><span class="fl">Nato pretermine, e oggi sotto le 41 settimane di età post-mestruale?<small>fra 1 e 5 mesi, per il ceftriaxone: età gestazionale + età dalla nascita; sotto le 41 settimane la scheda lo controindica (§ 4.3)</small></span>
+    <span class="seg">
+      <label><input type="radio" name="pma" value="no"><span>no</span></label>
+      <label><input type="radio" name="pma" value="si"><span>sì</span></label>
+    </span></div>
+  <div class="riga"><span class="fl">Sesso</span>
+    <span class="seg">
+      <label><input type="radio" name="sesso" value="m"><span>uomo</span></label>
+      <label><input type="radio" name="sesso" value="f"><span>donna</span></label>
+    </span></div>
+  <div class="riga"><span class="fl">Peso<small>reale: le dosi per kg seguono questo</small></span><input type="number" id="peso" min="2" max="250" step="0.5" inputmode="decimal" placeholder="kg"><span class="vv" id="vPeso">—</span></div>
+  <div class="riga"><span class="fl">Altezza<small>serve al BMI: dai 30 si mostra anche la clearance sul peso aggiustato</small></span><input type="number" id="alt" min="40" max="220" step="1" inputmode="numeric" placeholder="cm"><span class="vv" id="vAlt">—</span></div>
+  <div class="riga"><span class="fl">Creatinina</span><input type="number" id="creat" min="0.1" max="1800" step="0.01" inputmode="decimal" placeholder="—">
+    <span class="seg">
+      <label><input type="radio" name="ucr" value="mg" id="ucr_mg" checked><span>mg/dL</span></label>
+      <label><input type="radio" name="ucr" value="umol"><span>µmol/L</span></label>
+    </span></div>
+  <label class="chk"><input type="checkbox" id="dialisi"><span class="tx">In emodialisi<small>la dialisi peritoneale non è trattata qui: per diversi farmaci le schede non hanno dati</small></span></label>
+  <div id="outRene" style="margin-top:8px"></div>
+</div>
+
+<div class="stage"><span class="stage-n">→</span><span class="stage-t">Il regime, farmaco per farmaco</span><span class="stage-w">classe e pagina su ogni riga</span></div>
+<div id="outReg"></div>
+
+<div class="card"><h3>Livelli e controlli</h3><div id="outLiv"></div></div>
+<div class="card"><h3>Dopo</h3><div id="outPoi"></div></div>
+<div class="card"><h3>Incoerenze della fonte e contrasti con le schede tecniche</h3><div id="outInc"></div></div>
+<div class="card"><h3>Limiti per questo paziente</h3><ul class="lista" id="limiti"></ul></div>
+
+<div class="foot">
+  <strong>Fonte.</strong> Delgado V, Ajmone Marsan N, de Waha S, et al. 2023 ESC Guidelines for the management of endocarditis. <em>Eur Heart J</em> 2023;44:3948–4042, doi:10.1093/eurheartj/ehad193 (il PDF letto contiene già le tre correzioni pubblicate) — principi della terapia (§ 7.1, pp. 3975–3977), streptococchi orali e gruppo <em>S. gallolyticus</em> (Rec. Table 7, pp. 3977–3978), pneumococco, beta-emolitici, <em>Granulicatella</em> e <em>Abiotrophia</em> (§§ 7.4–7.5, p. 3979), stafilococchi (§§ 7.6–7.7 e Rec. Table 8, pp. 3979–3981), enterococchi (§ 7.8 e Rec. Table 9, pp. 3982–3983), Gram-negativi (§ 7.9, pp. 3983–3984), emocolture negative (§ 7.10 e Tab. 11, p. 3984), funghi (§ 7.11, p. 3984), terapia empirica (§ 7.12 e Rec. Table 10, pp. 3984–3985), terapia ambulatoriale e orale (Rec. Table 11, p. 3987), insufficienza renale acuta (§ 9.7, p. 3994). <strong>Dosi e rene</strong> dal prontuario del capitolo (endocardite-esc2023_prontuario-terapie.html), con le schede tecniche lette il 10/10/2026 — e, per le età e i tetti del bambino, rilette il 23/10/2026 —, citate per principio attivo: benzilpenicillina, amoxicillina e.v., ampicillina, ampicillina-sulbactam, amoxicillina-clavulanato e.v., flucloxacillina, oxacillina, cefazolina, ceftriaxone, cefotaxima, ceftarolina, ertapenem, gentamicina, vancomicina, teicoplanina, daptomicina, rifampicina, fosfomicina e.v., linezolid, ciprofloxacina, levofloxacina, claritromicina, doxiciclina, cotrimossazolo, idrossiclorochina (AIFA o EMA); cloxacillina e sulfadiazina (ANSM, Francia), streptomicina (AEMPS, Spagna), quinupristin-dalfopristin (etichetta FDA); e per i funghi caspofungin, micafungin, anidulafungina, voriconazolo (EMA), amfotericina B liposomiale, flucitosina, fluconazolo (AIFA). Ogni numero mostrato porta la sua fonte.<br><br>
+  Strumento personale di studio e consultazione: <strong>non sostituisce l'Endocarditis Team, l'infettivologo né la scheda tecnica del farmaco</strong>. Calcola le dosi per peso dalla linea guida e la clearance di Cockcroft-Gault nell'adulto. Non salva i dati e non li invia in rete.
+</div>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  /* ═══ DATI ═══════════════════════════════════════════════════════════════
+     2023 ESC Guidelines for the management of endocarditis (guardate come
+     immagine le pp. 3975–3987):
+     p. 3975 — durata dal primo giorno di terapia efficace; nativa sostituita
+       da una protesi durante la terapia: schema della nativa.
+     p. 3976 — aminoglicosidi mai nella nativa da stafilococco, non oltre 2
+       settimane; rifampicina solo da corpo estraneo dopo 3–5 giorni;
+       daptomicina ad alte dosi e sempre con un secondo antibiotico;
+       fosfomicina: sodio, scompenso e insufficienza renale.
+     Rec. Table 7, pp. 3977–3978 — streptococchi orali e S. gallolyticus
+       (note c, d, e a p. 3978: dose iniziale bassa e scalabile; gentamicina
+       240 mg/die al massimo, rene e livelli ogni settimana, valle <1 e picco
+       ~10–12 mg/L; vancomicina valle 10–15 mg/L, 2 g/die senza livelli).
+     p. 3977 — gentamicina una volta al giorno con rene normale; allergia:
+       desensibilizzazione, cefalosporine nella reazione non anafilattica o
+       vancomicina; teicoplanina 6 mg/kg/12 h per 3 giorni, poi 6–10.
+     p. 3979 — pneumococco, beta-emolitici, Granulicatella e Abiotrophia, S.
+       aureus e CoNS; vancomicina AUC/MIC 400–600 nell'MRSA.
+     Rec. Table 8, pp. 3980–3981 — stafilococchi (note c–h a p. 3981).
+     p. 3980 — altre alternative nell'MRSA, senza dose.
+     Rec. Table 9, pp. 3982–3983 — enterococchi (note c–g a p. 3983).
+     pp. 3983–3984 — HACEK e non HACEK.
+     Tab. 11, p. 3984 — emocolture negative (note a–f); § 7.11 funghi.
+     Rec. Table 10, p. 3985 — empirica (note a, d, e).
+     Rec. Table 11, p. 3987 — OPAT e via orale (→ Tool Via orale EI).
+     p. 3994 — antibiotici nefrotossici: livelli, creatinina, dose rivista.
+     Dosi e rene: prontuario del capitolo; schede tecniche lette il 10/10/2026. */
+  var P = {
+    p3975:"ESC 2023, p. 3975", p3976:"ESC 2023, p. 3976", p3977:"ESC 2023, p. 3977", p3979:"ESC 2023, p. 3979",
+    p3980:"ESC 2023, p. 3980", p3982:"ESC 2023, p. 3982", p3983:"ESC 2023, p. 3983", p3984:"ESC 2023, p. 3984",
+    p3994:"ESC 2023, p. 3994", p4004:"ESC 2023, p. 4004", p4006:"ESC 2023, p. 4006", rt11:"ESC 2023, Rec. Table 11, p. 3987",
+    r7a:"ESC 2023, Rec. Table 7, p. 3977", r7b:"ESC 2023, Rec. Table 7, p. 3978",
+    r8a:"ESC 2023, Rec. Table 8, p. 3980", r8b:"ESC 2023, Rec. Table 8, p. 3981",
+    r9a:"ESC 2023, Rec. Table 9, p. 3982", r9b:"ESC 2023, Rec. Table 9, p. 3983",
+    r10:"ESC 2023, Rec. Table 10, p. 3985", t11:"ESC 2023, Tab. 11, p. 3984"
+  };
+  // pmaMesi: fino a 5 mesi compiuti si chiede se il bambino, nato pretermine,
+  // e' ancora sotto le 41 settimane di eta' post-mestruale (D22, decisione del
+  // medico del 24/10/2026, come il Tool Profilassi EI): dai 6 mesi anche un
+  // nato a 22 settimane ne ha almeno 22 + 26 = 48.
+  var SOGLIE = { adulto:18, bmiAgg:30, umol:88.4, ir:60, gentaNorm:72, vancoLiv:2000, gentaMax:240, kPerMU:1.7, naPerG:0.32, pmaMesi:6 };
+  var DOM = { eta:[0, 110], peso:[2, 250], alt:[40, 220] };
+
+  // Farmaci: nome, famiglia (per l'allergia: pen = penicilline, cef =
+  // cefalosporine, carb = carbapenemi), unità mostrata, contrasto con la
+  // scheda tecnica, disponibilità in Italia, scheda letta. Le schede sono
+  // citate per principio attivo, con autorità, data e paragrafi, senza nomi di
+  // prodotto né di titolare (decisione del medico del 23/10/2026, come il Tool
+  // EP): il prodotto letto è scritto nel verbale dello strumento.
+  var F = {
+    penG:{ n:"Penicillina G (benzilpenicillina)", fam:"pen", u:"U",
+      sc:"Dose autorizzata 1–2 milioni di U/die, con l'endocardite non nominata: le dosi della fonte sono oltre la scheda. Sopra 10 milioni di U e.v. lentamente, per il potassio.",
+      it:"Un solo prodotto e.v. in Italia, flaconcini da 1 milione di U; due confezioni su tre in carenza (dal 25/05/2021 e dal 27/05/2026).", st:"scheda tecnica di benzilpenicillina, § 4.1, 4.2, 4.4 · AIFA · 17/06/2023" },
+    amox:{ n:"Amoxicillina", fam:"pen", u:"g",
+      sc:"Autorizzati 1–2 g ogni 4–6 h fino a 12 g/die, con l'endocardite in indicazione; con VFG ≤30 pone un tetto che la fonte non pone.",
+      it:"<b>In Italia nessuna amoxicillina e.v. in commercio</b> (la 500 mg in carenza dal 14/09/2026): l'aminopenicillina e.v. che resta è l'ampicillina.", st:"scheda tecnica di amoxicillina e.v., § 4.1, 4.2 · AIFA · 04/01/2023" },
+    amp:{ n:"Ampicillina", fam:"pen", u:"g",
+      sc:"Endocardite in indicazione, 2 g 4–6 volte al giorno, dosi più alte «se necessario»; con ClCr ≤30 i 12 g/die sono fuori scheda.",
+      it:"In commercio da 1 e 2 g, con più titolari; nessuna carenza.", st:"scheda tecnica di ampicillina, § 4.1, 4.2 · AIFA · rev. 01/2026" },
+    ceftr:{ n:"Ceftriaxone", fam:"cef", u:"g",
+      sc:"Endocardite in indicazione, 2–4 g/die; controindicato dopo una reazione grave (anafilassi) a un altro beta-lattamico, come la fonte, che lo ammette solo nelle reazioni non anafilattiche.",
+      it:"In commercio, anche da 2 g (equivalenti).", st:"scheda tecnica di ceftriaxone, § 4.1, 4.2, 4.3 · AIFA · 04/03/2026" },
+    cefotax:{ n:"Cefotaxima", fam:"cef", u:"g",
+      sc:"Dose autorizzata 2 g/die, fino a 12 g/die nei casi molto gravi, in dosi ogni 6–8 h; endocardite e pneumococco non nominati.",
+      it:"In commercio, anche come equivalenti e.v.", st:"scheda tecnica di cefotaxima, § 4.1, 4.2 · AIFA · 05/06/2026" },
+    genta:{ n:"Gentamicina", fam:"", u:"mg",
+      sc:"La scheda della soluzione per infusione: la dose unica giornaliera «non è raccomandata» nell'endocardite batterica e nell'insufficienza renale grave — l'opposto della fonte; il tetto di 240 mg/die non è in scheda; il picco di 10–12 µg/ml è per la scheda il limite tossico delle dosi multiple, mentre in dose unica il picco terapeutico è 20–30.",
+      it:"In commercio (soluzione per infusione solo e.v.; fiale da 80 mg per l'i.m. e l'e.v., la cui scheda la controindica in gravidanza).", st:"scheda tecnica di gentamicina (soluzione per infusione), § 4.2 · AIFA · 29/04/2021" },
+    vanco:{ n:"Vancomicina", fam:"", u:"mg",
+      sc:"Endocardite in indicazione, 15–20 mg/kg ogni 8–12 h, non oltre 2 g per singola dose; valle 10–20 mg/L (15–20 se MIC ≥1), AUC/MIC 400. I «2 g/die» della fonte e i «2 g per dose» della scheda non sono lo stesso limite.",
+      it:"In commercio; una confezione da 500 mg in carenza dal 13/07/2026.", st:"scheda tecnica di vancomicina, § 4.1, 4.2 · AIFA · rev. 01/2026" },
+    teico:{ n:"Teicoplanina", fam:"", u:"mg",
+      sc:"Nell'endocardite 12 mg/kg ogni 12 h per 3–5 dosi, poi 12 mg/kg/die, con valle 30–40 mg/L (FPIA) o 15–30 (HPLC): la dose della fonte è più bassa di quella autorizzata, e la fonte non dà livelli.",
+      it:"Il prodotto di riferimento in carenza (fine presunta 31/03/2027); equivalenti disponibili.", st:"scheda tecnica di teicoplanina, § 4.2 · AIFA · 09/01/2024" },
+    flucl:{ n:"(Flu)cloxacillina", fam:"pen", u:"g",
+      sc:"La flucloxacillina e.v. in Italia è un solo prodotto da 1 g, la cui scheda dà solo 1 g ogni 8 h i.m.: i 12 g/die e.v. della fonte sono oltre la scheda. La cloxacillina (scheda francese) ha l'endocardite in indicazione, 8–12 g/die. Ipokaliemia alle dosi alte: potassio regolare.",
+      it:"La cloxacillina in Italia non c'è. L'isossazolil-penicillina e.v. in commercio con l'endocardite in indicazione è l'<b>oxacillina</b> (scheda tecnica di oxacillina: nativa 2 g ogni 4 h o 3 g ogni 6 h, protesi 2 g ogni 4 h, 12 g/die) — qui come disponibilità: la molecola resta quella della fonte.",
+      st:"scheda tecnica di flucloxacillina, § 4.2 · AIFA · 12/01/2024; di cloxacillina, § 4.1, 4.2, 4.4 · ANSM (Francia) · 03/11/2025; di oxacillina, § 4.1, 4.2 · AIFA · rev. 04/2026" },
+    clox:{ n:"Cloxacillina", fam:"pen", u:"g",
+      sc:"Scheda francese: endocardite in indicazione, 8–12 g/die. Ipokaliemia alle dosi alte.",
+      it:"La cloxacillina in Italia non c'è; c'è l'<b>oxacillina</b> (12 g/die nell'endocardite, nella sua scheda) — qui come disponibilità: la molecola resta quella della fonte.",
+      st:"scheda tecnica di cloxacillina, § 4.1, 4.2, 4.4 · ANSM (Francia) · 03/11/2025; di oxacillina, § 4.2 · AIFA · rev. 04/2026" },
+    cefaz:{ n:"Cefazolina", fam:"cef", u:"g",
+      sc:"Endocardite in indicazione, 1–1,5 g ogni 6 h (fino a 6 g/die; 2 g ogni 8 h non è scritto); <b>controindicata dopo qualunque allergia ai beta-lattamici</b>, senza distinguere il tipo di reazione, mentre la fonte la ammette nelle reazioni non immediate. Con la rifampicina «gravi disturbi della coagulazione» (scheda della rifampicina).",
+      it:"In commercio solo flaconcini da 1 g (nessun 2 g).", st:"scheda tecnica di cefazolina, § 4.1, 4.2, 4.3 · AIFA · 09/01/2026" },
+    rif:{ n:"Rifampicina", fam:"", u:"mg",
+      sc:"Per via e.v. la scheda dà 600 mg/die (per bocca fino a 900–1200): le dosi e.v. della fonte sono oltre la scheda. Induttore potente: con la cefazolina coagulopatia grave; warfarin, clopidogrel, doxiciclina, claritromicina, linezolid, fluconazolo, digossina; controindica il voriconazolo.",
+      it:"L'unica rifampicina e.v. in Italia è in carenza dal 12/06/2024; per bocca 300 mg e sciroppo disponibili, 450 mg in carenza.", st:"scheda tecnica di rifampicina, § 4.2, 4.3, 4.5 · AIFA · 01/07/2026" },
+    dapto:{ n:"Daptomicina", fam:"", u:"mg",
+      sc:"Autorizzati 4–6 mg/kg/die, e solo nell'endocardite destra da S. aureus; efficacia «non dimostrata» nella sinistra e nella protesi: i 10–12 mg/kg della fonte sono oltre la scheda. CPK al basale e almeno ogni settimana; con statine, se si può, sospenderle.",
+      it:"In commercio, anche come equivalenti; uno da 350 mg in carenza dal 31/05/2026.", st:"scheda tecnica di daptomicina, § 4.1, 4.2, 4.4 · EMA · 07/11/2025" },
+    ceftar:{ n:"Ceftarolina", fam:"cef", u:"mg",
+      sc:"Indicazione solo cute e tessuti molli e polmonite comunitaria; 600 mg ogni 8 h è la «dose elevata» delle sole infezioni cutanee, durata autorizzata fino a 14 giorni; Coombs diretto positivo nel 32%.",
+      it:"In commercio, nessuna carenza.", st:"scheda tecnica di ceftarolina, § 4.1, 4.2, 4.4 · EMA · 13/07/2025" },
+    fosfo:{ n:"Fosfomicina e.v.", fam:"", u:"g",
+      sc:"Nell'endocardite 12–24 g/die in 2–3 dosi: 8 g/die è sotto il minimo autorizzato, e la fonte divide in 4. Nello scompenso valutare prima di iniziare.",
+      it:"Un solo prodotto e.v.; il flaconcino da 8 g in carenza dal 01/02/2026 (2 e 4 g disponibili).", st:"scheda tecnica di fosfomicina e.v., § 4.2, 4.4 · AIFA · rev. 08/2024" },
+    ertap:{ n:"Ertapenem", fam:"carb", u:"g",
+      sc:"1 g/die, nessuna dose superiore, solo e.v. (niente i.m.): i 2 g/die della fonte sono il doppio; endocardite non in indicazione; con il valproato «non raccomandato».",
+      it:"In commercio, con due titolari; un equivalente in carenza dal 18/07/2025.", st:"scheda tecnica di ertapenem, § 4.1, 4.2, 4.5 · EMA · 21/11/2025" },
+    ampsul:{ n:"Ampicillina-sulbactam", fam:"pen", u:"g",
+      sc:"Endocardite non in indicazione; sulbactam mai oltre 4 g/die: i 12 g/die di ampicillina degli schemi della fonte non si raggiungono con l'associazione.",
+      it:"In commercio, un solo prodotto e.v.", st:"scheda tecnica di ampicillina-sulbactam, § 4.1, 4.2 · AIFA · rev. 07/2012" },
+    amoxclav:{ n:"Amoxicillina-clavulanato e.v.", fam:"pen", u:"g",
+      sc:"Endocardite non in indicazione; al massimo 2000/200 mg ogni 8 h, e non si sale aumentando l'associazione (troppo clavulanato); in Italia non c'è un'amoxicillina e.v. sola con cui completarla.",
+      it:"In commercio, con tre titolari; alcune confezioni in carenza.", st:"scheda tecnica di amoxicillina-clavulanato e.v., § 4.1, 4.2 · AIFA · rev. 03/2026" },
+    strepto:{ n:"Streptomicina", fam:"", u:"mg",
+      sc:"Scheda spagnola: solo i.m., massimo 1 g/die — sopra circa 67 kg i 15 mg/kg/die della fonte superano il massimo.",
+      it:"<b>Non in commercio in Italia.</b>", st:"scheda tecnica di streptomicina, § 4.2 · AEMPS (Spagna) · 04/2025" },
+    linez:{ n:"Linezolid", fam:"", u:"mg",
+      sc:"Durata massima 28 giorni: le 8 settimane della fonte sono oltre; né endocardite né batteriemia in indicazione; emocromo settimanale; vasopressori, dopaminergici e SSRI da titolare con cura; la rifampicina ne abbassa l'AUC del 32%.",
+      it:"In commercio, anche come equivalenti.", st:"scheda tecnica di linezolid, § 4.1, 4.2, 4.4, 4.5 · AIFA · 05/06/2026" },
+    qd:{ n:"Quinupristin-dalfopristin", fam:"", u:"mg",
+      sc:"Etichetta FDA: 7,5 mg/kg ogni 12 h, solo per la cute: ogni 8 h e 8 settimane sono oltre. Inibitore potente del CYP3A4.",
+      it:"<b>Non disponibile in Italia</b> né, a quanto verificato, nell'UE.", st:"etichetta FDA di quinupristin-dalfopristin · FDA · rev. 03/2017" },
+    cipro:{ n:"Ciprofloxacina", fam:"", u:"mg",
+      sc:"Dosi dentro la scheda; endocardite, batteriemia e HACEK non in indicazione; nella malattia valvolare e nell'endocardite i fluorochinoloni solo dopo un'attenta valutazione beneficio/rischio.",
+      it:"In commercio; 400 mg e.v. e 750 mg per bocca solo come equivalenti.", st:"scheda tecnica di ciprofloxacina, § 4.1, 4.2, 4.4 · AIFA · 17/04/2026" },
+    doxy:{ n:"Doxiciclina", fam:"", u:"mg",
+      sc:"200 mg il primo giorno, poi 100 mg/die, senza un massimo scritto; controindicata in gravidanza; con la rifampicina l'AUC scende di circa la metà.",
+      it:"Solo per bocca (tre prodotti), nessuna carenza.", st:"scheda tecnica di doxiciclina, § 4.2, 4.3, 4.5 · AIFA · 18/02/2021" },
+    cotri:{ n:"Cotrimossazolo", fam:"", u:"mg",
+      sc:"Per bocca, oltre 15 giorni la scheda dimezza la dose — la fonte la tiene piena per mesi; potassio e rene stretti con ACE-inibitori, sartani e risparmiatori di potassio; dofetilide controindicata, amiodarone sconsigliato.",
+      it:"In commercio (un solo prodotto e.v.; compresse).", st:"scheda tecnica di cotrimossazolo, § 4.2, 4.3, 4.4, 4.5 · AIFA · rev. 11/2025" },
+    hcq:{ n:"Idrossiclorochina", fam:"", u:"mg",
+      sc:"Nessuna indicazione infettiva; 600 mg/die superano il mantenimento oltre il quale la retinopatia aumenta, e il limite di 6,5 mg/kg/die di peso ideale; esame oculistico all'inizio e almeno ogni anno; QT, cardiomiopatia.",
+      it:"In commercio.", st:"scheda tecnica di idrossiclorochina, § 4.1, 4.2, 4.4 · AIFA · 04/09/2026" },
+    levo:{ n:"Levofloxacina", fam:"", u:"mg",
+      sc:"500 mg due volte al giorno è il massimo, scritto solo per polmonite e cute; durate autorizzate di 7–14 giorni; rischio tendineo maggiore proprio a 1000 mg/die; nell'endocardite solo dopo un'attenta valutazione beneficio/rischio.",
+      it:"In commercio (per bocca il prodotto di riferimento; e.v. equivalenti).", st:"scheda tecnica di levofloxacina, § 4.1, 4.2, 4.4 · AIFA · 20/01/2026 (per bocca) e 28/07/2026 (e.v.)" },
+    clari:{ n:"Claritromicina", fam:"", u:"mg",
+      sc:"500 mg due volte al giorno è il massimo, per 5–14 giorni: 6 settimane sono oltre; con la rifampicina livelli sub-terapeutici («l'effetto terapeutico previsto può essere annullato») — ed è l'associazione della tabella; controindicata con ticagrelor, ranolazina, colchicina, simvastatina, QT lungo.",
+      it:"In commercio; un'altra confezione e.v. in carenza dal 21/09/2026.", st:"scheda tecnica di claritromicina, § 4.2, 4.3, 4.5 · AIFA · 16/05/2024" },
+    sulfa:{ n:"Sulfadiazina", fam:"", u:"g",
+      sc:"Scheda francese: 6 g/die sono il massimo; toxoplasmosi e nocardiosi, non la Whipple; controindicata con deficit di G6PD.",
+      it:"<b>Non in commercio in Italia</b> per via sistemica.", st:"scheda tecnica di sulfadiazina, § 4.1, 4.2, 4.3 · ANSM (Francia) · 07/2018" },
+    caspo:{ n:"Caspofungin", fam:"", u:"mg", sc:"La dose più alta autorizzata è 70 mg/die; l'endocardite da Candida era esclusa dagli studi registrativi.", it:"Il prodotto di riferimento non in commercio; equivalenti sì, alcuni in carenza.", st:"scheda tecnica di caspofungin, § 4.2, 4.4 · EMA · 08/01/2026" },
+    mica:{ n:"Micafungin", fam:"", u:"mg", sc:"100 mg/die, 200 se la risposta è inadeguata; da usare solo se altri antifungini non sono appropriati.", it:"In commercio, anche come equivalenti.", st:"scheda tecnica di micafungin, § 4.1, 4.2 · EMA · 04/08/2025" },
+    anid:{ n:"Anidulafungina", fam:"", u:"mg", sc:"200 mg, poi 100 mg/die; oltre «non ci sono dati clinici»; «non è stato studiato in pazienti con endocardite».", it:"In commercio.", st:"scheda tecnica di anidulafungina, § 4.2, 4.4 · EMA · 09/09/2025" },
+    ambi:{ n:"Amfotericina B liposomiale", fam:"", u:"mg", sc:"3 mg/kg/die nelle micosi sistemiche; per la scheda «non è sostituibile» con altre amfotericine — la fonte ammette le altre formulazioni lipidiche.", it:"In commercio.", st:"scheda tecnica di amfotericina B liposomiale, § 4.2, 4.4 · AIFA · rev. 07/2024" },
+    fluci:{ n:"Flucitosina", fam:"", u:"mg", sc:"e.v. 37,5–50 mg/kg ogni 6 h, con i livelli.", it:"<b>Non più in commercio in Italia</b> (dal 30/04/2021).", st:"scheda tecnica di flucitosina, § 4.2 · AIFA · 27/06/2024" },
+    vori:{ n:"Voriconazolo", fam:"", u:"mg", sc:"Controindicato con la rifampicina (AUC −96%), con eplerenone, finerenone, ivabradina; la flucloxacillina ne abbassa i livelli; con il warfarin il tempo di protrombina circa raddoppia.", it:"In commercio; la sospensione orale del prodotto di riferimento in carenza fino al 30/11/2026.", st:"scheda tecnica di voriconazolo, § 4.3, 4.5 · EMA · 21/07/2026" },
+    flucon:{ n:"Fluconazolo", fam:"", u:"mg", sc:"La soppressione dell'endocardite non è fra le indicazioni; con l'amiodarone QT.", it:"In commercio per bocca, anche come equivalenti.", st:"scheda tecnica di fluconazolo, § 4.1, 4.5 · AIFA · 02/09/2026" }
+  };
+
+  /* Il bambino (D9, decisione del medico del 23/10/2026). Sotto 1 mese nessuna
+     dose: il neonato ha schemi propri. Sotto l'età minima della scheda, o dove
+     la scheda controindica o dice «non stabilito / nessun dato», nessuna dose:
+     decide lo specialista. I tetti scritti nella scheda valgono, insieme a
+     quello dell'adulto della riga (decisione del medico del 03/10/2026); per
+     la fosfomicina il massimo per kg della fascia d'età. Schede rilette il
+     23/10/2026, § 4.2–4.4 (_lavoro/eta-minime-schede.md, con le frasi).
+       minM, minT = età minima in mesi e la sua ragione
+       no         = la scheda esclude l'uso nel bambino: la ragione
+       cap        = tetto in mg/die della scheda (capPeso: solo sotto quel peso)
+       capKg      = tetto in mg/kg/die della scheda
+       fasce      = [età massima in mesi, compresa; massimo in mg/kg/die; testo]
+       sc         = che cosa scrive la scheda del bambino (riga sotto la dose)
+       rene       = che cosa scrive del bambino con il rene compromesso
+       st         = scheda, paragrafi, autorità, data
+     D17 (decisione del medico del 24/10/2026). Dove la scheda scrive per
+     l'età una dose più bassa della fonte senza chiamarla massimo, la dose
+     resta quella della fonte e accanto si legge «oltre la scheda tecnica per
+     l'età», con la dose della scheda; dove la scheda ha una dose propria per
+     l'endocardite a quell'età vale quella, con la dose della ESC accanto
+     (D25, 24/10/2026: amoxicillina e.v. sotto i 40 kg, a ogni età dal primo
+     mese; nella riga della (flu)cloxacillina, l'oxacillina dal 1° anno).
+       et(mesi, peso)   = { mx: mg/kg/die della scheda a quell'età, t: la sua
+                          dose } o null
+       endo(mesi, peso) = { kg: mg/kg/die, n: dosi, d, t } o null: la dose
+                          della scheda per l'endocardite, al posto della fonte */
+  var NEO = "sotto 1 mese lo strumento non dà dosi: il neonato ha schemi propri (decisione del medico, 23/10/2026). Decide lo specialista";
+  var PED = {
+    penG:{ sc:"nel bambino «dosi minori in proporzione con il peso», senza numeri né un massimo; nella primissima infanzia solo se davvero necessario, sotto il controllo del medico.",
+      st:"scheda tecnica di benzilpenicillina, § 4.2 · AIFA · 17/06/2023" },
+    amox:{ sc:"nell'endocardite, dai 3 mesi e sotto i 40 kg, 200 mg/kg/die in 3–4 dosi, per dose al massimo 25 mg/kg in bolo o 50 mg/kg in infusione; nel neonato dai 4 kg e nel lattante fino a 3 mesi 150 mg/kg/die in 3 dosi; nel prematuro sotto i 4 kg 100 mg/kg/die in 2 dosi; dai 40 kg la dose dell'adulto, al massimo 12 g/die.",
+      // sotto i 40 kg la dose della scheda per l'endocardite vale al posto
+      // della fonte (D17 e D25): sotto i 3 mesi (mesi compiuti 1 e 2: «fino a
+      // 3 mesi») 150 in 3 dosi, o 100 in 2 nella riga «prematuri <4 kg», che
+      // si sceglie dal peso (la scheda divide per peso, e lo strumento non sa
+      // l'eta' gestazionale); dai 3 mesi («>3 mesi e <40 kg») 200 in 4 dosi:
+      // la scheda scrive «3-4 dosi», ma anche infusioni «fino a 50 mg/kg», che
+      // e' un tetto (D9), e in 3 dosi la dose singola sarebbe 66,7 mg/kg.
+      // Dai 40 kg la scheda rimanda alla dose dell'adulto: resta la fonte.
+      endo:function (m, p) {
+        if (p >= 40) return null;
+        if (m >= 3) return { kg:200, n:[4], d:"in 4 dosi", t:"dai 3 mesi e sotto i 40 kg: 200 mg/kg/die in 4 dosi da 50 mg/kg, ogni 6 h" };
+        return p < 4 ? { kg:100, n:[2], d:"in 2 dosi", t:"sotto i 4 kg: 100 mg/kg/die in 2 dosi (la riga del prematuro sotto i 4 kg: lo strumento la sceglie dal peso)" }
+                     : { kg:150, n:[3], d:"in 3 dosi", t:"nel lattante fino a 3 mesi, dai 4 kg: 150 mg/kg/die in 3 dosi" };
+      },
+      st:"scheda tecnica di amoxicillina e.v., § 4.2 · AIFA · 04/01/2023" },
+    amp:{ sc:"per via e.v. 100–200 mg/kg/die nelle infezioni gravi (400 nella meningite), senza un massimo scritto; nessuna dose e.v. del neonato.",
+      et:function () { return { mx:200, t:"per via e.v. la scheda dà 100–200 mg/kg/die {q} nelle infezioni gravi" }; },
+      st:"scheda tecnica di ampicillina, § 4.2 · AIFA · rev. 01/2026" },
+    ceftr:{ cap:4000, capPeso:50,
+      sc:"nell'endocardite, da 15 giorni a 12 anni e sotto i 50 kg, 100 mg/kg/die in una dose, al massimo 4 g/die; dai 50 kg la dose dell'adulto. Controindicato nel prematuro fino a 41 settimane di età post-mestruale e, fino a 28 giorni, nel nato a termine con iperbilirubinemia, ittero, ipoalbuminemia, acidosi o calcio e.v.",
+      st:"scheda tecnica di ceftriaxone, § 4.2, 4.3 · AIFA · 04/03/2026" },
+    genta:{ sc:"nessuna età minima; dopo il 1° mese 4,5–7,5 mg/kg/die, nei bambini più grandi 3–6; la soluzione pronta per infusione non si usa quando servono meno di 80 mg per dose (240 per quella da 3 mg/ml).",
+      st:"scheda tecnica di gentamicina, § 4.2 · AIFA · 29/04/2021" },
+    vanco:{ capKg:60,
+      sc:"da 1 mese a 12 anni 10–15 mg/kg ogni 6 h; oltre 60 mg/kg/die non raccomandata; dai 12 anni al massimo 2 g per dose; sotto 1 anno con il rene compromesso, il parere di un esperto.",
+      st:"scheda tecnica di vancomicina, § 4.2, 4.4 · AIFA · rev. 01/2026" },
+    flucl:{ cap:12000,
+      sc:"cloxacillina 100–200 mg/kg/die in 4–6 dosi, al massimo 12 g/die, con prudenza nel neonato (ittero); flucloxacillina: nessuna dose e.v. del bambino; oxacillina, quella in commercio, nell'endocardite solo dal 1° anno, 200 mg/kg/die, al massimo 12 g/die.",
+      et:function (m) { return { mx:200, t:m < 12 ? "la scheda della cloxacillina dà 100–200 mg/kg/die {q}, con prudenza nel neonato; quella dell'oxacillina, in commercio, ha l'endocardite solo dal 1° anno: con l'oxacillina, sotto 1 anno, nessuna dose, decide lo specialista" : "la scheda della cloxacillina dà 100–200 mg/kg/die {q}; per l'oxacillina, la sua dose qui sotto" }; },
+      // D25: l'oxacillina, quella in commercio, dal 1° anno ha una dose propria
+      // per l'endocardite (200 mg/kg/die ogni 4-6 h, al massimo 12 g/die): per
+      // lei vale quella, scritta sotto la riga, con la ESC accanto
+      oxa:{ m:12, kg:200, cap:12000, st:"scheda tecnica di oxacillina, § 4.2 · AIFA · rev. 04/2026" },
+      rene:"cloxacillina: nel bambino con il rene o il fegato compromessi la dose «n'a pas été étudiée»",
+      st:"scheda tecnica di cloxacillina, § 4.2, 4.4 · ANSM (Francia) · 03/11/2025; di flucloxacillina, § 4.2 · AIFA · 12/01/2024; di oxacillina, § 4.2, 4.4 · AIFA · rev. 04/2026" },
+    cefaz:{ minM:1, minT:"la scheda la controindica nei prematuri e nei neonati sotto 1 mese (§ 4.3). Decide lo specialista", capKg:100,
+      sc:"controindicata sotto 1 mese; nelle infezioni gravi fino a 100 mg/kg/die.",
+      st:"scheda tecnica di cefazolina, § 4.2, 4.3 · AIFA · 09/01/2026" },
+    rif:{ cap:600,
+      sc:"10–20 mg/kg/die in 2 dosi, al massimo 600 mg/die; la forma e.v. ha solo la dose dell'adulto.",
+      via:"Per bocca: per via e.v. la scheda non ha una dose del bambino, e la via e.v. la decide lo specialista.",
+      st:"scheda tecnica di rifampicina, § 4.2 · AIFA · 01/07/2026" },
+    dapto:{ no:"la scheda non la vuole sotto 1 anno (§ 4.2, 4.4) e, sotto i 18 anni, nell'endocardite sicurezza ed efficacia «non sono state stabilite» (§ 4.4); le sue dosi per età (12, 9 e 7 mg/kg/die) sono della batteriemia da S. aureus. Decide lo specialista",
+      sc:"mai sotto 1 anno; batteriemia da S. aureus: 1–6 anni 12, 7–11 anni 9, 12–17 anni 7 mg/kg/die; endocardite sotto i 18 anni: sicurezza ed efficacia non stabilite.",
+      rene:"nel bambino con il rene compromesso lo schema «non è stato stabilito»",
+      st:"scheda tecnica di daptomicina, § 4.2, 4.4 · EMA · 07/11/2025" },
+    fosfo:{ fasce:[[12, 300, "1–12 mesi (fino a 10 kg): 200–300 mg/kg/die in 3 dosi"], [155, 400, "1–12 anni (10–40 kg): 200–400 mg/kg/die in 3–4 dosi"]],
+      sc:"prematuro 100 mg/kg/die in 2 dosi, neonato (40–44 settimane) 200 in 3, da 1 a 12 mesi 200–300 in 3, da 1 a 12 anni 200–400 in 3–4; raccomandazioni «basate su dati molto limitati».",
+      rene:"«non è possibile fornire una raccomandazione posologica per i bambini con compromissione renale»",
+      st:"scheda tecnica di fosfomicina e.v., § 4.2, 4.4 · AIFA · rev. 08/2024" },
+    ceftar:{ sc:"dalla nascita; sotto i 2 mesi 6 mg/kg ogni 8 h, da modelli farmacocinetici, e nessuna dose elevata; dose elevata (solo infezioni della cute da S. aureus con MIC 2–4): da 2 mesi a 2 anni 10 mg/kg ogni 8 h, dai 2 anni 12 mg/kg ogni 8 h, al massimo 600 mg per dose.",
+      et:function (m) { return m < 2 ? { mx:18, t:"sotto i 2 mesi la scheda dà 6 mg/kg ogni 8 h, 18 mg/kg/die {q}, da modelli farmacocinetici, e nessuna dose elevata" } : (m < 24 ? { mx:30, t:"da 2 mesi a 2 anni la dose elevata della scheda è 10 mg/kg ogni 8 h, 30 mg/kg/die {q}" } : null); },
+      rene:"sotto i 2 anni con l'insufficienza renale moderata o grave «informazioni insufficienti»",
+      st:"scheda tecnica di ceftarolina, § 4.2, 4.4 · EMA · 13/07/2025" },
+    ertap:{ minM:3, minT:"sotto i 3 mesi sicurezza ed efficacia «non sono state ancora stabilite», e non ci sono dati (§ 4.2, 4.4). Decide lo specialista",
+      sc:"da 3 mesi a 12 anni 15 mg/kg due volte al giorno, al massimo 1 g/die; sotto i 2 anni esperienza limitata.",
+      rene:"nel bambino con il rene compromesso «non vi sono dati»",
+      st:"scheda tecnica di ertapenem, § 4.2, 4.4 · EMA · 21/11/2025" }
+  };
+
+  // Dosi. t: "fix" dose al giorno (lo–hi in mg, o in U per la penicillina G),
+  // "kg" dose per kg al giorno (lo–hi in mg/kg o U/kg), "nd" la fonte non la
+  // dà, "teico" e "ertped" gli schemi a due tempi. n = numero di dosi, per la
+  // dose singola; cap = tetto in mg/die (o U/die), capT la sua provenienza.
+  function est(o, x) { if (x) for (var k in x) if (x.hasOwnProperty(k)) o[k] = x[k]; return o; }
+  function FX(lo, hi, d, n, v, x) { return est({ t:"fix", lo:lo, hi:hi, d:d, n:n, v:v }, x); }
+  function KG(lo, hi, d, n, v, x) { return est({ t:"kg", lo:lo, hi:hi, d:d, n:n, v:v }, x); }
+  function ND(why) { return { t:"nd", why:why }; }
+  var TA = "tetto dell'adulto (decisione del medico)", TF = "tetto della fonte";
+  var NDB = "la fonte non dà la dose del bambino per questa riga";
+
+  // Le dosi che tornano in più righe (pagina in pa = adulto, pb = bambino)
+  var D = {
+    penG_s:   FX(12e6, 18e6, "in 4–6 dosi o in infusione continua", [4, 6], "e.v.", { pre:"partendo dalla dose più bassa (nota c, p. 3978)" }),
+    penG_r:   FX(24e6, 24e6, "in 4–6 dosi o in infusione continua", [4, 6], "e.v."),
+    penG_b:   KG(200000, 200000, "in 4–6 dosi", [4, 6], "e.v.", { cap:18e6, capT:TA }),
+    amox12:   FX(12000, 12000, "in 4–6 dosi", [4, 6], "e.v."),
+    amox_b:   KG(200, 300, "in 4–6 dosi, al massimo 12 g/die", [4, 6], "e.v.", { cap:12000, capT:TF }),
+    ceftr2:   FX(2000, 2000, "in 1 dose", [1], "e.v."),
+    ceftr4:   FX(4000, 4000, "in 2 dosi", [2], "e.v."),
+    ceftr4im: FX(4000, 4000, "in 2 dosi", [2], "e.v. o i.m."),
+    genta1:   KG(3, 3, "in 1 dose", [1], "e.v. o i.m.", { cap:240, capT:"tetto della fonte (nota d)", modo:"unica" }),
+    genta12:  KG(3, 3, "in 1 dose (preferita) o 2", [1, 2], "e.v. o i.m.", { cap:240, capT:"tetto della fonte (nota d)", modo:"unica" }),
+    vanco30:  KG(30, 30, "in 2 dosi", [2], "e.v.", { capLiv:2000 }),
+    vanco3060:KG(30, 60, "in 2–3 dosi", [2, 3], "e.v.", { capLiv:2000 }),
+    flucl12:  FX(12000, 12000, "in 4–6 dosi", [4, 6], "e.v."),
+    flucl_b:  KG(200, 300, "in 4–6 dosi uguali", [4, 6], "e.v.", { cap:12000, capT:TA }),
+    cefaz6:   FX(6000, 6000, "in 3 dosi", [3], "e.v."),
+    cefaz_b:  KG(100, 100, "in 3–4 dosi, al massimo 6 g/die", [3, 4], "e.v.", { cap:6000, capT:TF }),
+    rif900:   FX(900, 900, "in 3 dosi uguali", [3], "e.v. o per bocca"),
+    rif_b:    KG(20, 20, "in 3 dosi uguali, al massimo 900 mg/die", [3], "e.v. o per bocca", { cap:900, capT:TF }),
+    dapto10:  KG(10, 10, "in 1 dose", [1], "e.v."),
+    ceftar:   FX(1800, 1800, "in 3 dosi", [3], "e.v."),
+    fosfo812: FX(8000, 12000, "in 4 dosi", [4], "e.v."),
+    amp12:    FX(12000, 12000, "in 4–6 dosi", [4, 6], "e.v."),
+    amp_b:    KG(200, 300, "in 4–6 dosi, al massimo 12 g/die", [4, 6], "e.v.", { cap:12000, capT:TF }),
+    vanco_b30:KG(30, 30, "in 2–3 dosi uguali", [2, 3], "e.v.", { cap:2000, capT:"tetto senza livelli (nota della fonte)" }),
+    vanco_b40:KG(40, 40, "in 2–3 dosi uguali", [2, 3], "e.v.", { cap:2000, capT:"tetto senza livelli (nota e)" }),
+    genta_b1: KG(3, 3, "in 1 dose", [1], "e.v. o i.m.", { cap:240, capT:TA }),
+    genta_b3: KG(3, 3, "in 3 dosi uguali", [3], "e.v. o i.m.", { cap:240, capT:TA }),
+    genta_b12:KG(3, 3, "in 1 dose (preferita) o 2", [1, 2], "e.v. o i.m.", { cap:240, capT:TA })
+  };
+  function E(f, a, b, x) { return est({ f:f, a:a, b:b }, x); }
+
+  // I regimi. per: «no» senza allergia, «all» con l'allergia, «*» in tutti e
+  // due (filtrati per famiglia); val: «nat», «pro» o «*»; cl/lv la classe
+  // della riga (null = testo, senza classe); x = farmaci; {alt:[…]} = uno di.
+  var R = {
+    s_std:{ tit:"Schema standard", per:"*", val:"*", cl:"I", lv:"B", pg:P.r7a, dur:"4 settimane nella nativa, 6 nella protesi",
+      x:[{ alt:[E("penG", D.penG_s, D.penG_b, { pa:P.r7a, pb:P.r7a }), E("amox", D.amox12, D.amox_b, { pa:P.r7a, pb:P.r7a }),
+               E("ceftr", D.ceftr2, KG(100, 100, "in 1 dose", [1], "e.v.", { cap:2000, capT:TA }), { pa:P.r7a, pb:P.r7a })] }] },
+    s_breve:{ tit:"Regime di 2 settimane: solo nativa non complicata, con rene normale", per:"*", val:"nat", cl:"I", lv:"B", pg:"ESC 2023, Rec. Table 7, pp. 3977–3978", dur:"2 settimane",
+      x:[{ alt:[E("penG", D.penG_s, D.penG_b, { pa:P.r7a, pb:P.r7b }), E("amox", D.amox12, D.amox_b, { pa:P.r7a, pb:P.r7b }),
+               E("ceftr", D.ceftr2, KG(100, 100, "in 1 dose (la riga scrive «100 mg/kg», senza «/die»)", [1], "e.v.", { cap:2000, capT:TA }), { pa:P.r7a, pb:P.r7b })] },
+         E("genta", D.genta1, KG(3, 3, "in 1 dose o in 3 dosi uguali", [1, 3], "e.v. o i.m.", { cap:240, capT:TA }), { pa:P.r7a, pb:P.r7b, dur:"2 settimane" })] },
+    s_all:{ tit:"Allergia ai beta-lattamici", per:"all", val:"*", cl:"I", lv:"C", pg:P.r7b, dur:"4 settimane nella nativa, 6 nella protesi",
+      x:[E("vanco", D.vanco30, KG(30, 30, "in 2 o 3 dosi uguali", [2, 3], "e.v.", { cap:2000, capT:"tetto senza livelli (nota e)" }), { pa:P.r7b, pb:P.r7b })] },
+    s_teico:{ tit:"Alternativa del testo nell'allergia: teicoplanina", per:"all", val:"*", cl:null, pg:P.p3977, dur:"la fonte non la scrive per la teicoplanina",
+      nota:"Pochi studi retrospettivi nell'endocardite da streptococchi; il carico non si salta, perché il farmaco è legato alle proteine per il 98% e penetra lento nelle vegetazioni (p. 3977).",
+      x:[E("teico", { t:"teico" }, null, { pa:P.p3977 })] },
+    r_nat:{ tit:"Nativa", per:"*", val:"nat", cl:"I", lv:"B", pg:P.r7b, dur:"4 settimane, con la gentamicina per 2",
+      x:[{ alt:[E("penG", D.penG_r, null, { pa:P.r7b }), E("amox", D.amox12, null, { pa:P.r7b }), E("ceftr", D.ceftr2, null, { pa:P.r7b })] },
+         E("genta", D.genta1, null, { pa:P.r7b, dur:"2 settimane" })] },
+    r_pro:{ tit:"Protesi", per:"*", val:"pro", cl:"I", lv:"B", pg:P.r7b, dur:"6 settimane, con la gentamicina per 2",
+      x:[{ alt:[E("penG", D.penG_r, null, { pa:P.r7b }), E("amox", D.amox12, null, { pa:P.r7b }), E("ceftr", D.ceftr2, null, { pa:P.r7b })] },
+         E("genta", D.genta1, null, { pa:P.r7b, dur:"2 settimane" })] },
+    r_all_nat:{ tit:"Allergia ai beta-lattamici, nativa", per:"all", val:"nat", cl:"I", lv:"C", pg:P.r7b, dur:"4 settimane",
+      x:[E("vanco", D.vanco30, KG(30, 30, "in 2 dosi", [2], "e.v.", { cap:2000, capT:"tetto senza livelli (nota e)" }), { pa:P.r7b, pb:P.r7b })] },
+    r_all_pro:{ tit:"Allergia ai beta-lattamici, protesi", per:"all", val:"pro", cl:"I", lv:"C", pg:P.r7b, dur:"6 settimane, con la gentamicina per 2",
+      x:[E("vanco", D.vanco30, KG(30, 30, "in 2 dosi", [2], "e.v.", { cap:2000, capT:"tetto senza livelli (nota e)" }), { pa:P.r7b, pb:P.r7b }),
+         E("genta", D.genta1, D.genta_b1, { pa:P.r7b, pb:P.r7b, dur:"2 settimane" })] },
+    pn_men:{ tit:"Meningite: niente penicillina", per:"*", val:"*", cl:null, pg:P.p3979, dur:"la fonte non la scrive",
+      nota:"La penicillina passa poco nel liquor: ceftriaxone o cefotaxima, da soli o con la vancomicina secondo l'antibiogramma (p. 3979). La fonte non dà le dosi nella meningite.",
+      x:[{ alt:[E("ceftr", ND("la fonte non dà la dose nella meningite"), null, { pa:P.p3979 }), E("cefotax", ND("la fonte non dà la dose nella meningite"), null, { pa:P.p3979 })] },
+         E("vanco", ND("con o senza, secondo l'antibiogramma: la fonte non dà la dose nella meningite"), null, { pa:P.p3979, opz:true })] },
+    be_s:{ tit:"Come la Rec. Table 7, senza regime breve e con la gentamicina per 2 settimane", per:"*", val:"*", cl:null, pg:P.p3979, dur:"4 settimane nella nativa, 6 nella protesi; gentamicina 2 settimane",
+      x:[{ alt:[E("penG", D.penG_s, D.penG_b, { pa:P.r7a, pb:P.r7a }), E("amox", D.amox12, D.amox_b, { pa:P.r7a, pb:P.r7a }),
+               E("ceftr", D.ceftr2, KG(100, 100, "in 1 dose", [1], "e.v.", { cap:2000, capT:TA }), { pa:P.r7a, pb:P.r7a })] },
+         E("genta", D.genta1, KG(3, 3, "in 1 dose o in 3 dosi uguali", [1, 3], "e.v. o i.m.", { cap:240, capT:TA }), { pa:P.r7a, pb:P.r7b, dur:"2 settimane" })] },
+    be_all:{ tit:"Allergia ai beta-lattamici: vancomicina, e la gentamicina per 2 settimane", per:"all", val:"*", cl:null, pg:P.p3979, dur:"4 settimane nella nativa, 6 nella protesi; gentamicina 2 settimane",
+      x:[E("vanco", D.vanco30, KG(30, 30, "in 2 o 3 dosi uguali", [2, 3], "e.v.", { cap:2000, capT:"tetto senza livelli (nota e)" }), { pa:P.r7b, pb:P.r7b }),
+         E("genta", D.genta1, KG(3, 3, "in 1 dose o in 3 dosi uguali", [1, 3], "e.v. o i.m.", { cap:240, capT:TA }), { pa:P.r7a, pb:P.r7b, dur:"2 settimane" })] },
+    gr_std:{ tit:"Penicillina G, ceftriaxone o vancomicina, 6 settimane", per:"*", val:"*", cl:null, pg:P.p3979, dur:"6 settimane; nella protesi l'aminoglicoside almeno nelle prime 2",
+      x:[{ alt:[E("penG", D.penG_s, D.penG_b, { pa:P.r7a, pb:P.r7a }), E("ceftr", D.ceftr2, KG(100, 100, "in 1 dose", [1], "e.v.", { cap:2000, capT:TA }), { pa:P.r7a, pb:P.r7a }),
+               E("vanco", D.vanco30, KG(30, 30, "in 2 o 3 dosi uguali", [2, 3], "e.v.", { cap:2000, capT:"tetto senza livelli (nota e)" }), { pa:P.r7b, pb:P.r7b })] },
+         E("genta", D.genta1, KG(3, 3, "in 1 dose o in 3 dosi uguali", [1, 3], "e.v. o i.m.", { cap:240, capT:TA }), { pa:P.r7a, pb:P.r7b, dur:"almeno 2 settimane", soloPro:true })] },
+
+    m_nat:{ tit:"Nativa", per:"no", val:"nat", cl:"I", lv:"B", pg:P.r8a, dur:"4–6 settimane",
+      x:[{ alt:[E("flucl", D.flucl12, D.flucl_b, { pa:P.r8a, pb:P.r8a }), E("cefaz", D.cefaz6, D.cefaz_b, { pa:P.r8a, pb:P.r8a })] }] },
+    m_pro:{ tit:"Protesi", per:"no", val:"pro", cl:"I", lv:"B", pg:P.r8a, dur:"almeno 6 settimane; rifampicina almeno 6, gentamicina 2",
+      x:[{ alt:[E("flucl", D.flucl12, D.flucl_b, { pa:P.r8a, pb:P.r8a }), E("cefaz", D.cefaz6, D.cefaz_b, { pa:P.r8a, pb:P.r8a })] },
+         E("rif", D.rif900, D.rif_b, { pa:P.r8a, pb:P.r8a, dur:"almeno 6 settimane (dal 3°–5° giorno di terapia efficace, a batteriemia risolta: testo, p. 3979)" }),
+         E("genta", D.genta12, D.genta_b12, { pa:P.r8a, pb:P.r8a, dur:"2 settimane" })] },
+    m_all_nat:{ tit:"Allergia alla penicillina, nativa: cefazolina", per:"all", val:"nat", cl:"I", lv:"B", pg:P.r8a, dur:"4–6 settimane",
+      x:[E("cefaz", D.cefaz6, D.cefaz_b, { pa:P.r8a, pb:P.r8a })] },
+    m_all_pro:{ tit:"Allergia alla penicillina, protesi: cefazolina con rifampicina e gentamicina", per:"all", val:"pro", cl:"I", lv:"B", pg:P.r8a, dur:"almeno 6 settimane; gentamicina 2",
+      x:[E("cefaz", D.cefaz6, D.cefaz_b, { pa:P.r8a, pb:P.r8a }), E("rif", D.rif900, D.rif_b, { pa:P.r8a, pb:P.r8a, dur:"almeno 6 settimane" }),
+         E("genta", D.genta12, D.genta_b12, { pa:P.r8a, pb:P.r8a, dur:"2 settimane" })] },
+    m_dap_nat:{ tit:"Allergia alla penicillina, nativa: daptomicina con ceftarolina o fosfomicina", per:"all", val:"nat", cl:"IIb", lv:"C", pg:P.r8b, dur:"la riga non la dà",
+      x:[E("dapto", D.dapto10, null, { pa:P.r8b }), { alt:[E("ceftar", D.ceftar, null, { pa:P.r8b }), E("fosfo", D.fosfo812, null, { pa:P.r8b })] }] },
+    m_dap_pro:{ tit:"Allergia alla penicillina, protesi: daptomicina con il partner, rifampicina e gentamicina", per:"all", val:"pro", cl:"IIb", lv:"C", pg:P.r8b, dur:"rifampicina almeno 6 settimane, gentamicina 2",
+      nota:"La riga nomina la gentamicina due volte; il testo la legge come due schemi — daptomicina con ceftarolina o fosfomicina, oppure con gentamicina per 2 settimane più rifampicina per almeno 6 (p. 3979). Lo strumento riporta la tabella delle dosi.",
+      x:[E("dapto", D.dapto10, null, { pa:P.r8b }), { alt:[E("ceftar", D.ceftar, null, { pa:P.r8b }), E("fosfo", D.fosfo812, null, { pa:P.r8b })] },
+         E("rif", D.rif900, null, { pa:P.r8b, dur:"almeno 6 settimane" }), E("genta", D.genta12, null, { pa:P.r8b, dur:"2 settimane" })] },
+    mr_nat:{ tit:"Nativa: vancomicina", per:"*", val:"nat", cl:"I", lv:"B", pg:P.r8b, dur:"4–6 settimane",
+      x:[E("vanco", D.vanco3060, D.vanco_b30, { pa:P.r8b, pb:P.r8b })] },
+    mr_pro:{ tit:"Protesi: vancomicina con rifampicina e gentamicina", per:"*", val:"pro", cl:"I", lv:"B", pg:P.r8b, dur:"almeno 6 settimane; gentamicina 2",
+      x:[E("vanco", D.vanco3060, D.vanco_b30, { pa:P.r8b, pb:P.r8b }),
+         E("rif", FX(900, 1200, "in 2 o 3 dosi", [2, 3], "e.v. o per bocca"), D.rif_b, { pa:P.r8b, pb:P.r8b, dur:"almeno 6 settimane" }),
+         E("genta", D.genta12, D.genta_b12, { pa:P.r8b, pb:P.r8b, dur:"2 settimane" })] },
+    mr_dap:{ tit:"Nativa: daptomicina con cloxacillina, ceftarolina o fosfomicina", per:"*", val:"nat", cl:"IIb", lv:"C", pg:P.r8b, dur:"la riga non la dà",
+      x:[E("dapto", D.dapto10, null, { pa:P.r8b }),
+         { alt:[E("clox", FX(12000, 12000, "in 6 dosi", [6], "e.v."), null, { pa:P.r8b }), E("ceftar", D.ceftar, null, { pa:P.r8b }), E("fosfo", D.fosfo812, null, { pa:P.r8b })] }] },
+
+    e_nat_c:{ tit:"Nativa: ampicillina o amoxicillina con ceftriaxone", per:"*", val:"nat", cl:"I", lv:"B", pg:P.r9a, dur:"6 settimane",
+      x:[{ alt:[E("amp", D.amp12, D.amp_b, { pa:P.r9a, pb:P.r9a }), E("amox", D.amox12, D.amox_b, { pa:P.r9a, pb:P.r9a })] },
+         E("ceftr", D.ceftr4, KG(100, 100, "in 2 dosi (la riga scrive «100 mg/kg», senza «/die»)", [2], "e.v.", { cap:4000, capT:TA }), { pa:P.r9a, pb:P.r9a })] },
+    e_nat_g:{ tit:"Nativa: ampicillina o amoxicillina con gentamicina", per:"*", val:"nat", cl:"I", lv:"B", pg:P.r9a, dur:"6 settimane; gentamicina 2",
+      x:[{ alt:[E("amp", D.amp12, D.amp_b, { pa:P.r9a, pb:P.r9a }), E("amox", D.amox12, D.amox_b, { pa:P.r9a, pb:P.r9a })] },
+         E("genta", D.genta1, D.genta_b3, { pa:P.r9a, pb:P.r9a, dur:"2 settimane" })] },
+    e_pro_c:{ tit:"Protesi, nativa complicata o sintomi da oltre 3 mesi: con ceftriaxone", per:"*", val:"pro", cl:"I", lv:"B", pg:P.r9a, dur:"6 settimane",
+      x:[{ alt:[E("amp", D.amp12, D.amp_b, { pa:P.r9a, pb:P.r9a }), E("amox", D.amox12, D.amox_b, { pa:P.r9a, pb:P.r9a })] },
+         E("ceftr", D.ceftr4, KG(100, 100, "in 2 dosi", [2], "e.v.", { cap:4000, capT:TA }), { pa:P.r9a, pb:P.r9a })] },
+    e_pro_g:{ tit:"Protesi, nativa complicata o sintomi da oltre 3 mesi: con gentamicina", per:"*", val:"pro", cl:"I", lv:"B", pg:P.r9a, dur:"6 settimane; gentamicina 2",
+      x:[{ alt:[E("amp", D.amp12, D.amp_b, { pa:P.r9a, pb:P.r9a }), E("amox", D.amox12, D.amox_b, { pa:P.r9a, pb:P.r9a })] },
+         E("genta", D.genta1, D.genta_b3, { pa:P.r9a, pb:P.r9a, dur:"2 settimane" })] },
+    e_hlar:{ tit:"HLAR: ampicillina o amoxicillina con ceftriaxone", per:"*", val:"*", cl:"I", lv:"B", pg:P.r9b, dur:"6 settimane",
+      x:[{ alt:[E("amp", D.amp12, D.amp_b, { pa:P.r9b, pb:P.r9b }), E("amox", D.amox12, D.amox_b, { pa:P.r9b, pb:P.r9b })] },
+         E("ceftr", D.ceftr4im, KG(100, 100, "in 2 dosi (la riga scrive «100 mg/kg», senza «/die»)", [2], "e.v. o i.m.", { cap:4000, capT:TA }), { pa:P.r9b, pb:P.r9b })] },
+    e_hlar_s:{ tit:"Nota d: sensibile alla streptomicina, la streptomicina al posto della gentamicina", per:"*", val:"*", cl:null, pg:"ESC 2023, Rec. Table 9, nota d, p. 3983", dur:"la nota non la scrive: nello schema con la gentamicina erano 2 settimane",
+      x:[{ alt:[E("amp", D.amp12, D.amp_b, { pa:P.r9a, pb:P.r9a }), E("amox", D.amox12, D.amox_b, { pa:P.r9a, pb:P.r9a })] },
+         E("strepto", KG(15, 15, "in 2 dosi uguali (la via non è scritta)", [2], ""), null, { pa:P.r9b })] },
+    e_blr:{ tit:"Resistenti ai beta-lattamici: vancomicina con gentamicina", per:"*", val:"*", cl:"I", lv:"C", pg:P.r9b, dur:"6 settimane; gentamicina 2",
+      x:[E("vanco", D.vanco30, D.vanco_b30, { pa:P.r9b, pb:P.r9b }), E("genta", D.genta1, D.genta_b1, { pa:P.r9b, pb:P.r9b, dur:"2 settimane" })] },
+    e_blr_bl:{ tit:"Nota e: resistenza da beta-lattamasi — l'inibitore al posto della sola penicillina, con la gentamicina", per:"*", val:"*", cl:null, pg:"ESC 2023, Rec. Table 9, nota e, p. 3983", dur:"quella dello schema dei ceppi sensibili con la gentamicina: 6 settimane, gentamicina 2",
+      nota:"La nota cambia il beta-lattamico negli schemi dei ceppi sensibili: ampicillina-sulbactam al posto dell'ampicillina, amoxicillina-clavulanato al posto dell'amoxicillina. La fonte non dà le loro dosi. <b>Il partner</b> la nota non lo dice: qui la sola <b>gentamicina</b> dello schema dei ceppi sensibili. Il ceftriaxone, l'altro partner di quegli schemi, non compare: il testo dice che il doppio beta-lattamico non è efficace su <i>E. faecium</i> (p. 3982) — decisione del medico, 23/10/2026. Con l'alta resistenza agli aminoglicosidi la gentamicina non si usa (p. 3982): la fonte non ha un altro partner, decide l'infettivologo.",
+      x:[{ alt:[E("ampsul", { t:"txt", tx:"la fonte non dà la dose. Scheda: da 3 a 12 g/die (8 g di ampicillina + 4 g di sulbactam) in dosi ogni 6–8 h, sulbactam mai oltre 4 g/die" }, null, { pa:P.r9b }),
+               E("amoxclav", { t:"txt", tx:"la fonte non dà la dose. Scheda: al massimo 2000/200 mg ogni 8 h (6 g/die di amoxicillina)" }, null, { pa:P.r9b })] },
+         E("genta", D.genta1, null, { pa:P.r9a, dur:"2 settimane" })] },
+    e_vre:{ tit:"Resistenti alla vancomicina: daptomicina con un beta-lattamico o la fosfomicina", per:"*", val:"*", cl:"I", lv:"C", pg:P.r9b, dur:"la riga non la dà",
+      x:[E("dapto", KG(10, 12, "in 1 dose", [1], "e.v."), KG(10, 12, "in 1 dose, «aggiustata per l'età»", [1], "e.v.", { eta:true }), { pa:P.r9b, pb:P.r9b }),
+         { alt:[E("amp", D.amp12, D.amp_b, { pa:P.r9b, pb:P.r9b }), E("fosfo", FX(12000, 12000, "in 4 dosi", [4], "e.v."), FX(2000, 3000, "in 1 dose (dose fissa, non per peso, così nella fonte)", [1], "e.v.", { fissa:true }), { pa:P.r9b, pb:P.r9b }),
+                E("ceftar", D.ceftar, KG(24, 36, "in 3 dosi (la via non è scritta)", [3], "", { cap:1800, capT:TA }), { pa:P.r9b, pb:P.r9b }),
+                E("ertap", FX(2000, 2000, "in 1 dose", [1], "e.v. o i.m."), { t:"ertped" }, { pa:P.r9b, pb:P.r9b })] }] },
+    e_mdr1:{ tit:"Nota f (i): daptomicina con ampicillina, ertapenem, ceftarolina o fosfomicina", per:"*", val:"*", cl:null, pg:"ESC 2023, Rec. Table 9, nota f, p. 3983", dur:"la nota non la dà",
+      x:[E("dapto", D.dapto10, null, { pa:P.r9b }),
+         { alt:[E("amp", KG(200, 200, "in 4–6 dosi", [4, 6], "e.v."), null, { pa:P.r9b }), E("ertap", FX(2000, 2000, "", [1], "e.v."), null, { pa:P.r9b }),
+                E("ceftar", FX(1800, 1800, "600 mg ogni 8 h", [3], "e.v."), null, { pa:P.r9b }), E("fosfo", FX(12000, 12000, "3 g ogni 6 h", [4], "e.v."), null, { pa:P.r9b })] }] },
+    e_mdr2:{ tit:"Nota f (ii): linezolid", per:"*", val:"*", cl:null, pg:"ESC 2023, Rec. Table 9, nota f, p. 3983", dur:"almeno 8 settimane, con l'emocromo",
+      x:[E("linez", FX(1200, 1200, "in 2 dosi (2 × 600 mg)", [2], "e.v. o per bocca"), null, { pa:P.r9b })] },
+    e_mdr3:{ tit:"Nota f (iii): quinupristin-dalfopristin", per:"*", val:"*", cl:null, pg:"ESC 2023, Rec. Table 9, nota f, p. 3983", dur:"almeno 8 settimane",
+      nota:"Non è attivo su <i>E. faecalis</i> (nota f).", x:[E("qd", KG(22.5, 22.5, "in 3 dosi (3 × 7,5 mg/kg)", [3], ""), null, { pa:P.r9b })] },
+
+    h_ceftr:{ tit:"Ceftriaxone: lo schema standard", per:"*", val:"*", cl:null, pg:P.p3983, dur:"4 settimane nella nativa, 6 nella protesi",
+      x:[E("ceftr", FX(2000, 2000, "", [1], ""), null, { pa:P.p3983 })] },
+    h_amp:{ tit:"Ampicillina con gentamicina: solo se il ceppo non produce beta-lattamasi", per:"*", val:"*", cl:null, pg:P.p3983, dur:"4–6 settimane; gentamicina 2",
+      x:[E("amp", FX(12000, 12000, "in 4 o 6 dosi", [4, 6], "e.v."), null, { pa:P.p3983 }),
+         E("genta", KG(3, 3, "divisi in 2 o 3 dosi", [2, 3], "", { cap:240, capT:"tetto della fonte (note delle Rec. Tables)", modo:"divisa" }), null, { pa:P.p3983, dur:"2 settimane" })] },
+    h_cipro:{ tit:"Ciprofloxacina: alternativa meno validata", per:"*", val:"*", cl:null, pg:P.p3984, dur:"la fonte non la scrive",
+      x:[E("cipro", { t:"txt", tx:"400 mg ogni 8–12 h e.v., oppure 750 mg ogni 12 h per bocca" }, null, { pa:P.p3984 })] },
+
+    bru:{ tit:"Brucella: doxiciclina, cotrimossazolo e rifampicina, per bocca", per:"*", val:"*", cl:null, pg:P.t11, dur:"almeno 3–6 mesi",
+      nota:"Successo: titolo anticorpale sotto 1:60. Alcuni autori aggiungono la gentamicina nelle prime 3 settimane, senza dose (Tab. 11).",
+      x:[E("doxy", FX(200, 200, "ogni 24 h", [1], "per bocca"), null, { pa:P.t11 }), E("cotri", FX(1920, 1920, "960 mg ogni 12 h", [2], "per bocca"), null, { pa:P.t11 }),
+         E("rif", FX(300, 600, "ogni 24 h", [1], "per bocca"), null, { pa:P.t11 }),
+         E("strepto", KG(15, 15, "in 2 dosi, nelle prime settimane: facoltativa (nota b)", [2], ""), null, { pa:P.t11, opz:true })] },
+    cox:{ tit:"C. burnetii: doxiciclina con idrossiclorochina, per bocca", per:"*", val:"*", cl:null, pg:P.t11, dur:"oltre 18 mesi",
+      nota:"Successo: IgG anti-fase I sotto 1:400, IgA e IgM sotto 1:50. Insieme sono nettamente meglio della sola doxiciclina (nota c).",
+      x:[E("doxy", FX(200, 200, "ogni 24 h", [1], "per bocca"), null, { pa:P.t11 }), E("hcq", FX(200, 600, "ogni 24 h, con i livelli sierici (nota c)", [1], "per bocca"), null, { pa:P.t11 })] },
+    bart:{ tit:"Bartonella: doxiciclina con gentamicina", per:"*", val:"*", cl:null, pg:P.t11, dur:"doxiciclina 4 settimane, gentamicina 2",
+      nota:"Successo atteso in almeno il 90%.",
+      x:[E("doxy", FX(200, 200, "100 mg ogni 12 h", [2], "per bocca"), null, { pa:P.t11 }),
+         E("genta", ND("la tabella scrive «3 mg/24 h», senza «/kg»: refuso probabile per 3 mg/kg/24 h, ma la fonte dice così"), null, { pa:P.t11, dur:"2 settimane", dv:true })] },
+    bart_alt:{ tit:"Bartonella, altri schemi (nota d): un beta-lattamico con un aminoglicoside", per:"*", val:"*", cl:null, pg:"ESC 2023, Tab. 11, nota d, p. 3984", dur:"la nota non la scrive",
+      nota:"L'aminoglicoside — gentamicina o netilmicina — «alle dosi degli streptococchi e degli enterococchi»: qui la gentamicina delle Rec. Tables 7 e 9.",
+      x:[{ alt:[E("amp", FX(12000, 12000, "ogni 24 h", null, "e.v."), null, { pa:P.p3984 }), E("amox", FX(12000, 12000, "ogni 24 h", null, "e.v."), null, { pa:P.p3984 }),
+                E("ceftr", FX(2000, 2000, "ogni 24 h", [1], "e.v."), null, { pa:P.p3984 })] },
+         E("genta", D.genta1, null, { pa:"ESC 2023, Tab. 11, nota d → Rec. Tables 7 e 9" })] },
+    leg1:{ tit:"Legionella: levofloxacina", per:"*", val:"*", cl:null, pg:P.t11, dur:"almeno 6 settimane", nota:"Terapia ottimale non nota (Tab. 11).",
+      x:[E("levo", FX(1000, 1000, "500 mg ogni 12 h", [2], "e.v. o per bocca"), null, { pa:P.t11 })] },
+    leg2:{ tit:"Legionella: claritromicina con rifampicina", per:"*", val:"*", cl:null, pg:P.t11, dur:"claritromicina e.v. 2 settimane, poi per bocca 4",
+      x:[E("clari", FX(1000, 1000, "500 mg ogni 12 h", [2], "e.v., poi per bocca"), null, { pa:P.t11 }), E("rif", FX(300, 1200, "ogni 24 h (la via non è scritta)", [1], ""), null, { pa:P.t11 })] },
+    myc:{ tit:"Mycoplasma: levofloxacina", per:"*", val:"*", cl:null, pg:P.t11, dur:"almeno 6 mesi",
+      nota:"Terapia ottimale non nota; i chinoloni nuovi (levofloxacina, moxifloxacina) sono più potenti della ciprofloxacina sui patogeni intracellulari (nota e).",
+      x:[E("levo", FX(1000, 1000, "500 mg ogni 12 h", [2], "e.v. o per bocca"), null, { pa:P.t11 })] },
+    whi:{ tit:"T. whipplei: doxiciclina con idrossiclorochina, per bocca", per:"*", val:"*", cl:null, pg:P.t11, dur:"almeno 18 mesi (la nota f dice 1 anno, il testo oltre 1 anno)",
+      x:[E("doxy", FX(200, 200, "ogni 24 h", [1], "per bocca"), null, { pa:P.t11 }), E("hcq", FX(200, 600, "ogni 24 h", [1], "per bocca"), null, { pa:P.t11 }),
+         E("sulfa", FX(6000, 6000, "1,5 g ogni 6 h", [4], "per bocca"), null, { pa:"ESC 2023, Tab. 11, nota f, p. 3984", snc:true })] },
+    whi_c:{ tit:"T. whipplei, alternativa (nota f): ceftriaxone, poi cotrimossazolo", per:"*", val:"*", cl:null, pg:"ESC 2023, Tab. 11, nota f, p. 3984", dur:"ceftriaxone 2–4 settimane; il cotrimossazolo, poi, la fonte non dice per quanto",
+      x:[E("ceftr", FX(2000, 2000, "ogni 24 h", [1], "e.v."), null, { pa:P.p3984 }), E("cotri", FX(1600, 1600, "800 mg ogni 12 h", [2], "per bocca"), null, { pa:P.p3984 })] },
+    whi_p:{ tit:"T. whipplei, alternativa (nota f): penicillina G con streptomicina, poi cotrimossazolo", per:"*", val:"*", cl:null, pg:"ESC 2023, Tab. 11, nota f, p. 3984", dur:"2–4 settimane; poi il cotrimossazolo, senza durata",
+      x:[E("penG", FX(12e6, 12e6, "2 milioni di U ogni 4 h", [6], "e.v."), null, { pa:P.p3984 }), E("strepto", FX(1000, 1000, "ogni 24 h", [1], "e.v."), null, { pa:P.p3984 }),
+         E("cotri", FX(1600, 1600, "800 mg ogni 12 h", [2], "per bocca"), null, { pa:P.p3984 })] },
+
+    fu_can:{ tit:"Candida: echinocandina ad alte dosi, o amfotericina B liposomiale", per:"*", val:"*", cl:null, pg:P.p3984, dur:"non nota; poi soppressione orale a lungo termine con un azolo, talvolta a vita",
+      nota:"Mortalità oltre il 50%: antifungini in associazione e soglia bassa per la chirurgia, con l'Endocarditis Team e l'infettivologo. La fonte non dà nessuna dose; l'«alta dose» delle echinocandine non è definita.",
+      x:[{ alt:[E("caspo", ND("la fonte non dà la dose («ad alte dosi», senza numero)"), null, { pa:P.p3984, dv:true }), E("mica", ND("la fonte non dà la dose («ad alte dosi», senza numero)"), null, { pa:P.p3984, dv:true }),
+                E("anid", ND("la fonte non dà la dose («ad alte dosi», senza numero)"), null, { pa:P.p3984, dv:true }), E("ambi", ND("la fonte non dà la dose (anche un'altra formulazione lipidica)"), null, { pa:P.p3984, dv:true })] },
+         E("fluci", ND("con l'amfotericina B, con o senza: la fonte non dà la dose"), null, { pa:P.p3984, opz:true }),
+         E("flucon", ND("dopo, nella soppressione orale: la fonte non dà la dose"), null, { pa:P.p3984, opz:true })] },
+    fu_asp:{ tit:"Aspergillus: voriconazolo", per:"*", val:"*", cl:null, pg:P.p3984, dur:"non nota; poi soppressione orale a lungo termine",
+      nota:"È il farmaco di scelta; alcuni esperti aggiungono un'echinocandina o l'amfotericina B. La fonte non dà nessuna dose.",
+      x:[E("vori", ND("la fonte non dà la dose"), null, { pa:P.p3984, dv:true }),
+         { alt:[E("caspo", ND("in aggiunta, secondo alcuni esperti: la fonte non dà la dose"), null, { pa:P.p3984 }), E("ambi", ND("in aggiunta, secondo alcuni esperti: la fonte non dà la dose"), null, { pa:P.p3984 })], opz:true }] },
+
+    em_c:{ tit:"Comunitaria su nativa o protesi tardiva: ampicillina con ceftriaxone", per:"no", val:"*", cl:"IIa", lv:"C", pg:P.r10, dur:"fino al germe (24–48 h), poi la terapia mirata",
+      x:[E("amp", D.amp12, D.amp_b, { pa:P.r10, pb:P.r10 }),
+         E("ceftr", D.ceftr4im, KG(100, 100, "in 1 dose (la riga scrive «100 mg/kg», senza «/die»)", [1], "e.v. o i.m.", { cap:4000, capT:TA }), { pa:P.r10, pb:P.r10 })] },
+    em_f:{ tit:"Comunitaria su nativa o protesi tardiva: ampicillina con (flu)cloxacillina e gentamicina", per:"no", val:"*", cl:"IIa", lv:"C", pg:P.r10, dur:"fino al germe (24–48 h), poi la terapia mirata",
+      x:[E("amp", D.amp12, D.amp_b, { pa:P.r10, pb:P.r10 }), E("flucl", D.flucl12, D.flucl_b, { pa:P.r10, pb:P.r10 }),
+         E("genta", D.genta1, D.genta_b3, { pa:P.r10, pb:P.r10 })] },
+    em_pp:{ tit:"Protesi precoce o infezione correlata all'assistenza: vancomicina o daptomicina, con gentamicina e rifampicina", per:"*", val:"*", cl:"IIb", lv:"C", pg:P.r10, dur:"fino al germe (24–48 h), poi la terapia mirata",
+      x:[{ alt:[E("vanco", D.vanco30, D.vanco_b40, { pa:P.r10, pb:P.r10 }), E("dapto", D.dapto10, null, { pa:P.r10 })] },
+         E("genta", D.genta1, D.genta_b3, { pa:P.r10, pb:P.r10 }),
+         E("rif", FX(900, 1200, "in 2 o 3 dosi (la riga scrive «900–1200 mg», senza «/die»)", [2, 3], "e.v. o per bocca"), D.rif_b, { pa:P.r10, pb:P.r10 })] },
+    em_all:{ tit:"Allergia alla penicillina, comunitaria o protesi tardiva: cefazolina o vancomicina, con gentamicina", per:"all", val:"*", cl:"IIb", lv:"C", pg:P.r10, dur:"fino al germe (24–48 h), poi la terapia mirata",
+      x:[{ alt:[E("cefaz", D.cefaz6, KG(100, 100, "in 3–4 dosi, al massimo 6 g/die", [3, 4], "e.v.", { cap:6000, capT:TF }), { pa:P.r10, pb:P.r10 }),
+                E("vanco", D.vanco30, D.vanco_b40, { pa:P.r10, pb:P.r10 })] },
+         E("genta", D.genta1, D.genta_b3, { pa:P.r10, pb:P.r10 })] }
+  };
+
+  /* ═══ FUNZIONI PURE ═══════════════════════════════════════════════════ */
+  function inScala(v, k) { return v !== null && v !== undefined && !isNaN(v) && v >= DOM[k][0] && v <= DOM[k][1]; }
+  function nf(x, d) { if (d === undefined) d = 1; var p = Math.pow(10, d); x = Math.round(x * p) / p; return String(x).replace(".", ","); }
+  function nnum(v, u) { return u === "U" ? nf(v / 1e6, 2) : (u === "g" ? nf(v / 1000, 2) : nf(v, 0)); }
+  function uu(u) { return u === "U" ? " milioni di U" : (u === "g" ? " g" : " mg"); }
+  function qta(v, u) { return u === "U" && nnum(v, u) === "1" ? "1 milione di U" : nnum(v, u) + uu(u); }
+  function qrange(lo, hi, u) { return nnum(lo, u) === nnum(hi, u) ? qta(lo, u) : nnum(lo, u) + "–" + qta(hi, u); }
+
+  function creatMg(s) {
+    if (s.creat === null) return { v:null };
+    if (s.ucr === "umol") {
+      if (s.creat < 18 || s.creat > 1800) return { v:null, fuori:true };
+      return { v:s.creat / SOGLIE.umol, umol:s.creat };
+    }
+    if (s.creat < 0.2 || s.creat > 20) return { v:null, fuori:true };
+    return { v:s.creat, umol:s.creat * SOGLIE.umol };
+  }
+  // Cockcroft-Gault sul peso REALE, che decide (decisione del medico del
+  // 03/10/2026); con BMI >=30 accanto il peso aggiustato (Devine + 0,4 x
+  // l'eccesso). Solo dai 18 anni: nel bambino la formula non vale, e lo
+  // strumento non stima la filtrazione (strumenti.md § 5.6).
+  // L'età: gli anni e, sotto 1 anno, i mesi; o i soli mesi, fino a 23 (D9,
+  // decisione del medico del 23/10/2026: sotto 1 mese nessuna dose, e le età
+  // minime delle schede sono in mesi). k: ok · manca · fuori · mesi (sotto 1
+  // anno senza i mesi). mesi = l'età in mesi (dagli anni, se i mesi mancano).
+  function etaInfo(s) {
+    var a = s.eta === undefined ? null : s.eta, m = s.mesi === undefined ? null : s.mesi;
+    var o = { k:"", anni:null, mesi:null, ped:false, t:"" };
+    if (a === null && m === null) { o.k = "manca"; o.t = "serve l'età: decide fra le dosi dell'adulto e quelle del bambino"; return o; }
+    if (m !== null && (isNaN(m) || m < 0 || m !== Math.floor(m))) { o.k = "fuori"; o.t = "mesi fuori scala (numeri interi)"; return o; }
+    if (a === null) {
+      if (m > 23) { o.k = "fuori"; o.t = "mesi fuori scala: dai 24 mesi si scrivono gli anni"; return o; }
+      o.k = "ok"; o.mesi = m; o.anni = m / 12; o.ped = true; return o;
+    }
+    if (!inScala(a, "eta")) { o.k = "fuori"; o.t = "età fuori scala (0–110 anni)"; return o; }
+    if (m !== null && m > 11) { o.k = "fuori"; o.t = "mesi fuori scala: con gli anni, da 0 a 11"; return o; }
+    o.anni = a + (m !== null ? m / 12 : 0); o.ped = a < SOGLIE.adulto;
+    if (a < 1 && m === null) { o.k = "mesi"; o.t = "sotto 1 anno servono i mesi: sotto 1 mese nessuna dose, e diverse schede hanno un'età minima in mesi"; return o; }
+    o.mesi = a * 12 + (m !== null ? m : 0); o.k = "ok";
+    return o;
+  }
+
+  function clearance(s) {
+    var o = { clcr:null, agg:null, bmi:null, ibw:null, pesoAgg:null, mg:null, umol:null, manca:[], ped:false, dial:!!s.dialisi };
+    if (inScala(s.peso, "peso") && inScala(s.alt, "alt")) o.bmi = s.peso / Math.pow(s.alt / 100, 2);
+    var ei = etaInfo(s);
+    if (ei.ped && ei.k !== "fuori") { o.ped = true; return o; }
+    var c = creatMg(s);
+    o.mg = c.v; o.umol = c.umol || null;
+    if (s.eta === null) o.manca.push("età");
+    else if (!inScala(s.eta, "eta")) o.manca.push("età nella scala (0–110 anni)");
+    if (!s.sesso) o.manca.push("sesso");
+    if (s.peso === null) o.manca.push("peso");
+    else if (!inScala(s.peso, "peso")) o.manca.push("peso nella scala (2–250 kg)");
+    if (s.creat === null) o.manca.push("creatinina");
+    else if (c.fuori) o.manca.push("creatinina nella scala dell'unità scelta");
+    if (o.manca.length) return o;
+    var f = s.sesso === "f" ? 0.85 : 1;
+    o.clcr = ((140 - s.eta) * s.peso * f) / (72 * c.v);
+    if (o.bmi !== null && o.bmi >= SOGLIE.bmiAgg) {
+      o.ibw = (s.sesso === "f" ? 45.5 : 50) + 0.9 * (s.alt - 152.4);
+      if (o.ibw > 0 && s.peso > o.ibw) {
+        o.pesoAgg = o.ibw + 0.4 * (s.peso - o.ibw);
+        o.agg = ((140 - s.eta) * o.pesoAgg * f) / (72 * c.v);
+      }
+    }
+    return o;
+  }
+
+  // La dose di una riga, per questo paziente: adulto o bambino secondo l'età,
+  // per peso dove la fonte la dà per peso, con il tetto. Nel bambino, prima
+  // della dose, le regole della tabella PED (D9, 23/10/2026).
+  function dose(e, s) {
+    var o = { k:"", t:"", lo:null, hi:null, loRaw:null, hiRaw:null, sp:null, ped:false, capped:false, liv:false, cap:null, capT:"", eta:null };
+    var ei = etaInfo(s);
+    o.eta = ei;
+    if (ei.k === "manca" || ei.k === "fuori") { o.k = "manca"; o.t = ei.t; return o; }
+    o.ped = ei.ped;
+    var sp = o.ped ? e.b : e.a, pOk = inScala(s.peso, "peso"), P = o.ped ? PED[e.f] : null;
+    o.sp = sp;
+    if (!sp) { o.k = "nd"; o.t = NDB; return o; }
+    if (sp.t === "nd") { o.k = "nd"; o.t = sp.why; return o; }
+    if (o.ped) {
+      if (ei.k === "mesi") { o.k = "manca"; o.t = ei.t; return o; }
+      if (ei.mesi < 1) { o.k = "nd"; o.t = NEO; return o; }
+      if (P && P.no) { o.k = "nd"; o.t = P.no; return o; }
+      if (P && P.minM && ei.mesi < P.minM) { o.k = "nd"; o.t = P.minT; return o; }
+      // D22 (24/10/2026, come il Tool Profilassi EI): il ceftriaxone fra 1 e 5
+      // mesi chiede se e' un nato pretermine ancora sotto le 41 settimane di
+      // eta' post-mestruale (scheda tecnica di ceftriaxone, § 4.3)
+      if (e.f === "ceftr" && ei.mesi < SOGLIE.pmaMesi) {
+        if (s.pma === "si") { o.k = "nd"; o.t = "nel nato pretermine ancora sotto le 41 settimane di età post-mestruale la scheda lo <b>controindica</b> (§ 4.3). Decide lo specialista"; return o; }
+        if (s.pma !== "no") { o.k = "manca"; o.t = "sotto i 6 mesi serve sapere se è nato pretermine ed è ancora sotto le 41 settimane di età post-mestruale: lì la scheda lo controindica (§ 4.3). La domanda è al passo 4"; return o; }
+      }
+    }
+    if (sp.t === "txt") { o.k = "txt"; o.t = sp.tx; return o; }
+    function serve() { o.k = "manca"; o.t = s.peso === null ? "serve il peso" : "peso fuori scala (2–250 kg)"; return o; }
+    // D17: la dose della scheda per l'endocardite a questa età, al posto della
+    // fonte (amoxicillina e.v. sotto i 3 mesi)
+    // (amoxicillina e.v. sotto i 40 kg, D25): senza il peso non si sa quale
+    if (P && P.endo && sp.t === "kg") {
+      if (!pOk) return serve();
+      var en = P.endo(ei.mesi, s.peso);
+      if (en) { sp = est(est({}, sp), { lo:en.kg, hi:en.kg, n:en.n, d:en.d }); o.sp = sp; o.endo = en.t; }
+    }
+    if (sp.t === "fix") { o.lo = sp.lo; o.hi = sp.hi; }
+    else if (sp.t === "kg") { if (!pOk) return serve(); o.lo = sp.lo * s.peso; o.hi = sp.hi * s.peso; o.perKg = true; }
+    else if (sp.t === "teico") { if (!pOk) return serve(); o.carico = 6 * s.peso; o.lo = 6 * s.peso; o.hi = 10 * s.peso; o.perKg = true; }
+    else if (sp.t === "ertped") {
+      if (ei.anni >= 12) { o.lo = o.hi = 1000; o.ert = "grande"; }
+      else { if (!pOk) return serve(); o.perDose = Math.min(15 * s.peso, 500); o.doseRaw = 15 * s.peso; o.lo = o.hi = 2 * o.perDose; o.ert = "piccolo"; }
+    }
+    o.loRaw = o.lo; o.hiRaw = o.hi;
+    // il tetto: quello della riga (adulto o fonte) e, nel bambino, quello
+    // scritto nella scheda, se è più basso
+    o.cap = sp.cap || null; o.capT = sp.capT || "";
+    if (P && (P.cap || P.capKg)) {
+      var cs = null;
+      if (P.cap && (!P.capPeso || (pOk && s.peso < P.capPeso))) cs = P.cap;
+      if (P.capKg && pOk) cs = cs === null ? P.capKg * s.peso : Math.min(cs, P.capKg * s.peso);
+      if (cs !== null && (o.cap === null || cs < o.cap)) { o.cap = cs; o.capT = "tetto della " + P.st.split(" · ")[0].replace(/, (§ [^;]*)$/, " ($1)"); }
+    }
+    if (o.cap && o.hi > o.cap) { o.capped = true; o.hi = o.cap; if (o.lo > o.cap) o.lo = o.cap; }
+    // fosfomicina: il massimo per kg della fascia d'età; la dose fissa della
+    // fonte che lo supera non si dà (D9)
+    if (P && P.fasce) {
+      if (!pOk) return serve();
+      var fz = null, i;
+      for (i = 0; i < P.fasce.length; i++) if (ei.mesi <= P.fasce[i][0]) { fz = P.fasce[i]; break; }
+      if (fz) {
+        var mx = fz[1] * s.peso, perKg = nf(o.lo / s.peso, 0) + (o.hi !== o.lo ? "–" + nf(o.hi / s.peso, 0) : "") + " mg/kg/die";
+        if (o.lo > mx) { o.k = "nd"; o.t = "la dose fissa della fonte, " + qrange(o.lo, o.hi, F[e.f].u) + "/die, qui è " + perKg + ": oltre il massimo della scheda per l'età, " + fz[2] + " (" + qta(mx, F[e.f].u) + "/die a " + nf(s.peso) + " kg). Decide lo specialista (decisione del medico, 23/10/2026)"; return o; }
+        if (o.hi > mx) { o.oltre = "oltre " + qta(mx, F[e.f].u) + "/die (" + fz[1] + " mg/kg/die a " + nf(s.peso) + " kg) la dose supera il massimo della scheda per l'età, " + fz[2] + ": nessuna dose oltre (decisione del medico, 23/10/2026)"; o.hi = mx; }
+      }
+    }
+    // D17: la scheda scrive per l'età una dose più bassa, senza chiamarla
+    // massimo: la dose resta della fonte, e accanto «oltre la scheda tecnica
+    // per l'età» con la dose della scheda
+    if (P && P.et && o.perKg && pOk) {
+      var q = P.et(ei.mesi, s.peso);
+      if (q && o.hi > q.mx * s.peso + 1e-6) { o.oltreSt = q; o.oltreMx = q.mx * s.peso; }
+    }
+    if (sp.capLiv && o.hi > sp.capLiv) o.liv = true;
+    o.k = "ok";
+    return o;
+  }
+
+  // Il rene di ogni farmaco, dalla scheda tecnica (prontuario, tabella per
+  // molecola). c = { clcr, dial }; z = la dose dell'adulto calcolata; e = la
+  // riga; s = lo stato. k: ok · rid (dose o intervallo della scheda) · caut
+  // (cautela senza schema) · no (nessuna dose: decide lo specialista).
+  function RN(k, t, q) { return { k:k, t:t, q:q || "" }; }
+  var IR = " (sotto 60 mL/min: «insufficienza renale», decisione del medico del 23/10/2026)";
+  var CAUT = " Qui la funzione è ridotta (sotto 60 mL/min, o in dialisi): la dose della fonte resta, entro la scheda; quanto ridurla lo decide lo specialista.";
+  function gentaIv(cl) { return cl > 72 ? 8 : (cl > 30 ? 12 : (cl > 12 ? 24 : (cl >= 6 ? 48 : 0))); }
+  var RENE = {
+    penG: function (c, z) {
+      var k = z.lo !== null ? " Potassio: " + nf(z.lo / 1e6 * SOGLIE.kPerMU, 1) + (z.hi !== z.lo ? "–" + nf(z.hi / 1e6 * SOGLIE.kPerMU, 1) : "") + " mmol/die (1,7 mmol per milione di U)." : "";
+      if (c.dial) return RN("no", "Emodialisi: la benzilpenicillina è emodializzabile, ma la scheda non dà una dose dopo la seduta, e con la funzione renale ridotta chiede di «considerare una riduzione del dosaggio» senza dire quanto; le dosi della fonte sono oltre la sua." + k);
+      if (c.clcr < SOGLIE.ir) return RN("no", "La scheda chiede di «considerare una riduzione del dosaggio» nell'insufficienza renale, senza soglia né schema, e descrive la tossicità da potassio fra 10 e 100 milioni di U/die proprio nell'insufficienza renale; le dosi della fonte sono oltre la scheda" + IR + "." + k);
+      return RN("ok", "Nessuno schema renale nella scheda, che chiede di considerare una riduzione se la funzione è ridotta: qui ClCr ≥60." + k);
+    },
+    amox: function (c) {
+      var t = "Scheda (VFG; e.v.): oltre 30 nessun aggiustamento · 10–30: 1 g subito, poi 0,5–1 g due volte al giorno · sotto 10: 1 g, poi 500 mg al giorno · emodialisi: 1 g a fine seduta, poi 500 mg ogni 24 h.";
+      if (c.dial) return RN("rid", t, "1 g a fine seduta, poi 500 mg ogni 24 h");
+      if (c.clcr > 30) return RN("ok", t);
+      if (c.clcr >= 10) return RN("rid", t + " Molto sotto la dose della fonte, che con questa funzione la scheda non prevede.", "1 g subito, poi 0,5–1 g due volte al giorno");
+      return RN("rid", t, "1 g subito, poi 500 mg al giorno");
+    },
+    amp: function (c, z) {
+      var t = "Scheda: ClCr oltre 30 nessun aggiustamento · 20–30 due terzi della dose · sotto 20 un terzo; nell'insufficienza renale severa non oltre 1 g ogni 8 h; dialisi: la scheda tace.";
+      if (c.dial) return RN("no", t);
+      if (c.clcr > 30) return RN("ok", t);
+      var fr = c.clcr >= 20 ? 2 / 3 : 1 / 3;
+      if (z.hi !== null && z.hi * fr <= 3000) return RN("rid", t, qrange(z.lo * fr, z.hi * fr, "g") + "/die (" + (fr > 0.5 ? "due terzi" : "un terzo") + " della dose)");
+      return RN("rid", t + " Con ClCr ≤30 lo strumento legge «severa» e tiene il tetto di 1 g ogni 8 h, sotto la frazione della dose" + (z.hi !== null ? " (" + qrange(z.lo * fr, z.hi * fr, "g") + "/die)" : "") + ".", "1 g ogni 8 h (3 g/die)");
+    },
+    ceftr: function (c, z) {
+      if (c.dial || c.clcr < 10) {
+        var t = "Scheda: " + (c.dial ? "in dialisi" : "con ClCr sotto 10") + " al massimo 2 g/die, nessun supplemento dopo la seduta.";
+        if (z.hi !== null && z.hi > 2000) return RN("rid", t + " La dose della fonte (" + qta(z.hi, "g") + "/die) lo supera.", "2 g/die");
+        return RN("ok", t);
+      }
+      return RN("ok", "Scheda: nessun aggiustamento con il fegato normale; con insufficienza renale ed epatica insieme, monitoraggio clinico.");
+    },
+    cefotax: function (c) {
+      var t = "Scheda: ClCr sotto 10, dopo una dose iniziale normale, metà del mantenimento allo stesso intervallo; emodialisi e dialisi peritoneale 1–2 g/die, dopo la seduta.";
+      if (c.dial) return RN("rid", t, "1–2 g/die, dopo la seduta");
+      if (c.clcr < 10) return RN("rid", t, "metà del mantenimento");
+      return RN("ok", t);
+    },
+    genta: function (c, z, e, s) {
+      if (e && e.a && e.a.modo === "divisa") {
+        if (c.dial) return RN("rid", "Emodialisi: dopo ogni seduta 1–1,7 mg/kg, poi secondo il livello (scheda).", inScala(s.peso, "peso") ? "dopo ogni seduta " + nf(s.peso, 0) + "–" + nf(1.7 * s.peso, 0) + " mg, poi sui livelli" : "");
+        var h = gentaIv(c.clcr), pd = z.lo !== null ? qta(Math.min(z.lo, 240) / 3, "mg") : "1 mg/kg";
+        if (!h) return RN("no", "Sotto 6 mL/min la scheda non ha uno schema.");
+        if (h === 8) return RN("ok", "Scheda: oltre 72 mL/min dose piena ogni 8 h.");
+        return RN("rid", "In 3 dosi la singola somministrazione è 1 mg/kg (" + pd + "), come lo schema della scheda (80 mg, 60 sotto 60 kg): con questa clearance la scheda tiene la dose e allunga l'intervallo — 30–72 ogni 12 h, 12–30 ogni 24 h, 6–12 ogni 48 h. In 2 dosi (1,5 mg/kg) la scheda non ha uno schema renale.", pd + " ogni " + h + " h");
+      }
+      if (c.dial) return RN("no", "Emodialisi: la scheda dà 1–1,7 mg/kg dopo ogni seduta, poi secondo il livello, per il suo schema a dosi ripetute; per la dose unica di 3 mg/kg della fonte non ha uno schema. In dialisi nessuna dose (decisione del medico, 23/10/2026).");
+      if (c.clcr > SOGLIE.gentaNorm) return RN("ok", "Scheda: oltre 72 mL/min nessuna riduzione. La fonte vuole il rene normale per la dose unica (p. 3977): lo strumento la dà solo sopra 72 (decisione del medico, 23/10/2026).");
+      var h2 = gentaIv(c.clcr);
+      return RN("no", "Con questa clearance la scheda allunga l'intervallo del suo schema a dosi ripetute (80 mg, 60 sotto 60 kg, ogni 8 h)" + (h2 ? ": qui ogni " + h2 + " h" : ", e sotto 6 non ha uno schema") + "; non raccomanda la dose unica nell'endocardite né nell'insufficienza renale grave, e per i 3 mg/kg in dose unica della fonte non ha uno schema renale. Con ClCr ≤72 nessuna dose (decisione del medico, 23/10/2026).");
+    },
+    vanco: function (c, z, e, s) {
+      if (c.dial) return RN("no", "Emodialisi: un carico di 25–30 mg/kg che non si riduce, poi tempi e dosi sui livelli di valle e sulla funzione residua (scheda): nessuna dose fissa.");
+      if (c.clcr >= 50) return RN("ok", "Scheda: con funzione normale, lieve o moderata la dose iniziale non si riduce; ClCr 20–49: 15–20 mg/kg ogni 24 h; sotto 20 sui livelli.");
+      if (c.clcr >= 20 && !inScala(s.peso, "peso")) return RN("rid", "Scheda: ClCr 20–49 → 15–20 mg/kg ogni 24 h, dopo un carico di 25–30 mg/kg che non si riduce; oltre 2 g/die solo con i livelli (fonte).", "15–20 mg/kg ogni 24 h");
+      if (c.clcr >= 20) {
+        var lo = 15 * s.peso, hi = 20 * s.peso, q;
+        if (lo >= SOGLIE.vancoLiv) q = "2000 mg ogni 24 h senza i livelli (15–20 mg/kg sarebbero " + qrange(lo, hi, "mg") + ": oltre 2 g/die solo con i livelli)";
+        else if (hi > SOGLIE.vancoLiv) q = qrange(lo, SOGLIE.vancoLiv, "mg") + " ogni 24 h senza i livelli (fino a " + qta(hi, "mg") + " solo con i livelli)";
+        else q = qrange(lo, hi, "mg") + " ogni 24 h";
+        return RN("rid", "Scheda: ClCr 20–49 → 15–20 mg/kg ogni 24 h, dopo un carico di 25–30 mg/kg (" + qrange(25 * s.peso, 30 * s.peso, "mg") + (30 * s.peso > 2000 ? ", ma la scheda non supera 2 g per singola dose" : "") + ") che non si riduce; oltre 2 g/die solo con i livelli (fonte).", q);
+      }
+      return RN("no", "Scheda: ClCr sotto 20 → un carico di 25–30 mg/kg che non si riduce, poi dosi successive sui livelli di valle: nessuna dose fissa.");
+    },
+    teico: function (c, z) {
+      var t = "Scheda: nessun aggiustamento fino al 4° giorno, il carico resta pieno; dal 4° ClCr 30–80 metà del mantenimento (dose piena a giorni alterni, o metà ogni giorno), sotto 30 e in emodialisi un terzo; non rimossa dalla dialisi.";
+      if (!c.dial && c.clcr > 80) return RN("ok", t);
+      var fr = (c.dial || c.clcr < 30) ? 1 / 3 : 1 / 2;
+      return RN("rid", t, (z.carico ? "carico " + qta(z.carico, "mg") + " ogni 12 h per 3 giorni, che non si riduce; " : "") + "dal 4° giorno " + (z.lo !== null ? qrange(z.lo * fr, z.hi * fr, "mg") + "/die (" : "") + (fr === 0.5 ? "metà" : "un terzo") + " del mantenimento" + (z.lo !== null ? ")" : ""));
+    },
+    flucl: function (c, z) {
+      var t = "Cloxacillina (scheda francese): ClCr oltre 30 nessun aggiustamento, sotto 30 metà della dose giornaliera. Flucloxacillina: fra 10 e la norma la scheda tace, sotto 10 non oltre 2 g/24 h in un'unica somministrazione. Oxacillina, quella in commercio: sotto 10 la dose si aggiusta sui livelli, senza schema.";
+      if (c.dial) return RN("no", t + " Emodialisi: cloxacillina e oxacillina tacciono, la flucloxacillina non chiede supplementi.");
+      if (c.clcr > 30) return RN("ok", t);
+      if (c.clcr >= 10) return RN("rid", t + " A 30 esatti la scheda della cloxacillina non dice: lo strumento dimezza.", (z.hi !== null ? qrange(z.lo / 2, z.hi / 2, "g") + "/die" : "metà della dose") + " (cloxacillina)");
+      return RN("no", t + " Sotto 10 le tre schede danno tre regole diverse.");
+    },
+    cefaz: function (c, z) {
+      var t = "Scheda: ClCr ≥55 dosi piene ogni 6–8 h · 35–54 dosi piene ogni ≥8 h · 11–34 metà della dose ogni 12 h · ≤10 metà ogni 18–24 h; un carico pieno nelle infezioni gravi.";
+      if (c.dial) return RN("no", t + " Emodialisi: la scheda tace.");
+      if (c.clcr >= 35) return RN("ok", t + (c.clcr < 55 ? " Qui dosi piene ogni 8 h: lo schema della fonte ci sta." : ""));
+      var pd = z.hi !== null ? qta(z.hi / 3 / 2, "g") : "metà della dose";
+      if (c.clcr >= 11) return RN("rid", t, pd + " ogni 12 h, dopo un carico pieno");
+      return RN("rid", t, pd + " ogni 18–24 h, dopo un carico pieno");
+    },
+    rif: function (c, z) {
+      if (c.dial) return RN("no", "Scheda: nessun aggiustamento «ad un dosaggio di 600 mg/die»; sulla dialisi tace.");
+      if (z.hi !== null && z.hi <= 600) return RN("ok", "Scheda: nessun aggiustamento a 600 mg/die.");
+      if (c.clcr >= SOGLIE.ir) return RN("ok", "Scheda: nessun aggiustamento a 600 mg/die; sopra tace sull'insufficienza renale — qui la funzione è conservata (ClCr ≥60).");
+      if (z.lo !== null && z.lo <= 600) return RN("rid", "Scheda: nessun aggiustamento fino a 600 mg/die; sopra tace sull'insufficienza renale" + IR + ".", qrange(z.lo, 600, "mg") + "/die; oltre, decide lo specialista");
+      return RN("no", "Scheda: nessun aggiustamento «ad un dosaggio di 600 mg/die»; alla dose della fonte tace sull'insufficienza renale" + IR + ".");
+    },
+    dapto: function (c) {
+      var t = "Scheda: ClCr ≥30 ogni 24 h; sotto 30, in emodialisi e in CAPD ogni 48 h — schema scritto solo per 4 e 6 mg/kg, «non valutato in sperimentazioni cliniche controllate»";
+      if (c.dial || c.clcr < 30) return RN("no", t + ": per i 10–12 mg/kg della fonte nessuno schema.");
+      if (c.clcr < 80) return RN("caut", t + ". Sotto 80 la scheda la vuole solo se il beneficio supera il rischio, con la CPK ogni 2–3 giorni.");
+      return RN("ok", t + ".");
+    },
+    ceftar: function (c) {
+      var t = "Scheda (Cockcroft-Gault): oltre 50 → 600 mg · 31–50 → 400 mg · 15–30 → 300 mg · ESRD ed emodialisi → 200 mg, allo stesso intervallo (ogni 8 h nella dose elevata), dopo la seduta.";
+      if (c.dial) return RN("rid", t, "200 mg ogni 8 h, dopo la seduta nei giorni di dialisi");
+      if (c.clcr > 50) return RN("ok", t);
+      if (c.clcr > 30) return RN("rid", t, "400 mg ogni 8 h");
+      if (c.clcr >= 15) return RN("rid", t, "300 mg ogni 8 h");
+      return RN("rid", t, "200 mg ogni 8 h (ESRD)");
+    },
+    fosfo: function (c, z) {
+      var na = z.lo !== null ? " Sodio: " + nf(z.lo / 1000 * SOGLIE.naPerG, 2) + (z.hi !== z.lo ? "–" + nf(z.hi / 1000 * SOGLIE.naPerG, 2) : "") + " g/die (0,32 g per grammo): nello scompenso può dare uno scompenso acuto (nota g, p. 3981)." : "";
+      var t = "Scheda: ClCr 40–80 nessun aggiustamento, cautela alle dosi alte · sotto 40 (Cockcroft-Gault) il 70% della dose a 40, il 60% a 30, il 40% a 20, il 20% a 10 mL/min, in 2–3 dosi; carico +100%, mai oltre 8 g · dialisi intermittente ogni 48 h: 2 g a fine seduta.";
+      if (c.dial) return RN("rid", t + na, "2 g alla fine di ogni seduta");
+      if (c.clcr > 40) return RN("ok", t + na);
+      if (c.clcr < 10) return RN("no", t + " Sotto 10 la tabella della scheda non arriva." + na);
+      var pts = [[10, 20], [20, 40], [30, 60], [40, 70]], pa = null, pb = null, i;
+      for (i = 0; i < pts.length; i++) {
+        if (c.clcr === pts[i][0]) { pa = pb = pts[i][1]; break; }
+        if (i < pts.length - 1 && c.clcr > pts[i][0] && c.clcr < pts[i + 1][0]) { pa = pts[i][1]; pb = pts[i + 1][1]; break; }
+      }
+      var q = (pa === pb ? "il " + pa + "%" : "fra il " + pa + "% e il " + pb + "%") + " della dose" + (z.lo !== null ? ": " + qrange(z.lo * pa / 100, z.hi * pb / 100, "g") + "/die" : "");
+      return RN("rid", t + na, q);
+    },
+    ertap: function (c) {
+      if (c.dial || c.clcr <= 30) return RN("no", "Scheda: con ClCr ≤30 e in emodialisi i dati «non permettono di stabilire una dose raccomandata», e l'ertapenem «non deve … essere utilizzato».");
+      return RN("ok", "Scheda: ClCr oltre 30, nessun aggiustamento.");
+    },
+    ampsul: function (c) {
+      var t = "Scheda, intervallo per ClCr: oltre 30 ogni 6–8 h · 15–29 ogni 12 h · 5–14 ogni 24 h · sotto 5 ogni 48 h · emodialisi: subito dopo la seduta, poi ogni 48 h; sulbactam mai oltre 4 g/die.";
+      if (c.dial) return RN("rid", t, "subito dopo la seduta, poi ogni 48 h");
+      if (c.clcr > 30) return RN("ok", t);
+      if (c.clcr >= 15) return RN("rid", t, "ogni 12 h");
+      if (c.clcr >= 5) return RN("rid", t, "ogni 24 h");
+      return RN("rid", t, "ogni 48 h");
+    },
+    amoxclav: function (c) {
+      var t = "Scheda: oltre 30 nessun aggiustamento · 10–30: 1000/200, poi 500/100 due volte al giorno · sotto 10: 1000/200, poi 500/100 ogni 24 h · emodialisi: come sotto 10, più 500/100 a fine seduta.";
+      if (c.dial) return RN("rid", t, "1000/200, poi 500/100 ogni 24 h, più 500/100 a fine seduta");
+      if (c.clcr > 30) return RN("ok", t);
+      if (c.clcr >= 10) return RN("rid", t, "1000/200, poi 500/100 due volte al giorno");
+      return RN("rid", t, "1000/200, poi 500/100 ogni 24 h");
+    },
+    strepto: function (c) {
+      var t = "Scheda (spagnola): ClCr oltre 50 nessun aggiustamento · 10–50 la dose normale ogni 1–2 giorni · sotto 10 ogni 3–4 giorni; picco (60 min) mai oltre 20–35, valle mai oltre 10 µg/ml.";
+      if (c.dial) return RN("no", t + " In dialisi nessuna dose indicata.");
+      if (c.clcr > 50) return RN("ok", t);
+      if (c.clcr >= 10) return RN("rid", t, "la dose ogni 1–2 giorni");
+      return RN("rid", t, "la dose ogni 3–4 giorni");
+    },
+    linez: function (c) {
+      if (c.dial) return RN("ok", "Scheda: nessuna modifica di dose; in emodialisi la dose dopo la seduta. In dialisi peritoneale «non esistono dati».");
+      if (c.clcr < 30) return RN("caut", "Scheda: nessuna modifica di dose anche sotto 30, ma i metaboliti salgono fino a 10 volte: «particolare cautela», solo se il beneficio supera il rischio.");
+      return RN("ok", "Scheda: nessuna modifica di dose.");
+    },
+    qd: function () { return RN("ok", "Etichetta FDA: nessun aggiustamento, anche in dialisi peritoneale."); },
+    cipro: function (c) {
+      var t = "Scheda (ClCr in mL/min/1,73 m²): oltre 60 dose abituale · 30–60 e.v. 200–400 mg ogni 12 h, per bocca 250–500 mg ogni 12 h · sotto 30 le stesse ogni 24 h · emodialisi ogni 24 h, dopo la seduta.";
+      if (c.dial) return RN("rid", t, "e.v. 200–400 mg o per bocca 250–500 mg ogni 24 h, dopo la seduta");
+      if (c.clcr > 60) return RN("ok", t);
+      if (c.clcr >= 30) return RN("rid", t, "e.v. 200–400 mg ogni 12 h; per bocca 250–500 mg ogni 12 h");
+      return RN("rid", t, "e.v. 200–400 mg ogni 24 h; per bocca 250–500 mg ogni 24 h");
+    },
+    doxy: function (c) {
+      var t = "Scheda: cautela senza soglia — l'escrezione «non è modificata», ma la dose si riduce «eventualmente» secondo la funzione renale, con livelli mai oltre 15 µg/ml; l'emodialisi non cambia l'emivita.";
+      if (!c.dial && c.clcr >= SOGLIE.ir) return RN("ok", t);
+      return RN("caut", t + CAUT);
+    },
+    cotri: function (c, z) {
+      var t = "Scheda: ClCr oltre 30 dose standard · 15–30 metà · sotto 15 controindicato · emodialisi: carico normale, poi metà dopo ogni seduta; dialisi peritoneale: non raccomandato.";
+      if (c.dial) return RN("no", t + " In emodialisi nessuna dose: la regola della scheda parte da un carico che la fonte non dà (decisione del medico, 23/10/2026).");
+      if (c.clcr > 30) return RN("ok", t);
+      if (c.clcr >= 15) return RN("rid", t, z.hi !== null ? qrange(z.lo / 2, z.hi / 2, "mg") + "/die (metà della dose della fonte, decisione del medico del 23/10/2026)" : "metà della dose della fonte");
+      return RN("no", t + " Qui è controindicato.");
+    },
+    hcq: function (c) {
+      var t = "Scheda: cautela senza soglia — nella funzione «gravemente compromessa» livelli plasmatici e dose adeguata, senza un bersaglio; esposizione fino a +46% nell'insufficienza moderata-grave; controlli oculistici più frequenti.";
+      if (!c.dial && c.clcr >= SOGLIE.ir) return RN("ok", t);
+      return RN("caut", t + CAUT);
+    },
+    levo: function (c) {
+      var t = "Scheda, per 500 mg ogni 12 h: con ClCr ≤50 la prima dose resta 500 mg, poi 50–20 → 250 mg ogni 12 h · 19–10 → 125 mg ogni 12 h · sotto 10, emodialisi e CAPD → 125 mg ogni 24 h; niente dosi dopo la dialisi.";
+      if (c.dial || c.clcr < 10) return RN("rid", t, "500 mg, poi 125 mg ogni 24 h");
+      if (c.clcr > 50) return RN("ok", t);
+      if (c.clcr >= 20) return RN("rid", t, "500 mg, poi 250 mg ogni 12 h");
+      return RN("rid", t, "500 mg, poi 125 mg ogni 12 h");
+    },
+    clari: function (c) {
+      if (c.dial) return RN("no", "Scheda: in dialisi nessuna dose (non rimossa).");
+      if (c.clcr < 30) return RN("no", "Scheda: con ClCr sotto 30 metà della dose e non oltre 14 giorni — le 6 settimane della Tab. 11 con questa funzione la scheda non le prevede.");
+      return RN("ok", "Scheda: nessun aggiustamento sopra 30.");
+    },
+    sulfa: function (c) {
+      var t = "Scheda francese (DFG in mL/min/1,73 m²): DFG 30–89 «la posologie doit être réduite», senza una dose; insufficienza renale severa: controindicata; diuresi alcalina di 2 litri al giorno.";
+      if (c.dial || c.clcr < 30) return RN("no", t + " Qui è controindicata.");
+      if (c.clcr < 90) return RN("no", t + " Qui va ridotta, e la scheda non dice quanto.");
+      return RN("ok", t);
+    },
+    caspo: function () { return RN("ok", "Scheda: nessun aggiustamento, non dializzabile; in CRRT con membrane in poliacrilonitrile l'adsorbimento può ridurne l'effetto — un'altra membrana o un altro antifungino."); },
+    mica: function () { return RN("ok", "Scheda: nessun aggiustamento, anche sotto 30; può dare insufficienza renale: funzione renale da seguire."); },
+    anid: function () { return RN("ok", "Scheda: nessun aggiustamento a qualsiasi grado, dialisi compresa."); },
+    ambi: function (c) {
+      var t = "Scheda: con insufficienza preesistente, a 1–3 mg/kg/die nessun adattamento e funzione renale regolare; oltre 3 mg/kg/die «non ci sono dati»; emodialisi: nessun aggiustamento, ma non durante la seduta.";
+      if (!c.dial && c.clcr >= SOGLIE.ir) return RN("ok", t);
+      return RN("caut", t);
+    },
+    fluci: function (c) {
+      var t = "Scheda (37,5–50 mg/kg per dose): ClCr oltre 40 ogni 6 h · 20–40 ogni 12 h · 10–20 ogni 24 h · sotto 10 sui livelli (25–50 µg/ml); dopo ogni dialisi; senza i livelli non va usata nel rene compromesso.";
+      if (c.dial) return RN("rid", t, "dopo ogni seduta, sui livelli");
+      if (c.clcr > 40) return RN("ok", t);
+      if (c.clcr >= 20) return RN("rid", t, "ogni 12 h");
+      if (c.clcr >= 10) return RN("rid", t, "ogni 24 h");
+      return RN("rid", t, "intervallo sui livelli");
+    },
+    vori: function (c) {
+      var t = "Scheda: per bocca nessun aggiustamento; e.v. con ClCr sotto 50 il veicolo (SBECD) si accumula — si passa alla via orale salvo beneficio superiore; emodialisi: nessun aggiustamento.";
+      if (!c.dial && c.clcr < 50) return RN("caut", t);
+      return RN("ok", t);
+    },
+    flucon: function (c) {
+      var t = "Scheda, dosi ripetute: carico pieno, poi ClCr oltre 50 il 100% · 50 o meno (senza dialisi) il 50% · emodialisi il 100% dopo ogni seduta.";
+      if (c.dial) return RN("rid", t, "il 100% dopo ogni seduta");
+      if (c.clcr > 50) return RN("ok", t);
+      return RN("rid", t, "il 50% della dose");
+    }
+  };
+  RENE.clox = RENE.flucl;
+
+  // Il rene di una riga, per questo paziente: sul peso reale, che decide; e,
+  // con BMI >=30, sul peso aggiustato accanto, per dire se cambierebbe.
+  function reneRiga(e, z, s, cl) {
+    if (z.ped) return { k:"ped", t:"Nel bambino lo strumento non stima il rene: la Cockcroft-Gault è una formula dell'adulto." };
+    if (!cl.dial && cl.clcr === null) return { k:"x", t:"serve la funzione renale: età, sesso, peso e creatinina, o la dialisi" };
+    var c = { clcr:cl.clcr, dial:cl.dial }, r = RENE[e.f](c, z, e, s);
+    if (!cl.dial && cl.agg !== null) {
+      var r2 = RENE[e.f]({ clcr:cl.agg, dial:false }, z, e, s);
+      if (r2.k !== r.k || r2.q !== r.q) r.confine = r2;
+    }
+    return r;
+  }
+
+  // L'allergia: penicilline fuori con ogni allergia (nota c, p. 3981);
+  // cefalosporine solo nella reazione non immediata (note e, f, p. 3981;
+  // p. 3977); carbapenemi: la fonte non dice, fuori per prudenza.
+  function fuoriPerAllergia(f, all) {
+    var fam = F[f].fam;
+    if (all === "im") return fam === "pen" || fam === "cef" || fam === "carb";
+    if (all === "ni") return fam === "pen" || fam === "carb";
+    return false;
+  }
+  function filtra(r, s) {
+    var x = [], fuori = [], escl = null, i, j, it;
+    for (i = 0; i < r.x.length; i++) {
+      it = r.x[i];
+      if (it.alt) {
+        var tieni = [];
+        for (j = 0; j < it.alt.length; j++) {
+          if (fuoriPerAllergia(it.alt[j].f, s.all)) fuori.push(it.alt[j].f); else tieni.push(it.alt[j]);
+        }
+        if (tieni.length) x.push({ alt:tieni, opz:it.opz });
+        else if (!it.opz) escl = "ogni alternativa è un beta-lattamico che l'allergia esclude";
+      } else {
+        if (it.soloPro && s.val === "nat") continue;
+        if (it.snc && !s.snc) continue;
+        if (fuoriPerAllergia(it.f, s.all)) { fuori.push(it.f); if (!it.opz) escl = "contiene " + min1(F[it.f].n) + ", che l'allergia esclude"; }
+        else x.push(it);
+      }
+    }
+    return { x:x, fuori:fuori, escl:escl };
+  }
+
+  var BISOGNI = {
+    val:["strepto", "pneumo", "betaem", "granuli", "mssa", "mrsa", "ente", "empirica"],
+    all:["strepto", "pneumo", "pneumo_men", "betaem", "granuli", "mssa", "mrsa", "ente", "ente_hlar", "ente_blr", "ente_vre", "ente_mdr", "hacek", "empirica"],
+    sens:["strepto", "pneumo", "betaem"]
+  };
+  function conBetaLattamico(r) {
+    for (var i = 0; i < r.x.length; i++) {
+      var xs = r.x[i].alt || [r.x[i]];
+      for (var j = 0; j < xs.length; j++) { var fm = F[xs[j].f].fam; if (fm === "pen" || fm === "cef" || fm === "carb") return true; }
+    }
+    return false;
+  }
+  function min1(x) { return x.charAt(0).toLowerCase() + x.slice(1); }
+  function ha(a, v) { for (var i = 0; i < a.length; i++) if (a[i] === v) return true; return false; }
+
+  // Quali regimi, per germe, valvola e allergia. stato: ok · attesa (manca un
+  // dato del regime) · escl (non si applica, con la ragione).
+  function selezione(s, cl) {
+    var o = { lista:[], manca:[], g:s.germe }, g = s.germe, ids = [], senzaClasse = false, i;
+    if (!g) { o.manca.push("il germe (passo 1)"); return o; }
+    if (ha(BISOGNI.sens, g) && !s.sens) o.manca.push("la sensibilità alla penicillina (passo 1)");
+    if (g === "ente_blr" && !s.mecc) o.manca.push("il meccanismo della resistenza (passo 1)");
+    if (g === "bcnie" && !s.bcn) o.manca.push("il patogeno della Tab. 11 (passo 1)");
+    if (g === "funghi" && !s.fungo) o.manca.push("il fungo (passo 1)");
+    if (ha(BISOGNI.val, g) && !s.val) o.manca.push("la valvola (passo 2)");
+    if (g === "empirica" && s.val !== "pp" && !s.acq) o.manca.push("dove è nata l'infezione (passo 1)");
+    if (ha(BISOGNI.all, g) && !s.all) o.manca.push("se c'è un'allergia ai beta-lattamici (passo 3)");
+    if (o.manca.length) return o;
+    if (g === "strepto") ids = s.sens === "s" ? ["s_std", "s_breve", "s_all", "s_teico"] : ["r_nat", "r_pro", "r_all_nat", "r_all_pro"];
+    if (g === "pneumo") { ids = s.sens === "s" ? ["s_std", "s_breve", "s_all"] : ["r_nat", "r_pro", "r_all_nat", "r_all_pro"]; senzaClasse = true; }
+    if (g === "pneumo_men") ids = ["pn_men"];
+    if (g === "betaem") { ids = s.sens === "s" ? ["be_s", "s_breve", "be_all"] : ["r_nat", "r_pro", "be_all"]; senzaClasse = true; }
+    if (g === "granuli") ids = ["gr_std"];
+    if (g === "mssa") ids = ["m_nat", "m_pro", "m_all_nat", "m_all_pro", "m_dap_nat", "m_dap_pro"];
+    if (g === "mrsa") ids = ["mr_nat", "mr_pro", "mr_dap"];
+    if (g === "ente") ids = ["e_nat_c", "e_nat_g", "e_pro_c", "e_pro_g"];
+    if (g === "ente_hlar") ids = s.strs === "si" ? ["e_hlar", "e_hlar_s"] : ["e_hlar"];
+    if (g === "ente_blr") ids = s.mecc === "bl" ? ["e_blr_bl"] : (s.mecc === "pbp5" ? ["e_blr"] : ["e_blr", "e_blr_bl"]);
+    if (g === "ente_vre") ids = ["e_vre"];
+    if (g === "ente_mdr") ids = ["e_mdr1", "e_mdr2", "e_mdr3"];
+    if (g === "hacek") ids = ["h_ceftr", "h_amp", "h_cipro"];
+    if (g === "bcnie") ids = { brucella:["bru"], coxiella:["cox"], bartonella:["bart", "bart_alt"], legionella:["leg1", "leg2"], mycoplasma:["myc"], whipple:["whi", "whi_c", "whi_p"] }[s.bcn];
+    if (g === "funghi") ids = s.fungo === "candida" ? ["fu_can"] : ["fu_asp"];
+    if (g === "empirica") ids = (s.val === "pp" || s.acq === "noso") ? ["em_pp"] : ["em_c", "em_f", "em_all"];
+    var vk = s.val === "nat" ? "nat" : (s.val ? "pro" : ""), allergico = s.all === "ni" || s.all === "im";
+    for (i = 0; i < ids.length; i++) {
+      var id = ids[i], r = R[id], v = { id:id, r:r, stato:"ok", perche:"", cl:r.cl, lv:r.lv, notaCl:"", x:r.x, fuori:[] };
+      if (r.per === "no" && allergico) continue;
+      if (r.per === "all" && !allergico) continue;
+      if (r.val !== "*" && r.val !== vk) {
+        if (id === "s_breve" && vk === "pro") { v.stato = "escl"; v.perche = "non nella protesi (Rec. Table 7)"; o.lista.push(v); }
+        continue;
+      }
+      if (senzaClasse && r.cl) { v.cl = null; v.notaCl = (g === "pneumo" ? "Pneumococco" : "Beta-emolitici e gruppo anginosus") + ": lo schema della Rec. Table 7 secondo il testo (p. 3979), senza una classe propria."; }
+      if (id === "s_breve") {
+        if (g === "pneumo") { v.stato = "escl"; v.perche = "nel pneumococco il regime di 2 settimane è poco studiato (p. 3979)"; }
+        else if (g === "betaem") { v.stato = "escl"; v.perche = "nei beta-emolitici e nel gruppo anginosus il regime di 2 settimane non è raccomandato (p. 3979)"; }
+        else if (!s.compl) { v.stato = "attesa"; v.perche = "serve sapere se l'endocardite è complicata (passo 1)"; }
+        else if (s.compl === "si") { v.stato = "escl"; v.perche = "solo nella nativa non complicata (Rec. Table 7)"; }
+        else if (!cl.ped && cl.dial) { v.stato = "escl"; v.perche = "in dialisi il rene non è normale, e il regime lo chiede"; }
+        else if (!cl.ped && cl.clcr === null) { v.stato = "attesa"; v.perche = "serve la funzione renale: il regime chiede il rene normale"; }
+        else if (!cl.ped && cl.clcr <= SOGLIE.gentaNorm) { v.stato = "escl"; v.perche = "il regime chiede il rene normale, e con ClCr ≤72 la gentamicina in dose unica non ha uno schema renale nella scheda (soglia confermata dal medico il 23/10/2026)"; }
+      }
+      if (id === "h_amp" && s.hbl === "si") { v.stato = "escl"; v.perche = "il ceppo produce beta-lattamasi: l'ampicillina non è più la prima scelta (p. 3983)"; }
+      else if (id === "h_amp" && !s.hbl) { v.stato = "attesa"; v.perche = "serve sapere se il ceppo produce beta-lattamasi (passo 1)"; }
+      else if (id === "h_amp" && s.hbl === "nd") { v.stato = "escl"; v.perche = "l'ampicillina si applica solo a un ceppo che non produce beta-lattamasi (p. 3983), e qui non è noto"; }
+      // Senza la risposta sull'allergia nessun regime con un beta-lattamico
+      // (vale per le emocolture negative, dove il passo 3 non è obbligatorio).
+      if (v.stato === "ok" && !s.all && conBetaLattamico(r)) { v.stato = "attesa"; v.perche = "contiene un beta-lattamico: serve sapere se c'è un'allergia ai beta-lattamici (passo 3)"; }
+      if (v.stato === "ok" && allergico) {
+        var fl = filtra(r, s);
+        if (fl.escl) { v.stato = "escl"; v.perche = fl.escl; }
+        v.x = fl.x; v.fuori = fl.fuori;
+      } else if (v.stato === "ok") v.x = filtra(r, s).x;
+      o.lista.push(v);
+    }
+    return o;
+  }
+
+  /* ═══ STATO E DISEGNO ═════════════════════════════════════════════════ */
+  function el(id) { return document.getElementById(id); }
+  function ckv(id) { var x = el(id); return !!(x && x.checked); }
+  function num(id) { var v = el(id).value; if (v === "") return null; var n = parseFloat(String(v).replace(",", ".")); return isNaN(n) ? null : n; }
+  function radio(n) { var x = document.querySelector('input[name="' + n + '"]:checked'); return x ? x.value : ""; }
+  function pgs(p) { return ' <span class="pg">' + p + "</span>"; }
+  function corPill(c, l) { var k = { "I":"c1", "IIa":"c2a", "IIb":"c2b", "III":"c3" }[c]; return '<span class="cor ' + k + '">' + c + "</span>" + (l ? ' <span class="cor ' + k + '" style="opacity:.85">' + l + "</span>" : ""); }
+  function nota(g, t) { return '<div class="nota ' + (g || "") + '">' + t + "</div>"; }
+  function chip(k, t) { return '<span class="cat ' + k + '">' + t + "</span>"; }
+  function passo(ico, t) { return '<div class="passo"><span class="ico">' + ico + '</span><span class="tx">' + t + "</span></div>"; }
+  function dv() { return ' <span class="dv">DA VERIFICARE</span>'; }
+
+  function S() {
+    return { germe:el("germe").value, sens:radio("sens"), compl:radio("compl"), mecc:radio("mecc"), strs:radio("strs"), hbl:radio("hbl"),
+             bcn:el("bcn").value, snc:ckv("snc"), fungo:radio("fungo"), acq:radio("acq"), val:radio("val"), all:radio("all"),
+             eta:num("eta"), mesi:num("mesi"), pma:radio("pma"), sesso:radio("sesso"), peso:num("peso"), alt:num("alt"), creat:num("creat"), ucr:radio("ucr") || "mg", dialisi:ckv("dialisi") };
+  }
+
+  var GERME = { strepto:"streptococchi orali", pneumo:"pneumococco", pneumo_men:"pneumococco, meningite", betaem:"beta-emolitici", granuli:"Granulicatella, Abiotrophia",
+    mssa:"stafilococco MS", mrsa:"stafilococco MR", ente:"enterococco", ente_hlar:"enterococco HLAR", ente_blr:"E. faecium BL-R", ente_vre:"enterococco VR",
+    ente_mdr:"enterococco MDR", hacek:"HACEK", nonhacek:"non HACEK", bcnie:"emocolture negative", funghi:"funghi", empirica:"empirica" };
+
+  function migl(x) { return String(x).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  function kgTesto(sp, u) {
+    var a = u === "U" ? migl(sp.lo) : nf(sp.lo, 1), b = u === "U" ? migl(sp.hi) : nf(sp.hi, 1);
+    return (sp.lo === sp.hi ? a : a + "–" + b) + (u === "U" ? " U/kg" : " mg/kg");
+  }
+  // Il testo della dose come la fonte la scrive (adulto o bambino)
+  function fonteTesto(sp, f) {
+    if (!sp) return NDB;
+    var u = F[f].u, v = sp.v ? " " + sp.v : "";
+    if (sp.t === "nd") return sp.why;
+    if (sp.t === "txt") return sp.tx;
+    if (sp.t === "teico") return "carico 6 mg/kg ogni 12 h per 3 giorni, poi 6–10 mg/kg/die";
+    if (sp.t === "ertped") return "1 g/die e.v. o i.m. in 1 dose; sotto i 12 anni 15 mg/kg per dose (al massimo 500 mg) due volte al giorno";
+    if (sp.t === "kg") return kgTesto(sp, u) + "/die" + v + (sp.d ? " " + sp.d : "");
+    if (/^\d/.test(sp.d)) return sp.d + v;
+    if (/^ogni/.test(sp.d)) return qrange(sp.lo, sp.hi, u) + " " + sp.d + v;
+    return qrange(sp.lo, sp.hi, u) + "/die" + v + (sp.d ? " " + sp.d : "");
+  }
+  // La dose singola, quando la fonte dà il numero di dosi
+  function perDose(lo, hi, n, u) {
+    if (!n || lo === null) return "";
+    var out = [], i;
+    if (lo !== hi && n.length > 1) return "";
+    for (i = 0; i < n.length; i++) {
+      var h = 24 / n[i], ogni = n[i] === 1 ? "una volta al giorno" : (h === Math.round(h) ? "ogni " + h + " h" : n[i] + " volte al giorno");
+      out.push((lo === hi ? qta(lo / n[i], u) : qrange(lo / n[i], hi / n[i], u)) + " " + ogni);
+    }
+    return out.join(" o ");
+  }
+  // Che cosa si dà, qui: la dose calcolata (adulto o bambino)
+  function quiTesto(e, z, s) {
+    var u = F[e.f].u, sp = z.sp, t;
+    if (sp.t === "teico") return "carico <b>" + qta(z.carico, "mg") + " ogni 12 h</b> per 3 giorni (6 mg/kg × " + nf(s.peso) + " kg), poi <b>" + qrange(z.lo, z.hi, "mg") + "/die</b> (6–10 mg/kg)";
+    if (sp.t === "ertped") return z.ert === "grande" ? "<b>1 g/die</b> in 1 dose (dai 12 anni)" : "<b>" + qta(z.perDose, "mg") + " due volte al giorno</b> (15 mg/kg × " + nf(s.peso) + " kg" + (z.doseRaw > 500 ? " = " + qta(z.doseRaw, "mg") + ": tetto 500 mg per dose, fonte" : "") + ")";
+    if (z.liv) {
+      t = "<b>" + qrange(Math.min(z.lo, SOGLIE.vancoLiv), SOGLIE.vancoLiv, "mg") + "/die senza i livelli</b> — " + (sp.lo === sp.hi ? nf(sp.lo) : nf(sp.lo) + "–" + nf(sp.hi)) + " mg/kg × " + nf(s.peso) + " kg = " + qrange(z.lo, z.hi, "mg") + "/die: oltre 2 g/die solo dosando i livelli (picco 30–45 µg/mL a 1 h dalla fine dell'infusione)";
+      return t;
+    }
+    if (sp.t === "fix" && /^\d/.test(sp.d || "")) return "<b>" + sp.d + "</b>" + (sp.v ? " " + sp.v : "") + " (" + qrange(z.lo, z.hi, u) + "/die)";
+    t = "<b>" + qrange(z.lo, z.hi, u) + "/die</b>";
+    if (z.perKg) t += " (" + kgTesto(sp, u) + " × " + nf(s.peso) + " kg" + (z.capped ? " = " + qrange(z.loRaw, z.hiRaw, u) + ": " + z.capT + " " + qta(z.cap, u) + "/die" : "") + ")";
+    if (sp.fissa) t += " — dose fissa, non per peso, come la scrive la fonte";
+    if (sp.pre) t += ", " + sp.pre;
+    var pd = /^\d/.test(sp.d || "") ? "" : perDose(z.lo, z.hi, sp.n, u);
+    if (pd) t += " = " + pd;
+    if (z.oltre) t += "; " + z.oltre;
+    if (sp.eta) t += " — «aggiustata per l'età»: la fonte non dice come" + dv();
+    if (z.endo) t += " — <b>dose della scheda tecnica per l'endocardite</b> " + z.endo + "; vale questa: la ESC dà " + kgTesto(e.b, u) + "/die (decisione del medico, 24/10/2026)" + pgs(PED[e.f].st);
+    if (z.oltreSt) {
+      var qq = "(" + qta(z.oltreMx, u) + "/die a " + nf(s.peso) + " kg)", tt = z.oltreSt.t;
+      tt = tt.indexOf("{q}") >= 0 ? tt.replace("{q}", qq) : tt + " " + qq;
+      t += "; <b>oltre la scheda tecnica per l'età</b>" + (z.lo > z.oltreMx + 1e-6 ? "" : " sopra " + qta(z.oltreMx, u) + "/die") + ": " + tt + ". La dose resta quella della fonte (decisione del medico, 24/10/2026)" + pgs(PED[e.f].st);
+    }
+    return t;
+  }
+  // Nel bambino, accanto alla dose, ciò che la scheda scrive per dose e per
+  // via. La dose della scheda per l'età, più bassa della fonte, sta nella riga
+  // «Qui» (D17, 24/10/2026); il nato pretermine sotto le 41 settimane di età
+  // post-mestruale lo chiede il passo 4, fra 1 e 5 mesi (D22, 24/10/2026).
+  function pedNote(e, z, s) {
+    var ei = z.eta, h = "", pOk = inScala(s.peso, "peso");
+    if (!z.ped || !ei || ei.k !== "ok") return "";
+    if (e.f === "amox" && z.k === "ok" && z.endo && ei.mesi >= 3 && pOk) h += nota("info", "<b>Per dose</b>, dalla scheda: al massimo 50 mg/kg in infusione (" + qta(50 * s.peso, "g") + ") o 25 in bolo (" + qta(25 * s.peso, "g") + "): un tetto (decisione del medico, 23/10/2026). 200 mg/kg/die si danno solo in 4 infusioni da 50 mg/kg, ogni 6 h, e in bolo non ci stanno; in 3 dosi supererebbe i 50 mg/kg per infusione della scheda" + pgs(PED.amox.st) + ".");
+    var ox = PED[e.f] && PED[e.f].oxa;
+    if (ox && z.k === "ok" && ei.mesi >= ox.m && pOk) h += nota("info", "<b>Con l'oxacillina</b>, quella in commercio: dal 1° anno la scheda ha una dose propria per l'endocardite, 200 mg/kg/die ogni 4–6 h, al massimo 12 g/die — qui <b>" + qta(Math.min(ox.kg * s.peso, ox.cap), "g") + "/die</b> (200 mg/kg × " + nf(s.peso) + " kg" + (ox.kg * s.peso > ox.cap ? " = " + qta(ox.kg * s.peso, "g") + ": al massimo 12 g/die" : "") + "); per l'oxacillina vale questa: la ESC dà " + kgTesto(e.b, "g") + "/die (decisione del medico, 24/10/2026)" + pgs(ox.st) + ".");
+    if (e.f === "ceftr" && z.k === "ok" && ei.mesi < SOGLIE.pmaMesi && s.pma === "no") h += nota("info", "Al passo 4: non è un nato pretermine ancora sotto le 41 settimane di età post-mestruale, dove la scheda lo controindica" + pgs(PED.ceftr.st) + ".");
+    if (PED[e.f] && PED[e.f].via && z.k === "ok") h += nota("info", "<b>" + PED[e.f].via + "</b>" + pgs(PED[e.f].st));
+    return h;
+  }
+  var KREN = { ok:["k0", "rene: nessun aggiustamento"], rid:["k3", "rene: dose della scheda"], caut:["k2", "rene: cautela"], no:["k4", "nessuna dose"], x:["kx", "rene —"], ped:["kx", "rene non stimato"] };
+
+  function farmaco(v, e, s, cl, ctx) {
+    var f = F[e.f], z = dose(e, s), h = "", r = null;
+    h += '<div class="farm" id="f_' + v.id + "_" + e.f + '"><div class="fh"><span class="fn">' + f.n + "</span>";
+    if (e.opz) h += chip("kx", "facoltativo");
+    if (z.k === "ok") { r = reneRiga(e, z, s, cl); h += chip(KREN[r.k][0], KREN[r.k][1]); if (r.confine) h += chip("k3", "al confine"); }
+    h += "</div>";
+    var sp = z.ped ? e.b : e.a, pg = z.ped ? (e.pb || e.pa) : e.pa;
+    h += '<div class="fd"><span class="et">Fonte' + (z.ped ? " · bambino" : "") + "</span>" + (z.k === "manca" ? fonteTesto(e.a, e.f) + (e.b ? "; bambino: " + fonteTesto(e.b, e.f) : "") : fonteTesto(sp, e.f)) + (e.dur ? ", " + e.dur : "") + pgs(pg) + (e.dv ? dv() : "") + "</div>";
+    if (z.k === "manca") h += '<div class="fd"><span class="et">Qui</span>— <span class="muted">' + z.t + "</span></div>";
+    else if (z.k === "nd") h += '<div class="fd"><span class="et">Qui</span><b>Nessuna dose</b>: ' + z.t + (e.dv ? dv() : "") + ".</div>";
+    else if (z.k === "txt") h += "";
+    else if (r.k === "x") h += '<div class="fd"><span class="et">Qui</span>— <span class="muted">' + r.t + "</span></div>";
+    else if (r.k === "no") h += '<div class="fd"><span class="et">Qui</span><b>Nessuna dose: decide lo specialista</b>, con le parole della scheda qui sotto' + (z.lo !== null ? " (a rene normale la fonte darebbe " + qrange(z.lo, z.hi, f.u) + "/die" + (z.liv ? ", oltre 2 g/die solo con i livelli" : "") + ")" : "") + ".</div>";
+    else if (r.k === "rid" && r.q) h += '<div class="fd"><span class="et">Qui</span><b>' + r.q + "</b> — con questa clearance, dalla scheda.</div>";
+    else h += '<div class="fd"><span class="et">Qui</span>' + quiTesto(e, z, s) + ".</div>";
+    h += pedNote(e, z, s);
+    if (z.ped && z.k === "ok") h += '<div class="fd"><span class="et">Rene</span>' + r.t + " Il rene del bambino non è trattato qui (→ Distillati-cardio-pediatria)" + dv() + "." + (PED[e.f] && PED[e.f].rene ? " La scheda: " + PED[e.f].rene + " — con il rene non normale, nessuna dose: decide lo specialista." : "") + "</div>";
+    else if (r && r.k !== "x") {
+      h += '<div class="fd"><span class="et">Rene</span>' + r.t + "</div>";
+      if (r.confine) h += nota("", "<b>Al confine.</b> Sul peso aggiustato (" + nf(cl.pesoAgg, 0) + " kg, ClCr " + nf(cl.agg) + ") la scheda direbbe " + (r.confine.k === "no" ? "<b>nessuna dose</b>" : (r.confine.q ? "<b>" + r.confine.q + "</b>" : "<b>nessun aggiustamento</b>")) + ": decide il peso reale, la scelta è clinica.");
+    } else if (z.k === "nd" || z.k === "txt" || z.k === "manca") {
+      var rr = (!cl.ped && (cl.dial || cl.clcr !== null)) ? RENE[e.f]({ clcr:cl.clcr, dial:cl.dial }, { lo:null, hi:null }, e, s) : null;
+      if (rr) h += '<div class="fd"><span class="et">Rene</span>' + rr.t + (rr.q ? " Qui: <b>" + rr.q + "</b>." : "") + "</div>";
+    }
+    if (e.f === "genta" && z.k === "ok" && !z.ped && cl.pesoAgg && e.a.t === "kg") h += nota("info", "Nell'obeso la scheda tecnica di gentamicina (§ 4.2) calcola la dose iniziale sul peso ideale + 40% dell'eccesso: sarebbe " + qta(Math.min(3 * cl.pesoAgg, 240), "mg") + "/die; lo strumento segue il peso reale (decisione del medico, 03/10/2026).");
+    if (e.f === "penG" && z.k === "ok" && z.ped) h += '<div class="fs">Potassio: 1,7 mmol per milione di U (scheda).</div>';
+    if (z.ped && PED[e.f]) h += '<div class="fs"><b>Scheda tecnica, bambino</b>: ' + PED[e.f].sc + ' <span class="pg">' + PED[e.f].st + "</span></div>";
+    h += '<div class="fs"><b>Scheda tecnica</b>: ' + f.sc + " <b>In Italia</b>: " + f.it + ' <span class="pg">' + f.st + "</span></div>";
+    h += "</div>";
+    ctx.f[e.f] = true;
+    if (z.ped) ctx.ped = true;
+    return h;
+  }
+
+  function regime(v, s, cl, ctx) {
+    var r = v.r, h = '<div class="reg' + (v.stato === "ok" ? "" : " escl") + '" id="reg_' + v.id + '"><div class="rt"><span class="rn">' + r.tit + "</span>";
+    h += v.cl ? corPill(v.cl, v.lv) : '<span class="cor cx">testo, senza classe</span>';
+    if (v.stato === "escl") h += chip("k4", "non si applica");
+    if (v.stato === "attesa") h += chip("kx", "da completare");
+    h += '</div><div class="rd">Durata: ' + r.dur + pgs(r.pg) + "</div>";
+    if (v.stato !== "ok") return h + '<div class="muted" style="font-size:13px">' + (v.stato === "escl" ? "Non si applica: " : "— ") + v.perche + ".</div></div>";
+    if (v.notaCl) h += nota("info", v.notaCl);
+    if (r.nota) h += nota("info", r.nota);
+    if (v.fuori.length) {
+      var nn = [], fam = {}, pp = [], i;
+      for (i = 0; i < v.fuori.length; i++) { nn.push(min1(F[v.fuori[i]].n)); fam[F[v.fuori[i]].fam] = true; }
+      if (fam.pen) pp.push("le penicilline no con l'allergia alla penicillina (nota c, p. 3981)");
+      if (fam.cef) pp.push("le cefalosporine solo nella reazione non immediata (note e, f, p. 3981; p. 3977)");
+      if (fam.carb) pp.push("per un carbapenemico la fonte non dice, e lo strumento lo toglie per prudenza");
+      h += nota("", "<b>Tolti per l'allergia</b>: " + nn.join(", ") + ". " + pp.join("; ").charAt(0).toUpperCase() + pp.join("; ").slice(1) + ".");
+      var restaCef = false;
+      for (i = 0; i < v.x.length; i++) { var xs = v.x[i].alt || [v.x[i]]; for (var q = 0; q < xs.length; q++) if (F[xs[q].f].fam === "cef") restaCef = true; }
+      if (restaCef && s.all === "ni") h += nota("info", "Resta la cefalosporina: con l'allergia alla penicillina la fonte la ammette nella reazione non immediata (non anafilattica)" + pgs(P.p3977) + ".");
+    }
+    if (v.id === "s_breve" && cl.ped) h += nota("", "Il regime chiede il <b>rene normale</b>: nel bambino lo strumento non lo stima" + dv() + ".");
+    for (var j = 0; j < v.x.length; j++) {
+      var it = v.x[j];
+      if (it.alt) {
+        h += '<div class="alt">' + (it.alt.length > 1 ? "uno di questi" : "") + (it.opz ? (it.alt.length > 1 ? " · " : "") + "facoltativo" : "") + "</div>";
+        for (var k = 0; k < it.alt.length; k++) h += farmaco(v, it.alt[k], s, cl, ctx);
+      } else h += farmaco(v, it, s, cl, ctx);
+    }
+    return h + "</div>";
+  }
+
+  function disegna() {
+    var s = S(), cl = clearance(s), sel = selezione(s, cl), i, h;
+    var chk = document.querySelectorAll(".chk");
+    for (i = 0; i < chk.length; i++) {
+      var inp = chk[i].querySelector("input"), on = !!(inp && inp.checked);
+      if (on && (" " + chk[i].className + " ").indexOf(" on ") < 0) chk[i].className += " on";
+      if (!on) chk[i].className = chk[i].className.replace(/(^|\s)on(\s|$)/g, " ").replace(/\s+$/, "");
+    }
+    var g = s.germe;
+    function vedi(id, si) { el(id).className = el(id).className.replace(/\s*hide\b/g, "") + (si ? "" : " hide"); }
+    vedi("rigaSens", ha(BISOGNI.sens, g));
+    vedi("rigaCompl", g === "strepto" && s.sens === "s" && s.val === "nat");
+    vedi("rigaMecc", g === "ente_blr");
+    vedi("rigaStrepto", g === "ente_hlar");
+    vedi("rigaHacek", g === "hacek");
+    vedi("rigaBcn", g === "bcnie");
+    vedi("rigaSnc", g === "bcnie" && s.bcn === "whipple");
+    vedi("rigaFungo", g === "funghi");
+    vedi("rigaAcq", g === "empirica" && s.val !== "pp");
+    vedi("stageVal", !g || ha(BISOGNI.val, g) || g === "hacek" || g === "ente_hlar" || g === "ente_blr" || g === "ente_vre");
+    vedi("cardVal", !g || ha(BISOGNI.val, g) || g === "hacek" || g === "ente_hlar" || g === "ente_blr" || g === "ente_vre");
+    vedi("stageAll", !g || ha(BISOGNI.all, g) || g === "bcnie");
+    vedi("cardAll", !g || ha(BISOGNI.all, g) || g === "bcnie");
+
+    // accanto ai campi
+    var ei = etaInfo(s);
+    vedi("rigaPma", ei.ped && ei.k === "ok" && ei.mesi >= 1 && ei.mesi < SOGLIE.pmaMesi);
+    el("vEta").innerHTML = ei.k === "manca" ? "—" : (ei.k === "fuori" ? ei.t : (ei.k === "mesi" ? "sotto 1 anno: servono i mesi" : (!ei.ped ? "adulto" : "bambino" + (ei.mesi < 24 ? ", " + ei.mesi + (ei.mesi === 1 ? " mese" : " mesi") : "") + (ei.mesi < 1 ? ": sotto 1 mese nessuna dose" : ": dosi del bambino"))));
+    el("vPeso").innerHTML = s.peso === null ? "—" : (!inScala(s.peso, "peso") ? "fuori scala (2–250)" : "peso reale");
+    el("vAlt").innerHTML = s.alt === null ? "—" : (!inScala(s.alt, "alt") ? "fuori scala (40–220)" : (cl.bmi !== null ? "BMI " + nf(cl.bmi) : ""));
+
+    /* il germe, in breve */
+    var hg = "";
+    if (g === "strepto") hg += passo("·", "Gruppi <i>mitis, sanguinis, salivarius, downei, mutans</i> e il gruppo <i>S. gallolyticus</i> (ex <i>bovis</i>)" + pgs(P.p3977) + ". Il gruppo <i>anginosus</i> la fonte lo nomina qui e fra i beta-emolitici del § 7.4: lo strumento lo tratta con quelli, senza regime breve.");
+    if (g === "pneumo") hg += passo("·", "Meningite e polmonite fino al 30% dei casi: con la meningite si sceglie la sua voce" + pgs(P.p3979) + "." + (s.sens === "r" ? " Nei resistenti alcuni autori propongono cefalosporine ad alte dosi (cefotaxima o ceftriaxone) o la vancomicina, senza un numero" + dv() + "." : ""));
+    if (g === "betaem") hg += passo("·", "Il gruppo A è sempre sensibile ai beta-lattamici, gli altri possono non esserlo; B, C, G e <i>anginosus</i> fanno ascessi da operare, e nella protesi da gruppo B la chirurgia è raccomandata — Tool Chirurgia EI" + pgs(P.p3979) + ".");
+    if (g === "granuli") hg += passo("·", "Decorso lungo, vegetazioni grandi (oltre 10 mm), sostituzione valvolare in circa la metà" + pgs(P.p3979) + ".");
+    if (g === "mssa") hg += passo("·", "Mai l'aminoglicoside nella nativa da stafilococco: nessun beneficio, più tossicità renale" + pgs(P.p3976) + ". <i>S. lugdunensis</i> è di solito sensibile alla meticillina e si tratta con la cloxacillina" + pgs(P.p3979) + "." + (s.val === "nat" ? " Endocardite destra in chi si inietta droghe: la fonte ammette 2 settimane di oxacillina o cloxacillina, senza gentamicina e mai con i glicopeptidi, solo a condizioni precise" + pgs(P.p4006) + ": lo strumento non le calcola." : ""));
+    if (g === "mrsa") hg += passo("·", "Altre alternative del testo, senza dose: fosfomicina con imipenem, ceftarolina, quinupristin-dalfopristin con o senza beta-lattamico, beta-lattamico con linezolid o con vancomicina, cotrimossazolo ad alte dosi con clindamicina — da decidere con l'Endocarditis Team e l'infettivologo" + pgs(P.p3980) + "." + (s.val === "pp" || s.val === "pt" ? " Nella protesi il testo aggiunge la daptomicina (10 mg/kg) con gentamicina e rifampicina, senza una riga né le dosi dei partner" + pgs("ESC 2023, pp. 3979–3980") + "." : ""));
+    if (g === "ente" || g === "ente_hlar") hg += passo("·", "Ampicillina o amoxicillina preferite alla penicillina G (MIC da 2 a 4 volte più bassa); con l'alta resistenza agli aminoglicosidi (MIC &gt;128 mg/L) niente aminoglicoside; il doppio beta-lattamico non funziona su <i>E. faecium</i>" + pgs(P.p3982) + "." + (g === "ente" && s.val === "nat" ? " Nativa complicata o sintomi da oltre 3 mesi: la fonte li mette nella riga della protesi (I B" + pgs(P.r9a) + "), con le stesse dosi e durate della nativa: qui le righe della nativa (lettura dello strumento, approvata dal medico il 23/10/2026)." : ""));
+    if (g === "ente_blr" || g === "ente_vre" || g === "ente_mdr") hg += passo("·", "La resistenza ai beta-lattamici o alla vancomicina si vede soprattutto in <i>E. faecium</i>; con teicoplanina e tigeciclina i risultati sono variabili, e la fonte non ne dà le dosi" + pgs(P.p3982) + ".");
+    if (g === "hacek") hg += passo("·", "Alcuni ceppi producono beta-lattamasi: l'ampicillina non è più la prima scelta; sono sensibili al ceftriaxone, alle altre cefalosporine di terza generazione e ai fluorochinoloni" + pgs(P.p3983) + ". Nessuna riga di raccomandazione: le dosi sono quelle del testo.");
+    if (g === "nonhacek") hg += nota("stop", "<b>Gram-negativi non HACEK</b>: chirurgia precoce e una terapia lunga (6 settimane) con combinazioni battericide di beta-lattamici e aminoglicosidi, talvolta con un chinolone o il cotrimossazolo; test di battericidia e livelli sierici possono aiutare; il caso si discute con l'Endocarditis Team" + pgs(P.p3984) + ". La fonte non dà molecole né dosi" + dv() + ": lo strumento non propone un regime.");
+    if (g === "bcnie") hg += passo("·", "Durata ottimale non nota: le durate vengono da casi selezionati; si consulta l'infettivologo (nota a)" + pgs(P.t11) + ". Nessuna riga di raccomandazione, nessuna dose pediatrica.");
+    if (g === "funghi") hg += passo("·", "Mortalità oltre il 50%: antifungini in associazione e soglia bassa per la chirurgia (Tool Chirurgia EI); la fonte non dà nessuna dose" + pgs(P.p3984) + ".");
+    if (g === "empirica") hg += passo("·", "Tre set di emocolture a 30 minuti l'uno dall'altro, prima dell'antibiotico; se era già in terapia, molecole diverse; nativa e protesi tardiva: stafilococchi, streptococchi, enterococchi (i coagulasi-negativi solo nella protesi); protesi precoce e infezioni correlate all'assistenza: anche stafilococchi resistenti alla meticillina, enterococchi e, se possibile, Gram-negativi non HACEK" + pgs(P.p3984) + ". Nella batteriemia da MSSA amoxicillina-clavulanato o ampicillina-sulbactam empirici vanno bene se si passa a cloxacillina o cefazolina entro 96 h" + pgs(P.p3984) + ". Infezione di un dispositivo (CIED): Tool Infezione CIED.");
+    el("outGerme").innerHTML = hg;
+
+    /* l'allergia */
+    var ha2 = "";
+    if (s.all === "ni" || s.all === "im") {
+      if (g === "strepto" || g === "pneumo" || g === "betaem" || g === "granuli") ha2 += passo("·", "Allergia documentata alla penicillina: la fonte raccomanda la <b>desensibilizzazione</b>; se non si può, cefalosporine (reazione non anafilattica) o vancomicina, sapendo che il beta-lattamico è superiore ai glicopeptidi" + pgs(P.p3977) + ".");
+      if (g === "mssa") ha2 += passo("·", "Nell'MSSA: <b>desensibilizzazione</b> nel paziente stabile, oppure la cefazolina, perché la vancomicina è inferiore ai beta-lattamici; senza beta-lattamici, la daptomicina con un secondo antistafilococcico" + pgs(P.p3979) + ".");
+      if (g === "ente" || g === "ente_hlar") ha2 += nota("stop", "<b>La Rec. Table 9 non ha righe per l'allergia</b>: nessuno schema per gli enterococchi sensibili senza beta-lattamico. Il solo schema senza beta-lattamico della tabella è vancomicina con gentamicina, scritto per <i>E. faecium</i> resistente ai beta-lattamici (I C, p. 3983), non per l'allergia: decide l'Endocarditis Team con l'infettivologo.");
+      if (g === "mssa" || g === "mrsa" || g === "empirica") ha2 += passo("·", "Cloxacillina mai con l'allergia alla penicillina (nota c); cefazolina al posto della cloxacillina solo nella reazione non immediata (nota e); ceftarolina, con l'allergia, solo nella reazione non immediata (nota f)" + pgs(P.r8b) + ". La scheda della cefazolina la controindica dopo qualunque allergia ai beta-lattamici, quella del ceftriaxone dopo una reazione grave.");
+    }
+    el("outAll").innerHTML = ha2;
+
+    /* il rene */
+    var hr = "";
+    if (cl.ped) hr = nota("info", "<b>Sotto i 18 anni</b> la Cockcroft-Gault non vale e lo strumento <b>non stima</b> la filtrazione: le dosi del bambino come le scrive la fonte, per peso, con il tetto dell'adulto e quelli scritti nella scheda tecnica, solo dall'età minima della scheda e mai sotto 1 mese (decisione del medico, 23/10/2026); il rene di ogni farmaco resta" + dv() + ", e dove la scheda non ha dati nel bambino con il rene compromesso lo dice accanto al farmaco. Il bambino ha il suo progetto: Distillati-cardio-pediatria.");
+    else if (cl.dial) hr = '<div class="esito">' + chip("k4", "emodialisi") + '<span class="muted">ogni farmaco con la regola della dialisi della sua scheda</span></div>';
+    else if (cl.clcr !== null) {
+      hr += '<div class="esito"><span class="big">Clearance ' + nf(cl.clcr) + " mL/min</span>" + chip(cl.clcr < 30 ? "k4" : (cl.clcr < 60 ? "k3" : "k1"), "Cockcroft-Gault, peso reale " + nf(s.peso) + " kg") + "</div>";
+      hr += '<div class="muted" style="font-size:12.5px;margin-bottom:4px">Creatinina ' + cl.mg.toFixed(2).replace(".", ",") + " mg/dL = " + nf(cl.umol, 0) + " µmol/L (1 mg/dL = 88,4 µmol/L)" + (cl.bmi !== null ? " · BMI " + nf(cl.bmi) : "") + "</div>";
+      if (cl.agg !== null) hr += '<div class="esito">' + chip("kx", "peso aggiustato " + nf(cl.pesoAgg, 0) + " kg: clearance " + nf(cl.agg)) + '<span class="muted">accanto, non decide (ideale di Devine ' + nf(cl.ibw, 0) + " kg + 0,4 × l'eccesso)</span></div>";
+    } else hr = '<div class="esito">' + chip("kx", "—") + '<span class="muted">' + (cl.manca.length ? "per la clearance mancano: " + cl.manca.join(", ") : "") + "</span></div>";
+    el("outRene").innerHTML = hr;
+
+    /* i regimi */
+    var ctx = { f:{}, ped:false, reg:{} }, hrg = "";
+    if (sel.manca.length) hrg = '<div class="card"><div class="esito">' + chip("kx", "—") + '<span class="muted">serve sapere ' + sel.manca.join("; ") + "</span></div></div>";
+    else if (g === "nonhacek") hrg = '<div class="card">' + nota("stop", "Nessun regime con le dosi nella fonte per i Gram-negativi non HACEK: vedi il passo 1.") + "</div>";
+    else {
+      var nok = 0;
+      for (i = 0; i < sel.lista.length; i++) { if (sel.lista[i].stato === "ok") { nok++; ctx.reg[sel.lista[i].id] = true; } hrg += regime(sel.lista[i], s, cl, ctx); }
+      if (!nok) hrg = nota("stop", "<b>Nessun regime della fonte si applica</b> a questa combinazione: decide l'Endocarditis Team con l'infettivologo.") + hrg;
+    }
+    el("outReg").innerHTML = hrg;
+    var confini = document.querySelectorAll("#outReg .farm .cat.k3"), nconf = 0;
+    for (i = 0; i < confini.length; i++) if (confini[i].innerHTML === "al confine") nconf++;
+    if (nconf) el("outRene").innerHTML += nota("", "<b>Al confine.</b> Per " + (nconf === 1 ? "un farmaco" : nconf + " farmaci") + " fra la clearance sul peso reale e quella sul peso aggiustato passa una soglia della scheda: le dosi seguono il peso reale, la scelta è clinica (vedi il farmaco).");
+
+    /* livelli e controlli */
+    var hl = "", fz = ctx.f;
+    if (fz.genta) hl += passo("G", "<b>Gentamicina</b>: al massimo 240 mg/die; le dosi alte sono nefrotossiche; funzione renale e gentamicinemia <b>una volta a settimana</b>; in dose unica valle <b>&lt;1 mg/L</b>, picco (1 h dopo) <b>~10–12 mg/L</b>" + pgs("ESC 2023, nota d, pp. 3978, 3981, 3985; nota c, p. 3983") + ". Scheda: valle &lt;1 µg/ml in dose unica, &lt;2 in due dosi; il picco di 10–12 è il suo limite tossico delle dosi multiple, in dose unica il picco terapeutico è 20–30 µg/ml.");
+    if (fz.vanco) hl += passo("V", "<b>Vancomicina</b>: valle <b>10–15 mg/L</b>; alcuni esperti salgono a 45–60 mg/kg/die in 2–3 dosi per una valle di 15–20, come nell'endocardite stafilococcica; <b>oltre 2 g/die solo con i livelli</b>, per un picco di 30–45 µg/mL a 1 h dalla fine dell'infusione" + pgs("ESC 2023, nota e, p. 3978; nota h, p. 3981; nota e, p. 3985") + "." + (g === "mrsa" ? " Nell'MRSA il testo preferisce un'<b>AUC/MIC di 400–600</b> mg·h/L entro 48 h (con MIC 1 mg/L); con MIC &gt;1 un'AUC/MIC ≥400 è improbabile e si considera di cambiare terapia" + pgs(P.p3979) + "." : "") + " Scheda: livelli dal 2° giorno, valle 10–20 mg/L (15–20 con MIC ≥1), AUC/MIC 400.");
+    if (fz.dapto) hl += passo("D", "<b>Daptomicina</b>: CPK al basale e almeno ogni settimana, ogni 2–3 giorni con ClCr &lt;80 o con le statine; stop con sintomi muscolari e CPK oltre 5 volte il normale (scheda). Sindromi eosinofile fino al 15%" + pgs(P.p3976) + ".");
+    if (fz.ceftar) hl += passo("C", "<b>Ceftarolina</b>: alle dosi alte rischio di leucopenia dopo 2 settimane (nota f)" + pgs(P.r8b) + "; emocromo. Scheda: Coombs diretto positivo nel 32%.");
+    if (fz.ertap) hl += passo("E", "<b>Ertapenem</b>: le dosi alte si associano a convulsioni (nota g)" + pgs(P.r9b) + ". Scheda: con il valproato «non raccomandato».");
+    if (fz.teico) hl += passo("T", "<b>Teicoplanina</b>: la fonte non dà livelli; la scheda vuole la valle dopo il carico e almeno ogni settimana, nell'endocardite 15–30 mg/L (HPLC) o 30–40 (FPIA).");
+    if (fz.strepto) hl += passo("S", "<b>Streptomicina</b> (scheda): picco a 60 minuti mai oltre 20–35, valle mai oltre 10 µg/ml; udito e vestibolo.");
+    if (fz.hcq) hl += passo("H", "<b>Idrossiclorochina</b>: livelli sierici sempre (nota c), senza un bersaglio nella fonte" + pgs(P.t11) + "; esame oculistico all'inizio e almeno ogni anno (scheda).");
+    if (fz.fluci) hl += passo("F", "<b>Flucitosina</b> (scheda): livelli 2 h dopo la dose, sopra 25 e mai a lungo sopra 100 µg/ml.");
+    hl += passo("·", "Antibiotici nefrotossici da evitare se si può; se no, livelli (aminoglicosidi e vancomicina) e creatinina da vicino, e la dose rivista periodicamente con l'Endocarditis Team e il farmacologo" + pgs(P.p3994) + ".");
+    el("outLiv").innerHTML = hl;
+
+    /* dopo */
+    var hp = "";
+    hp += passo("1", "La durata si conta dal <b>primo giorno di terapia efficace</b> (la prima emocoltura negativa, se le prime erano positive), non dal giorno dell'intervento; una nativa sostituita da una protesi durante la terapia prosegue con lo schema della nativa; un ciclo nuovo solo se le colture della valvola sono positive" + pgs(P.p3975) + ".");
+    if (g === "empirica") hp += passo("2", "Identificato il germe — di solito entro 24–48 h — si passa alla terapia mirata" + pgs(P.p3984) + "; emocolture negative senza risposta clinica: le cause a emocolture negative e uno spettro più largo (nota a)" + pgs(P.r10) + ".");
+    if (ha(["strepto", "pneumo", "betaem", "mssa", "mrsa", "ente", "ente_hlar", "granuli", "empirica"], g)) hp += passo("→", "Dopo almeno 10 giorni di terapia e.v. appropriata e, se c'è stata la cardiochirurgia, almeno 7 dall'intervento (la Rec. Table 11 scrive «o», la Fig. 8 «e/o»: letto «e», come nel Tool Via orale EI), con il paziente stabile: terapia ambulatoriale o per bocca nell'endocardite sinistra da streptococchi, <i>E. faecalis</i>, <i>S. aureus</i> o coagulasi-negativi " + corPill("IIa", "A") + "; no con i germi molto difficili da trattare " + corPill("III", "C") + pgs(P.rt11) + " — criteri, controindicazioni e combinazioni nel <b>Tool Via orale EI</b>.");
+    hp += passo("→", "Se e quando operare: <b>Tool Chirurgia EI</b>. Un dispositivo infetto: <b>Tool Infezione CIED</b>.");
+    if (fz.rif) hp += nota("info", "<b>Rifampicina e anticoagulante.</b> La ESC 2023 chiede solo di mettere in conto effetti avversi e interazioni" + pgs(P.p3979) + ". CONFRONTO — Fibrillazione atriale, ESC 2024 (scheda 10, § 5.6): la rifampicina è fra i farmaci da evitare con apixaban, dabigatran, edoxaban e rivaroxaban, e con l'AVK chiede un INR stretto. L'anticoagulante si decide con il Tool OAC FA o, con una protesi meccanica, con il Tool INR.");
+    hp += passo("·", "I regimi vanno adattati alle condizioni locali e alla disponibilità degli antibiotici" + pgs(P.p3977) + ".");
+    el("outPoi").innerHTML = hp;
+
+    /* incoerenze */
+    function inc(tocca, x) { return nota(tocca ? "" : "spenta", (tocca ? "<b>Tocca questo caso.</b> " : "") + x); }
+    var rg = ctx.reg, ped = ctx.ped;
+    el("outInc").innerHTML =
+      inc(!!rg.s_breve, "<b>Regime di 2 settimane.</b> Il testo lo descrive come penicillina o ceftriaxone con gentamicina <i>o netilmicina</i>" + pgs(P.p3977) + "; la riga I B nomina penicillina G, amoxicillina o ceftriaxone con la sola gentamicina" + pgs(P.r7a) + ". Vale la riga.") +
+      inc(!!(fz.genta && (g === "strepto" || g === "betaem")), "<b>Durata dell'aminoglicoside.</b> «Non oltre 2 settimane» fra i principi" + pgs(P.p3976) + ", «almeno 2 settimane» nei ceppi resistenti" + pgs(P.p3977) + ", «2 settimane» nelle righe" + pgs(P.r7b) + ".") +
+      inc(g === "strepto" || g === "betaem", "<b>Gruppo anginosus.</b> Fra gli streptococchi orali del § 7.2" + pgs(P.p3977) + " e fra i beta-emolitici del § 7.4" + pgs(P.p3979) + ": lo strumento lo mette con i secondi, senza regime breve.") +
+      inc(ped && !!fz.genta, "<b>Gentamicina nel bambino.</b> In 1 dose o in 3 (Rec. Table 7, p. 3978), in 1 (preferita) o 2 (Rec. Table 8, p. 3980), in 3 o in 1 (Rec. Table 9, pp. 3982–3983), in 3 (Rec. Table 10, p. 3985): la fonte non spiega la differenza. Lo strumento riporta quella della riga.") +
+      inc(ped && !!fz.vanco, "<b>Vancomicina nel bambino.</b> 30 mg/kg/die nelle Rec. Tables 7–9, 40 nella Rec. Table 10" + pgs(P.r10) + "; in 2 o in 2–3 dosi secondo la riga.") +
+      inc(ped && !!fz.ceftr, "<b>Ceftriaxone nel bambino.</b> «100 mg/kg» senza «/die» in più righe (Rec. Table 7, p. 3978; Rec. Table 9, pp. 3982–3983; Rec. Table 10, p. 3985), in 1 dose nelle Rec. Tables 7 e 10 e in 2 nella 9. Lo strumento lo legge come dose giornaliera, la lettura che dà meno farmaco, con il tetto dell'adulto.") +
+      inc(!!(fz.vanco && (g === "mrsa" || g === "empirica" || g === "strepto")), "<b>Il bersaglio della vancomicina.</b> Valle 10–15 mg/L nelle note (alcuni esperti 15–20)" + pgs(P.r7b) + "; AUC/MIC 400–600 nel testo dell'MRSA" + pgs(P.p3979) + ". E la dose dell'adulto: 30 mg/kg/die in 2 dosi nelle Rec. Tables 7, 9 e 10, 30–60 in 2–3 dosi nella 8" + pgs(P.r8b) + ".") +
+      inc(!!rg.m_dap_pro, "<b>MSSA, protesi, allergia (IIb C).</b> La riga nomina la gentamicina due volte; il testo la legge come due schemi" + pgs(P.p3979) + ".") +
+      inc(!!(rg.em_pp && fz.rif), "<b>Rifampicina nell'empirica.</b> Fra i principi si dà solo nelle infezioni da corpo estraneo, dopo 3–5 giorni di terapia efficace" + pgs(P.p3976) + "; nella Rec. Table 10 entra nell'empirica, e la dose è scritta «900–1200 mg» senza «/die»" + pgs(P.r10) + ". Lo strumento la legge come dose giornaliera.") +
+      inc(g === "empirica" && (s.val === "pp" || s.val === "pt"), "<b>Protesi precoce.</b> Sotto i 12 mesi nella Rec. Table 10" + pgs(P.r10) + ", entro 6 mesi nella Rec. Table 19 sulla chirurgia" + pgs("ESC 2023, p. 4000") + ". Per la terapia empirica vale la Rec. Table 10.") +
+      inc(g === "ente_vre" || g === "ente_mdr", "<b>Daptomicina e ampicillina.</b> Nella nota f ampicillina 200 mg/kg/die e daptomicina 10 mg/kg; nella riga ampicillina 12 g/die e daptomicina 10–12 mg/kg" + pgs(P.r9b) + "." + (ped ? " Nel bambino la fosfomicina è «2–3 g/die in 1 dose», fissa e non per peso (la scheda: 100–400 mg/kg/die in 2–4 dosi), e la daptomicina «aggiustata per l'età» senza dire come." : "")) +
+      inc(g === "ente_blr", "<b>Vancomicina per ogni E. faecium resistente?</b> La riga la dà per ogni resistenza ai beta-lattamici; la nota e la riserva alla resistenza da PBP5, e per quella da beta-lattamasi cambia il beta-lattamico" + pgs(P.r9b) + ".") +
+      inc(!!rg.e_blr_bl, "<b>Il partner nella resistenza da beta-lattamasi.</b> La nota e cambia solo il beta-lattamico degli schemi dei ceppi sensibili" + pgs(P.r9b) + ", dove il partner è il ceftriaxone o la gentamicina; il testo dice che il doppio beta-lattamico non è efficace su <i>E. faecium</i>" + pgs(P.p3982) + ". Lo strumento mostra la sola gentamicina, senza il ceftriaxone (decisione del medico, 23/10/2026); l'incoerenza resta.") +
+      inc(!!(rg.h_amp && fz.genta), "<b>Gentamicina nell'HACEK.</b> Qui divisa in 2 o 3 dosi" + pgs(P.p3983) + "; nelle Rec. Tables 7–10 in dose unica.") +
+      inc(s.bcn === "bartonella" && g === "bcnie", "<b>Bartonella.</b> La gentamicina è scritta «3 mg/24 h», senza «/kg»" + pgs(P.t11) + ": refuso probabile per 3 mg/kg/24 h, ma lo strumento non corregge la fonte e non dà il numero.") +
+      inc(s.bcn === "whipple" && g === "bcnie", "<b>Durata nella Whipple.</b> «Oltre 1 anno» nel testo, «1 anno» nella nota f, «almeno 18 mesi» nella tabella" + pgs(P.t11) + ".") +
+      inc(!!fz.rif && (g === "bcnie" || g === "empirica"), "<b>Rifampicina oltre la protesi.</b> Fra i principi va solo nelle infezioni da corpo estraneo" + pgs(P.p3976) + "; la Tab. 11 la usa nella Brucella e nella Legionella, la Rec. Table 10 nell'empirica.");
+
+    /* limiti */
+    var lim = [];
+    lim.push("La scelta fra i regimi e fra le alternative non la fa lo strumento: si fa con l'Endocarditis Team e l'infettivologo, sull'antibiogramma e sulla disponibilità locale.");
+    lim.push("Clearance di Cockcroft-Gault sul <b>peso reale, che decide</b>; con BMI ≥30 accanto quella sul peso aggiustato (Devine + 0,4 × l'eccesso), e un avviso se fra le due cambia la regola della scheda (decisione del medico, 03/10/2026). Le dosi per peso seguono il peso reale. Alcune schede ragionano in VFG o in mL/min/1,73 m² (amoxicillina, ciprofloxacina, ertapenem, sulfadiazina): lo strumento usa la stessa clearance per tutte.");
+    lim.push("Dove la scheda non ha uno schema per la dose della fonte — o dice «non studiato», «nessun dato» — lo strumento non dà una dose: decide lo specialista, con le parole della scheda (regola del medico, 09/10/2026). Dove la scheda chiede una riduzione «nell'insufficienza renale» senza una soglia, lo strumento la applica sotto 60 mL/min (decisione del medico, 23/10/2026): penicillina G alle dosi della fonte e rifampicina oltre 600 mg/die non hanno una dose; doxiciclina, idrossiclorochina e amfotericina B restano con la cautela scritta.");
+    lim.push("Solo l'emodialisi: la dialisi peritoneale e le terapie continue non sono trattate, e per diversi farmaci le schede non hanno dati.");
+    if (cl.ped || ei.ped) lim.push("<b>Bambino</b>: le dosi come le scrive la fonte, per peso, con il tetto dell'adulto della stessa riga e quelli scritti nella scheda tecnica (per la fosfomicina il massimo per kg della fascia d'età); sotto l'età minima della scheda, o dove la scheda controindica o dice «non stabilito» o «nessun dato», nessuna dose: decide lo specialista (decisione del medico, 23/10/2026). Dove la fonte non dà la dose del bambino, nessuna dose. Dove la scheda scrive per l'età una dose più bassa della fonte senza chiamarla massimo (ampicillina, (flu)cloxacillina, ceftarolina sotto i 2 anni), la dose resta quella della fonte, con accanto «oltre la scheda tecnica per l'età» e la dose della scheda; dove la scheda ha una dose propria per l'endocardite a quell'età vale quella, con la dose della ESC accanto: l'amoxicillina e.v. sotto i 40 kg — da 1 a 3 mesi 150 mg/kg/die in 3 dosi, o 100 in 2 sotto i 4 kg; dai 3 mesi 200 in 4 dosi da 50 mg/kg — e, nella riga della (flu)cloxacillina, l'oxacillina dal 1° anno, 200 mg/kg/die (decisioni del medico, 24/10/2026). Il rene non si stima: Distillati-cardio-pediatria.");
+    if (ei.ped && (ei.k === "mesi" || (ei.k === "ok" && ei.mesi < 12))) lim.push("<b>Sotto 1 anno</b>: sotto 1 mese nessuna dose, il neonato ha schemi propri (decisione del medico, 23/10/2026); cefazolina da 1 mese, ertapenem dai 3 mesi, daptomicina mai sotto 1 anno (schede tecniche, § 4.2–4.4). Il ceftriaxone è controindicato nel nato pretermine fino a 41 settimane di età post-mestruale (scheda tecnica di ceftriaxone, § 4.3): fra 1 e 5 mesi lo strumento lo chiede al passo 4, e senza la risposta non ne dà la dose (decisione del medico, 24/10/2026); dai 6 mesi anche un nato a 22 settimane le ha superate. Per gli altri farmaci il prematuro non è distinto — la riga dell'amoxicillina sotto i 4 kg si sceglie dal peso, e la dose del prematuro della fosfomicina non si applica: la scheda del farmaco prima di ogni dose.");
+    if (cl.clcr !== null && s.alt === null) lim.push("Altezza non indicata: il BMI non si calcola, e accanto alla clearance sul peso reale manca quella sul peso aggiustato.");
+    lim.push("Gravidanza: non trattata. La ESC 2025 sulle cardiopatie in gravidanza (scheda 22, non ancora scritta) chiede di scegliere l'antibiotico anche per la tossicità fetale; diverse schede qui citate lo dicono farmaco per farmaco.");
+    lim.push("Disponibilità in Italia e carenze: Banca dati AIFA al 10/10/2026, come il prontuario; cambiano in fretta.");
+    el("limiti").innerHTML = "<li>" + lim.join("</li><li>") + "</li>";
+
+    /* barra */
+    function bar(id, k, x) { var b = el(id); b.className = "cat " + k; b.innerHTML = x; }
+    bar("barGerme", g ? "k1" : "kx", g ? GERME[g] : "—");
+    var primo = null, n = 0;
+    for (i = 0; i < sel.lista.length; i++) if (sel.lista[i].stato === "ok") { n++; if (!primo) primo = sel.lista[i]; }
+    if (primo) bar("barReg", "k1", (primo.cl ? primo.cl + " " + primo.lv : "testo") + (n > 1 ? " · " + n + " regimi" : " · 1 regime"));
+    else bar("barReg", sel.manca.length || !g ? "kx" : "k4", sel.manca.length || !g ? "—" : "nessuno");
+    if (cl.ped) bar("barRene", "kx", "bambino: non stimato");
+    else if (cl.dial) bar("barRene", "k4", "emodialisi");
+    else if (cl.clcr !== null) bar("barRene", cl.clcr < 30 ? "k4" : (cl.clcr < 60 ? "k3" : "k1"), "ClCr " + nf(cl.clcr));
+    else bar("barRene", "kx", "—");
+  }
+
+  document.addEventListener("input", disegna);
+  document.addEventListener("change", disegna);
+  el("azzera").addEventListener("click", function () {
+    var ins = document.querySelectorAll("input"), i;
+    for (i = 0; i < ins.length; i++) {
+      if (ins[i].type === "checkbox" || ins[i].type === "radio") ins[i].checked = false;
+      else ins[i].value = "";
+    }
+    el("germe").value = ""; el("bcn").value = "";
+    el("ucr_mg").checked = true;
+    disegna();
+    window.scrollTo(0, 0);
+  });
+
+  window.ABX_MOTORE = { clearance:clearance, dose:dose, etaInfo:etaInfo, PED:PED, rene:RENE, reneRiga:reneRiga, selezione:selezione, filtra:filtra, F:F, R:R, D:D, SOGLIE:SOGLIE, fonteTesto:fonteTesto };
+  disegna();
+})();
+</script>
+<script data-iphone="web">
+// Solo da un indirizzo https, cioe' dalla pagina pubblicata: aperto come file
+// il tool non cerca ne' manifest ne' service worker, che accanto al file non
+// ci sono. Un errore qui non deve fermare niente: e' un di piu'.
+(function(){
+if(location.protocol!=="https:") return;
+try{
+  var t=document.getElementsByTagName("head")[0];
+  var m=document.createElement("link"); m.rel="manifest"; m.href="manifest.webmanifest";
+  var i=document.createElement("link"); i.rel="apple-touch-icon"; i.href="icona-180.png";
+  t.appendChild(m); t.appendChild(i);
+  if("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js")["catch"](function(){});
+}catch(e){}
+})();
+</script>
+<script data-iphone="fine">document.documentElement.className+=" motore-ok";</script>
+</body>
+</html>
